@@ -1,6 +1,8 @@
-package ObjetosDominio;
+package main.java.Biwanger.ObjetosDominio;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import main.java.Biwanger.ObjetosDominio.*;
 
 //@PersistenceCapable
 public class clsUsuario implements Serializable
@@ -9,8 +11,8 @@ public class clsUsuario implements Serializable
     private String email;
     private String password;
 
-    //Anotación para la relación de la tabla
-    private Arraylist <clsJugador> plantilla;
+    //AnotaciÃ³n para la relaciÃ³n de la tabla
+    private ArrayList <clsJugador> plantilla;
     private int puntuacion;
 
     public clsUsuario()
@@ -21,7 +23,7 @@ public class clsUsuario implements Serializable
         puntuacion = 0;
     }
 
-    public clsUsuario(String email, String password, Arraylist <clsJugador> plantilla)
+    public clsUsuario(String email, String password, ArrayList<clsJugador> plantilla)
     {
         this.email = email;
         this.password = password;
@@ -51,11 +53,11 @@ public class clsUsuario implements Serializable
     }
 
     public ArrayList<clsJugador> getPlantilla() {
-        return ListReservas;
+        return plantilla;
     }
 
-    public void setPlantilla(ArrayList<clsReserva> ListReservas) {
-        this.ListReservas = ListReservas;
+    public void setPlantilla(ArrayList<clsJugador> plantilla) {
+        this.plantilla = plantilla;
     }
 
     //HashCode e equals

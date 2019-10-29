@@ -1,19 +1,20 @@
-package AppService;
+package main.java.Biwanger.AppService;
 
-import ObjetosDominio.*;
+import main.java.Biwanger.ObjetosDominio.*;
 
 import java.util.ArrayList;
 
-public class clsAppServiceUsuario
+public class clsAppServiceUser
 {
-    public boolean RegistrarUsuario(clsUsuario nuevoUsuario)
+    public boolean RegistrarUser(clsUsuario nuevoUsuario)
     {
+        return false;
 
     }
 
     public String InicioSesion(clsUsuario usuario)
     {
-        ArrayList<clsUsuario> lUsuarios;
+        ArrayList<clsUsuario> lUsuarios = new ArrayList <clsUsuario>();
         clsUsuario u = null;
 
         String resultado = "";
@@ -29,9 +30,9 @@ public class clsAppServiceUsuario
         }//Si las credenciales no son de administrador, vemos si coinciden con un usuario normal
         else
         {
-            for (clsUsuario u : lUsuarios) {
-                if (u.equals(usuario)) {
-                    if (u.getPassword.equals(usuario.getPassword())) {
+            for (clsUsuario u1 : lUsuarios) {
+                if (u1.equals(usuario)) {
+                    if (u1.getPassword().equals(usuario.getPassword())) {
                         resultado = "USUARIO";
                     }
                 }
