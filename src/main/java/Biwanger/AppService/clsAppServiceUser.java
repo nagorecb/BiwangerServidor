@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 public class clsAppServiceUsuario
 {
-
     public boolean RegistrarUsuario(clsUsuario nuevoUsuario)
     {
 
@@ -27,7 +26,7 @@ public class clsAppServiceUsuario
             {
                 resultado = "ADMIN";
             }
-        }//Si las credenciales no son de administrador, vemos si coinciden con u usuario normal
+        }//Si las credenciales no son de administrador, vemos si coinciden con un usuario normal
         else
         {
             for (clsUsuario u : lUsuarios) {
