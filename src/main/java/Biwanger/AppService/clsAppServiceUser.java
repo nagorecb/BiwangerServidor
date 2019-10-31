@@ -1,17 +1,13 @@
-package main.java.Biwanger.AppService;
+package Biwanger.AppService;
 
-import main.java.Biwanger.ObjetosDominio.*;
+import Biwanger.ObjetosDominio.*;
 
 import java.util.ArrayList;
 
+import Biwanger.ObjetosDominio.clsUsuario;
+
 public class clsAppServiceUser
 {
-    public boolean RegistrarUser(clsUsuario nuevoUsuario)
-    {
-        return false;
-
-    }
-
     public String InicioSesion(clsUsuario usuario)
     {
         ArrayList<clsUsuario> lUsuarios = new ArrayList <clsUsuario>();
@@ -47,7 +43,7 @@ public class clsAppServiceUser
         user.setEmail(email);
         user.setPassword(password);
 
-        boolean resultado; //Se intenta guardar el usuario en la BD y se recoge en un boolean
+        boolean resultado = false; //Se intenta guardar el usuario en la BD y se recoge en un boolean
 
         return resultado;
     }

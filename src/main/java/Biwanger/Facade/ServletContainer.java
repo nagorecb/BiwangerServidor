@@ -1,4 +1,6 @@
-package main.java.Biwanger.Facade;
+package Biwanger.Facade;
+
+import java.util.ArrayList;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -6,17 +8,22 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import main.java.Biwanger.AppService.*;
+
+import Biwanger.ObjetosDominio.clsUsuario;
+import Biwanger.AppService.clsAppServiceAdmin;
+import Biwanger.AppService.clsAppServiceUser;
 
 @Path("/resource")
 @Produces(MediaType.APPLICATION_JSON)
 public class ServletContainer
 {
-
+	clsAppServiceAdmin adminService;
+	clsAppServiceUser userService;
+	 
     public ServletContainer()
     {
-        clsAppServiceAdmin adminService = new clsAppServiceAdmin();
-        clsAppServiceUser userService = new clsAppServiceUser();
+        adminService = new clsAppServiceAdmin();
+        userService = new clsAppServiceUser();
     }
 
     @POST
@@ -34,10 +41,17 @@ public class ServletContainer
     public boolean RegistroRequest(String email, String password)
     {
         boolean retorno = userService.RegistrarUser(email, password);
-
         return retorno;
     }
 
+    @GET
+    @Path("/PremiarTresMejores")
+    public Response PremiarTresMejores()
+    {
+        ArrayList <clsUsuario> listaUsuarios = userService.PremiarTresMejores();
+        return listaUsuarios;
+    }
+    
     @GET
     @Path("/getRequest")
     public Response getRequest()
