@@ -1,66 +1,88 @@
-package main.java.Biwanger.ObjetosDominio;
+package Biwanger.ObjetosDominio;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import main.java.Biwanger.ObjetosDominio.*;
+import java.util.List;
 
-//@PersistenceCapable
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
+
+@PersistenceCapable
 public class clsUsuario implements Serializable
 {
-    //@PrimaryKey
+	private static final long serialVersionUID = 1L;
+	
+	@PrimaryKey
     private String email;
     private String password;
-
-    //AnotaciÃ³n para la relaciÃ³n de la tabla
-    private ArrayList <clsJugador> plantilla;
     private int puntuacion;
-
-    public clsUsuario()
-    {
-        this.email = null;
+    private double fondos;
+    
+    @Persistent(mappedBy="usuarioDueno")
+    private List <clsJugador> plantilla;
+    
+    @Persistent(mappedBy="usuarioPuja")
+    private List <clsPuja> pujas;
+    
+    public clsUsuario() {
+    	this.email = null;
         this.password =  null;
+        this.fondos = 0.0;
         this.plantilla = new ArrayList <clsJugador>();
         puntuacion = 0;
-    }
+	}
 
-    public clsUsuario(String email, String password, ArrayList<clsJugador> plantilla)
-    {
-        this.email = email;
-        this.password = password;
-        this.plantilla = plantilla;
-        this.puntuacion = puntuacion;
-    }
+	public clsUsuario(String email, String password, int puntuacion, double fondos, List<clsJugador> plantilla) {
+		super();
+		this.email = email;
+		this.password = password;
+		this.puntuacion = puntuacion;
+		this.fondos = fondos;
+		this.plantilla = plantilla;
+	}
 
-    public void addJugador(clsJugador jugador)
-    {
-        plantilla.add(jugador);
-    }
-    //Getters y setters
-    public String getEmail() {
-        return email;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    public ArrayList<clsJugador> getPlantilla() {
-        return plantilla;
-    }
+	public int getPuntuacion() {
+		return puntuacion;
+	}
 
-    public void setPlantilla(ArrayList<clsJugador> plantilla) {
-        this.plantilla = plantilla;
-    }
+	public void setPuntuacion(int puntuacion) {
+		this.puntuacion = puntuacion;
+	}
 
-    //HashCode e equals
+	public double getFondos() {
+		return fondos;
+	}
+
+	public void setFondos(double fondos) {
+		this.fondos = fondos;
+	}
+
+	public List<clsJugador> getPlantilla() {
+		return plantilla;
+	}
+
+	public void setPlantilla(List<clsJugador> plantilla) {
+		this.plantilla = plantilla;
+	}
+
+	//HashCode e equals
     @Override
     public int hashCode()
     {
