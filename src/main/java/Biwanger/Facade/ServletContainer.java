@@ -29,6 +29,15 @@ public class ServletContainer
         return retorno;
     }
 
+    @POST
+    @Path("/RegistroRequest")
+    public boolean RegistroRequest(String email, String password)
+    {
+        boolean retorno = userService.RegistrarUser(email, password);
+
+        return retorno;
+    }
+
     @GET
     @Path("/getRequest")
     public Response getRequest()

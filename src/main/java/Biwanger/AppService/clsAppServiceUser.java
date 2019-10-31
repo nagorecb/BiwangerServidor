@@ -40,4 +40,15 @@ public class clsAppServiceUser
         }
         return resultado;
     }
+
+    public boolean RegistrarUser(String email, String password)
+    {
+        clsUsuario user = new clsUsuario();
+        user.setEmail(email);
+        user.setPassword(password);
+
+        boolean resultado; //Se intenta guardar el usuario en la BD y se recoge en un boolean
+
+        return resultado;
+    }
 }
