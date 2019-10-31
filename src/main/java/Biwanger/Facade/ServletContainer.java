@@ -23,7 +23,9 @@ public class ServletContainer
     @Path("/LoginRequest")
     public Response LoginRequest(String email, String password)
     {
-        String retorno = userService.InicioSesion(email, password);
+        clsUsuario u = new clsUsuario();//Sacar de la BD el usuario con ese mail y password
+
+        String retorno = userService.InicioSesion(u);
         return retorno;
     }
 
