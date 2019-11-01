@@ -32,15 +32,17 @@ public class ServletContainer
     {
         clsUsuario u = new clsUsuario();//Sacar de la BD el usuario con ese mail y password
 
-        String retorno = userService.InicioSesion(u);
+       // String retorno = userService.InicioSesion(u);
+        Response retorno = new Response();
         return retorno;
     }
 
     @POST
     @Path("/RegistroRequest")
-    public boolean RegistroRequest(String email, String password)
+    public Response RegistroRequest(String email, String password)
     {
-        boolean retorno = userService.RegistrarUser(email, password);
+        //boolean retorno = userService.RegistrarUser(email, password);
+        Response retorno = new Response();
         return retorno;
     }
 
@@ -48,7 +50,8 @@ public class ServletContainer
     @Path("/PremiarTresMejores")
     public Response PremiarTresMejores()
     {
-        ArrayList <clsUsuario> listaUsuarios = userService.PremiarTresMejores();
+      //  ArrayList <clsUsuario> listaUsuarios = userService.PremiarTresMejores();
+        Response retorno = new Response();
         return listaUsuarios;
     }
     
