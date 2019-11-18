@@ -1,10 +1,9 @@
 package Biwanger.AppService;
 
-import Biwanger.ObjetosDominio.*;
+import Biwanger.ObjetosDominio.clsJugador;
+import Biwanger.ObjetosDominio.clsUsuario;
 
 import java.util.ArrayList;
-
-import Biwanger.ObjetosDominio.clsUsuario;
 
 public class clsAppServiceUser
 {
@@ -46,5 +45,26 @@ public class clsAppServiceUser
         boolean resultado = false; //Se intenta guardar el usuario en la BD y se recoge en un boolean
 
         return resultado;
+    }
+
+    public boolean modificarFormacion (clsUsuario usuario)
+    {
+        ArrayList <clsUsuario> usuarios = new ArrayList<clsUsuario>();
+        //cargar de BD
+        for(clsUsuario u: usuarios) {
+            if (u.equals(usuario)) {
+                //guardar formacion en BD
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean modificarAlineacion (clsUsuario usuario)
+    {
+        for (clsJugador jugador : usuario.getPlantilla())
+        {
+            //guardar jugador en BD
+        }
     }
 }

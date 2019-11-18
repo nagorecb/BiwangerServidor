@@ -1,17 +1,15 @@
 package Biwanger.Facade;
 
-import java.util.List;
+import Biwanger.AppService.clsAppServiceAdmin;
+import Biwanger.AppService.clsAppServiceUser;
+import Biwanger.ObjetosDominio.clsUsuario;
 
-import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-
-import Biwanger.ObjetosDominio.clsUsuario;
-import Biwanger.AppService.clsAppServiceAdmin;
-import Biwanger.AppService.clsAppServiceUser;
+import java.util.List;
 
 @Path("/resource")
 @Produces(MediaType.APPLICATION_JSON)
@@ -42,12 +40,28 @@ public class ServletContainer
         return Response.ok(retorno).build();
     }
 
-    @GET
+    @POST
     @Path("/premiarTresMejores")
     public Response PremiarTresMejores()
     {
     	List <clsUsuario> listaUsuarios = adminService.PremiarTresMejores();
         return Response.ok(listaUsuarios).build();
+    }
+
+    @POST
+    @Path("/modificarAlineacion")
+    public Response modificarAlineacion(clsUsuario usuario)
+    {
+        boolean retorno = userService.modificarAlineacion(usuario);
+        return Response.ok(retorno).build();
+    }
+
+    @POST
+    @Path("/modificarFormacion")
+    public Response modificarFormacion(clsUsuario usuario)
+    {
+        boolean retorno = userService.modificarFormacion(usuario);
+        return Response.ok(retorno).build();
     }
 
 }
