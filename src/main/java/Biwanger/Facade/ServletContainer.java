@@ -3,6 +3,7 @@ package Biwanger.Facade;
 import Biwanger.AppService.clsAppServiceAdmin;
 import Biwanger.AppService.clsAppServiceUser;
 import Biwanger.ObjetosDominio.clsJugador;
+import Biwanger.ObjetosDominio.clsPuja;
 import Biwanger.ObjetosDominio.clsUsuario;
 
 import javax.ws.rs.GET;
@@ -73,6 +74,14 @@ public class ServletContainer
     {
         ArrayList<clsJugador> lJugadores = userService.MostrarMercado();
         return Response.ok(lJugadores).build();
+    }
+
+    @POST
+    @Path("/pujar")
+    public Response Pujar(clsPuja puja)
+    {
+        boolean retorno = userService.Pujar(puja);
+        return Response.ok(retorno).build();
     }
 
 }

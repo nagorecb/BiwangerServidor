@@ -1,6 +1,7 @@
 package Biwanger.AppService;
 
 import Biwanger.ObjetosDominio.clsJugador;
+import Biwanger.ObjetosDominio.clsPuja;
 import Biwanger.ObjetosDominio.clsUsuario;
 
 import java.util.ArrayList;
@@ -84,5 +85,14 @@ public class clsAppServiceUser
         }
 
         return lJugadoresEnVenta;
+    }
+
+    public boolean Pujar(clsPuja puja)
+    {
+        boolean resultado = false;
+
+        //Se intenta guardar la puja en la BBDD
+
+        return resultado;
     }
 }
