@@ -67,4 +67,22 @@ public class clsAppServiceUser
             //guardar jugador en BD
         }
     }
+
+    public ArrayList<clsJugador> MostrarMercado()
+    {
+        ArrayList<clsJugador> lTodosJugadores = new ArrayList<clsJugador>();
+        ArrayList<clsJugador> lJugadoresEnVenta = new ArrayList<clsJugador>();
+
+        //Leer toda la lista de jugadores de la BBDD
+
+        for(clsJugador aux: lTodosJugadores)
+        {
+            if(aux.isEnVenta())
+            {
+                lJugadoresEnVenta.add(aux);
+            }
+        }
+
+        return lJugadoresEnVenta;
+    }
 }

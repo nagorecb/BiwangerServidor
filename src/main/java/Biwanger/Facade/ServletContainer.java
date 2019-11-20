@@ -2,13 +2,16 @@ package Biwanger.Facade;
 
 import Biwanger.AppService.clsAppServiceAdmin;
 import Biwanger.AppService.clsAppServiceUser;
+import Biwanger.ObjetosDominio.clsJugador;
 import Biwanger.ObjetosDominio.clsUsuario;
 
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.ArrayList;
 import java.util.List;
 
 @Path("/resource")
@@ -62,6 +65,14 @@ public class ServletContainer
     {
         boolean retorno = userService.modificarFormacion(usuario);
         return Response.ok(retorno).build();
+    }
+
+    @GET
+    @Path("/MostrarMercado")
+    public Response MostrarMercado()
+    {
+        ArrayList<clsJugador> lJugadores = userService.MostrarMercado();
+        return Response.ok(lJugadores).build();
     }
 
 }
