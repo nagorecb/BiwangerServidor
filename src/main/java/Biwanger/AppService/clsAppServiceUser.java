@@ -8,10 +8,10 @@ import java.util.ArrayList;
 
 public class clsAppServiceUser
 {
-    public String InicioSesion(clsUsuario usuario)
+    public clsUsuario InicioSesion(clsUsuario usuario)
     {
         ArrayList<clsUsuario> lUsuarios = new ArrayList <clsUsuario>();
-        clsUsuario u = null;
+        clsUsuario u = new clsUsuario();
 
         String resultado = "";
         //Rellenar la lista de usuarios con los usuarios de la BD
@@ -21,7 +21,7 @@ public class clsAppServiceUser
         {
             if (usuario.getPassword().equals("ADMIN"))
             {
-                resultado = "ADMIN";
+                u.setEmail("ADMIN");
             }
         }//Si las credenciales no son de administrador, vemos si coinciden con un usuario normal
         else
@@ -29,12 +29,12 @@ public class clsAppServiceUser
             for (clsUsuario u1 : lUsuarios) {
                 if (u1.equals(usuario)) {
                     if (u1.getPassword().equals(usuario.getPassword())) {
-                        resultado = "USUARIO";
+                        u = u1;
                     }
                 }
             }
         }
-        return resultado;
+        return u;
     }
 
     public boolean RegistrarUser(String email, String password)

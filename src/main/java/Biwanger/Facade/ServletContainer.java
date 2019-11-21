@@ -32,9 +32,14 @@ public class ServletContainer
     @Path("/login")
     public Response LoginRequest(String email, String password)
     {
-        clsUsuario usuario = new clsUsuario();//select: Sacar de la BD el usuario con ese mail y password
-        return Response.ok(usuario).build();
+        clsUsuario usuario = new clsUsuario();
+        usuario.setEmail(email);
+        usuario.setPassword(password);
+        clsUsuario retorno = userService.InicioSesion(usuario);
+
+        return Response.ok(retorno).build();
     }
+
 
     @POST
     @Path("/registro")
