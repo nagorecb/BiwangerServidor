@@ -84,4 +84,13 @@ public class ServletContainer
         return Response.ok(retorno).build();
     }
 
+    @POST
+    @Path("/VenderJugador")
+    public Response venderJugador(double precio, clsJugador jugadorVenta)
+    {
+        userService.venderJugador(precio, jugadorVenta);
+        return Response.ok().build();
+    }
+
+
 }

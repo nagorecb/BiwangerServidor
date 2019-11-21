@@ -82,6 +82,29 @@ public class clsUsuario implements Serializable
 		this.plantilla = plantilla;
 	}
 
+	//Plantilla
+	public void AnadirJugador (clsJugador jug)
+	{
+		this.plantilla.add(jug);
+	}
+
+	public void EliminarJugador (clsJugador jug)
+	{
+		this.plantilla.remove(jug);
+	}
+
+	//Fondos
+	public void SumarFondos (double precioVenta)
+	{
+		this.fondos +=precioVenta;
+	}
+
+	public void RestarFondos (double precioCompra)
+	{
+		this.fondos -=precioCompra;
+	}
+
+
 	//HashCode e equals
     @Override
     public int hashCode()

@@ -67,6 +67,8 @@ public class clsAppServiceUser
         {
             //guardar jugador en BD
         }
+
+        return false; //Hay que modificar, devolver lo que tenga que devolver
     }
 
     public ArrayList<clsJugador> MostrarMercado()
@@ -95,4 +97,20 @@ public class clsAppServiceUser
 
         return resultado;
     }
+
+    public void venderJugador(double precio, clsJugador jugadorVenta)
+    {
+        //Quitarle el jugador de la plantilla al usuario
+        clsUsuario dueno = jugadorVenta.getUsuarioDueno();
+        dueno.EliminarJugador(jugadorVenta);
+        jugadorVenta.setAlineado(false);
+        jugadorVenta.setUsuarioDueno(null);
+        //Modificar datos de jugaodor desde DAO, eliminar el jugador de la plantilla del usuario desde DAO
+
+        //Crear puja y guardarla en la BD
+
+        clsPuja puja = new clsPuja(dueno,jugadorVenta, precio);
+        //Añadir puja DAO
+    }
+
 }
