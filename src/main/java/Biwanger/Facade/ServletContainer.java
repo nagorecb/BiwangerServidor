@@ -5,6 +5,7 @@ import Biwanger.AppService.clsAppServiceUser;
 import Biwanger.ObjetosDominio.clsJugador;
 import Biwanger.ObjetosDominio.clsPuja;
 import Biwanger.ObjetosDominio.clsUsuario;
+import main.java.Biwanger.Facade.FormParam;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -96,6 +97,23 @@ public class ServletContainer
         userService.venderJugador(precio, jugadorVenta);
         return Response.ok().build();
     }
+    
+    @POST
+    @Path("/anadirPuntos")
+    public Response anadirPuntosRequest(@FormParam("idJugador") int idJugador, @FormParam("puntos") int puntosAnadir)
+    {
+        adminService.anadirPuntos(idJugador, puntosAnadir);
+        return Response.ok().build();
+    }
+    
+    @POST
+    @Path("/crearJugador")
+    public Response crearJugadorRequest(clsJugador jugador)
+    {
+        adminService.guardarJugador(jugador);
+        return Response.ok().build();
+    }
+    
 
 
 }

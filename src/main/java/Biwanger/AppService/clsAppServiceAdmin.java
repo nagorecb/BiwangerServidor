@@ -1,5 +1,7 @@
 package Biwanger.AppService;
 
+import Biwanger.DAO.clsDAO;
+import Biwanger.ObjetosDominio.clsJugador;
 import Biwanger.ObjetosDominio.clsUsuario;
 
 import java.util.ArrayList;
@@ -9,6 +11,7 @@ import java.util.stream.Collectors;
 
 public class clsAppServiceAdmin
 {
+	clsDAO dao = new clsDAO();
 
     final double PREMIO1 = 3000;
     final double PREMIO2 = 2000;
@@ -29,5 +32,25 @@ public class clsAppServiceAdmin
         //llamada a la bd para actualizar los datos
 
         return listaUsuariosOrdenada;
+    }
+    
+    public void anadirPuntos (int idJugador, int puntosAnadir) 
+    {
+    	clsJugador jugadorAnadirPuntos = this.dao.buscarJugador(idJugador);
+    	
+    	int puntosTot = jugadorAnadirPuntos.getPuntos() + puntosAnadir;
+    	
+    	jugadorAnadirPuntos.setPuntos(puntosTot);
+    	
+    	this.dao.modificarObjeto(jugadorAnadirPuntos);
+    }
+    
+    
+    public void guardarJugador (clsJugador jugador) 
+    {
+    	// inicializar al jugador recibido los valores predeterminados para los campos que faltan, con constructor yab está
+//    	jugador.setPuntos(0);
+//    	jugador.setAlineado(false);
+    	this.dao.guardarObjeto(jugador);
     }
 }
