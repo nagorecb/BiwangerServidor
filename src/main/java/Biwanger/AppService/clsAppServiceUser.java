@@ -1,20 +1,23 @@
 package Biwanger.AppService;
 
+import Biwanger.DAO.clsDAO;
 import Biwanger.ObjetosDominio.clsJugador;
 import Biwanger.ObjetosDominio.clsPuja;
 import Biwanger.ObjetosDominio.clsUsuario;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class clsAppServiceUser
 {
+    private clsDAO dao = new clsDAO();
+
     public clsUsuario InicioSesion(clsUsuario usuario)
     {
-        ArrayList<clsUsuario> lUsuarios = new ArrayList <clsUsuario>();
+        ArrayList<clsUsuario> lUsuarios;
         clsUsuario u = new clsUsuario();
 
-        String resultado = "";
-        //Rellenar la lista de usuarios con los usuarios de la BD
+        lUsuarios = dao.leerUsuarios();
 
         //Primero, vemos si las credenciales son de administrador
         if(usuario.getEmail().equals("ADMIN"))
@@ -43,32 +46,37 @@ public class clsAppServiceUser
         user.setEmail(email);
         user.setPassword(password);
 
-        boolean resultado = false; //Se intenta guardar el usuario en la BD y se recoge en un boolean
+        user = (clsUsuario) dao.guardarObjeto(user);
 
-        return resultado;
+        if(user != null)
+        {
+            return true;
+        } else
+        {
+            return false;
+        }
     }
 
-    public boolean modificarFormacion (clsUsuario usuario)
+    public void modificarFormacion (clsUsuario usuario)
     {
-        ArrayList <clsUsuario> usuarios = new ArrayList<clsUsuario>();
-        //cargar de BD
-        for(clsUsuario u: usuarios) {
-            if (u.equals(usuario)) {
-                //guardar formacion en BD
-                return true;
+        ArrayList <clsUsuario> listUsuarios;
+
+        listUsuarios = dao.leerUsuarios();
+
+        for(clsUsuario u: listUsuarios) {
+            if (u.equals(usuario))
+            {
+                dao.modificarObjeto(u);
             }
         }
-        return false;
     }
 
-    public boolean modificarAlineacion (clsUsuario usuario)
+    public void modificarAlineacion (clsUsuario usuario)
     {
-        for (clsJugador jugador : usuario.getPlantilla())
+        for (clsJugador jugador: usuario.getPlantilla())
         {
-            //guardar jugador en BD
+            dao.modificarObjeto(jugador);
         }
-
-        return false; //Hay que modificar, devolver lo que tenga que devolver
     }
 
     public ArrayList<clsJugador> MostrarMercado()
@@ -76,7 +84,7 @@ public class clsAppServiceUser
         ArrayList<clsJugador> lTodosJugadores = new ArrayList<clsJugador>();
         ArrayList<clsJugador> lJugadoresEnVenta = new ArrayList<clsJugador>();
 
-        //Leer toda la lista de jugadores de la BBDD
+        lTodosJugadores = dao.leerJugadores();
 
         for(clsJugador aux: lTodosJugadores)
         {
@@ -91,26 +99,27 @@ public class clsAppServiceUser
 
     public boolean Pujar(clsPuja puja)
     {
-        boolean resultado = false;
 
-        //Se intenta guardar la puja en la BBDD
+        puja = (clsPuja) dao.guardarObjeto(puja);
 
-        return resultado;
+        if(puja != null)
+        {
+            return true;
+        } else
+        {
+            return false;
+        }
     }
 
     public void venderJugador(double precio, clsJugador jugadorVenta)
     {
         //Quitarle el jugador de la plantilla al usuario
-        clsUsuario dueno = jugadorVenta.getUsuarioDueno();
-        dueno.EliminarJugador(jugadorVenta);
         jugadorVenta.setAlineado(false);
-        jugadorVenta.setUsuarioDueno(null);
-        //Modificar datos de jugaodor desde DAO, eliminar el jugador de la plantilla del usuario desde DAO
+        jugadorVenta.setPrecio(precio);
+        jugadorVenta.setEnVenta(true);
+        jugadorVenta.setFechaVenta(LocalDateTime.now());
 
-        //Crear puja y guardarla en la BD
-
-        clsPuja puja = new clsPuja(dueno,jugadorVenta, precio);
-        //Añadir puja DAO
+        dao.modificarObjeto(jugadorVenta);
     }
 
 }

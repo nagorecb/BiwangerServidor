@@ -1,13 +1,18 @@
 package Biwanger.comun;
 
+import Biwanger.AppService.clsAppServiceUser;
 import Biwanger.ObjetosDominio.clsJugador;
 import Biwanger.ObjetosDominio.clsPuja;
+import Biwanger.ObjetosDominio.clsUsuario;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class clsHiloPujas extends Thread
 {
+    private clsAppServiceUser userService = new clsAppServiceUser();
     private ArrayList<clsJugador> lJugadores = new ArrayList<clsJugador>();
     private ArrayList<clsPuja> lPujas = new ArrayList<clsPuja>();
 
@@ -19,30 +24,35 @@ public class clsHiloPujas extends Thread
         {
             if (contador == 1 || LocalTime.MIDNIGHT.equals(LocalTime.now()))
             {
-                //Leer todas los jugadores EN VENTA de la BBDD
+                lJugadores = userService.MostrarMercado();
 
                 for (clsJugador auxJugador : lJugadores)
                 {
-                    //Comprobar fecha de venta del jugador
-
-                    lPujas = (ArrayList<clsPuja>) auxJugador.getPujasRealizadas();
-                    clsPuja pujaMaxima = lPujas.get(0);
-
-                    for (int i = 1; i < lPujas.size(); i++)
+                    if(auxJugador.getFechaVenta().getDayOfMonth() < LocalDateTime.now().getDayOfMonth())
                     {
-                        if (pujaMaxima.getOferta() < lPujas.get(i).getOferta())
-                        {
-                            pujaMaxima = lPujas.get(i);
+                        lPujas = (ArrayList<clsPuja>) auxJugador.getPujasRealizadas();
+                        clsPuja pujaMaxima = lPujas.get(0);
+
+                        for (int i = 1; i < lPujas.size(); i++) {
+                            if (pujaMaxima.getOferta() < lPujas.get(i).getOferta()) {
+                                pujaMaxima = lPujas.get(i);
+                            }
                         }
+
+                        clsUsuario vendedor = auxJugador.getUsuarioDueno();
+                        clsUsuario comprador = pujaMaxima.getUsuarioPuja();
+
+                        vendedor.EliminarJugador(auxJugador);
+                        comprador.AnadirJugador(auxJugador);
+
+                        comprador.RestarFondos(pujaMaxima.getOferta());
+                        vendedor.SumarFondos(pujaMaxima.getOferta());
+
+                        auxJugador.setPujasRealizadas(null);
+
+                        auxJugador.setEnVenta(false);
+                        contador = 0;
                     }
-
-                    //Quitar el jugador de la plantilla del dueño
-                    //Añadir el jugador a la plantilla del comprador
-                    //Restar el dinero al comprador
-                    //Añadir el dinero al vendedor
-
-                    auxJugador.setEnVenta(false);
-                    contador = 0;
                 }
             }
         }

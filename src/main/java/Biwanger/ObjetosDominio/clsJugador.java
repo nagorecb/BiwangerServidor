@@ -1,6 +1,7 @@
 package Biwanger.ObjetosDominio;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +26,7 @@ public class clsJugador implements Serializable
 	private int numPartidosJugados;
 	private String estado;	//para saber si está lesionado o no
 	private boolean enVenta;
+	private LocalDateTime fechaVenta;
 	
 	@Column (name="emailUsuDueno")
 	private clsUsuario usuarioDueno;
@@ -50,12 +52,13 @@ public class clsJugador implements Serializable
 		this.enVenta = false;
 		this.usuarioDueno = null;
 		this.pujasRealizadas = null;
+		this.fechaVenta = null;
 	}
 	
 	public clsJugador(int id, String nombre, int puntos, String posicion, double precio, String equipo,
 			boolean alineado, int numGoles, int numAsistencias, int numTarjetasAmarillas, int numTarjetasRojas,
 			int numPartidosJugados, String estado, boolean enVenta, clsUsuario usuarioDueno,
-			List<clsPuja> pujasRealizadas) {
+			List<clsPuja> pujasRealizadas, LocalDateTime fecha) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -73,6 +76,7 @@ public class clsJugador implements Serializable
 		this.enVenta = enVenta;
 		this.usuarioDueno = usuarioDueno;
 		this.pujasRealizadas = pujasRealizadas;
+		this.fechaVenta = fecha;
 	}
 
 
@@ -265,6 +269,16 @@ public class clsJugador implements Serializable
 
 	public void setPujasRealizadas(List<clsPuja> pujasRealizadas) {
 		this.pujasRealizadas = pujasRealizadas;
+	}
+
+	public void setFechaVenta(LocalDateTime fecha)
+	{
+		this.fechaVenta = fecha;
+	}
+
+	public LocalDateTime getFechaVenta()
+	{
+		return fechaVenta;
 	}
 
 
