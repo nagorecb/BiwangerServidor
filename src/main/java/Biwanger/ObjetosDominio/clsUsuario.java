@@ -1,12 +1,11 @@
 package Biwanger.ObjetosDominio;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @PersistenceCapable
 public class clsUsuario implements Serializable
@@ -18,6 +17,7 @@ public class clsUsuario implements Serializable
     private String password;
     private int puntuacion;
     private double fondos;
+    private String formacion;
     
     @Persistent(mappedBy="usuarioDueno")
     private List <clsJugador> plantilla;
@@ -28,18 +28,20 @@ public class clsUsuario implements Serializable
     public clsUsuario() {
     	this.email = null;
         this.password =  null;
+        this.formacion = null;
         this.fondos = 0.0;
         this.plantilla = new ArrayList <clsJugador>();
         puntuacion = 0;
 	}
 
-	public clsUsuario(String email, String password, int puntuacion, double fondos, List<clsJugador> plantilla) {
+	public clsUsuario(String email, String password, int puntuacion, double fondos, String formacion, List<clsJugador> plantilla) {
 		super();
 		this.email = email;
 		this.password = password;
 		this.puntuacion = puntuacion;
 		this.fondos = fondos;
 		this.plantilla = plantilla;
+		this.formacion = formacion;
 	}
 
 	public String getEmail() {
@@ -73,6 +75,14 @@ public class clsUsuario implements Serializable
 	public void setFondos(double fondos) {
 		this.fondos = fondos;
 	}
+
+    public String getFormacion() {
+        return formacion;
+    }
+
+    public void setFormacion(String email) {
+        this.formacion = formacion;
+    }
 
 	public List<clsJugador> getPlantilla() {
 		return plantilla;
