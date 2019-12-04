@@ -10,7 +10,13 @@ import java.util.ArrayList;
 
 public class clsAppServiceUser
 {
-    private clsDAO dao = new clsDAO();
+    private clsDAO dao;
+
+    public clsAppServiceUser(){}
+    public clsAppServiceUser(clsDAO dao)
+    {
+        this.dao = dao;
+    }
 
     public clsUsuario InicioSesion(clsUsuario usuario)
     {
@@ -40,12 +46,8 @@ public class clsAppServiceUser
         return u;
     }
 
-    public boolean RegistrarUser(String email, String password)
+    public boolean RegistrarUser(clsUsuario user)
     {
-        clsUsuario user = new clsUsuario();
-        user.setEmail(email);
-        user.setPassword(password);
-
         user = (clsUsuario) dao.guardarObjeto(user);
 
         if(user != null)
@@ -111,11 +113,10 @@ public class clsAppServiceUser
         }
     }
 
-    public void venderJugador(double precio, clsJugador jugadorVenta)
+    public void venderJugador(clsJugador jugadorVenta)
     {
         //Quitarle el jugador de la plantilla al usuario
         jugadorVenta.setAlineado(false);
-        jugadorVenta.setPrecio(precio);
         jugadorVenta.setEnVenta(true);
         jugadorVenta.setFechaVenta(LocalDateTime.now());
 

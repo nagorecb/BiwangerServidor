@@ -2,6 +2,7 @@ package Biwanger.Facade;
 
 import Biwanger.AppService.clsAppServiceAdmin;
 import Biwanger.AppService.clsAppServiceUser;
+import Biwanger.DAO.clsDAO;
 import Biwanger.ObjetosDominio.clsJugador;
 import Biwanger.ObjetosDominio.clsPuja;
 import Biwanger.ObjetosDominio.clsUsuario;
@@ -20,30 +21,27 @@ public class ServletContainer
 	 
     public ServletContainer()
     {
-        adminService = new clsAppServiceAdmin();
-        userService = new clsAppServiceUser();
+        clsDAO dao = new clsDAO();
+        adminService = new clsAppServiceAdmin(dao);
+        userService = new clsAppServiceUser(dao);
     }
 
     @POST
     @Path("/login")
-    public Response LoginRequest(String email, String password)
+    public Response LoginRequest(clsUsuario usuario)
     {
         System.out.println("Entrando a login");
-        clsUsuario usuario = new clsUsuario();
-        usuario.setEmail(email);
-        usuario.setPassword(password);
         clsUsuario retorno = userService.InicioSesion(usuario);
 
-        return Response.ok(retorno).build();
+        return Response.ok(usuario).build();
     }
-
 
     @POST
     @Path("/registro")
-    public Response RegistroRequest(String email, String password)
+    public Response RegistroRequest(clsUsuario usuario)
     {
         System.out.println("Entrando a registro");
-        boolean retorno = userService.RegistrarUser(email, password);
+        boolean retorno = userService.RegistrarUser(usuario);
         return Response.ok(retorno).build();
     }
 
@@ -87,9 +85,9 @@ public class ServletContainer
 
     @POST
     @Path("/VenderJugador")
-    public Response venderJugador(double precio, clsJugador jugadorVenta)
+    public Response venderJugador(clsJugador jugadorVenta)
     {
-        userService.venderJugador(precio, jugadorVenta);
+        userService.venderJugador(jugadorVenta);
         return Response.ok().build();
     }
     
