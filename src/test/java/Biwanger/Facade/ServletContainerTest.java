@@ -1,14 +1,13 @@
 package Biwanger.Facade;
 
+import Biwanger.ObjetosDominio.clsPuja;
 import Biwanger.ObjetosDominio.clsUsuario;
 import org.junit.*;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static junit.framework.TestCase.*;
 import static org.mockito.Mockito.when;
@@ -41,9 +40,9 @@ public class ServletContainerTest
         usuarioNORegistrado.setPassword("NORegistrado");
 
         puntuacion = 100;
-        usuario1 = new clsUsuario("test1", "test1", puntuacion+3, 0, null);
-        usuario2 = new clsUsuario("test2", "test2", puntuacion+2, 0, null);
-        usuario3 = new clsUsuario("test3", "test3", puntuacion+1, 0, null);
+        usuario1 = new clsUsuario("test1", "test1", puntuacion+3, 0, null, null);
+        usuario2 = new clsUsuario("test2", "test2", puntuacion+2, 0, null, null);
+        usuario3 = new clsUsuario("test3", "test3", puntuacion+1, 0, null, null);
     }
 
     @After
@@ -87,9 +86,9 @@ public class ServletContainerTest
         //Crear lista con usuarios ya premiados para devolver
         List<clsUsuario> listPremiados = new ArrayList<>();
 
-        listPremiados.add(new clsUsuario().setFondos(usuario1.getFondos()+3000);)
-        listPremiados.add(new clsUsuario().setFondos(usuario2.getFondos()+2000);)
-        listPremiados.add(new clsUsuario().setFondos(usuario3.getFondos()+1000);)
+        //listPremiados.add(new clsUsuario().setFondos(usuario1.getFondos()+3000));
+        //listPremiados.add(new clsUsuario().setFondos(usuario2.getFondos()+2000));
+        //listPremiados.add(new clsUsuario().setFondos(usuario3.getFondos()+1000));
 
         when(fachada.adminService.PremiarTresMejores()).thenReturn(listPremiados);
 
@@ -100,15 +99,12 @@ public class ServletContainerTest
     }
 
     @Test
-    public void testModificarAlineacion()
+    public void testPujar()
     {
-        //Se va a modificar el metodo
+        clsPuja puja = new clsPuja();
+
+        when (fachada.userService.Pujar(puja)).thenReturn(true);
+
+        assertTrue(fachada.userService.Pujar(puja));
     }
-
-    @Test
-    public void testModificarFormacion()
-    {
-
-    }
-
 }
