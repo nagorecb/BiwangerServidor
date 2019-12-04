@@ -28,6 +28,7 @@ public class ServletContainer
     @Path("/login")
     public Response LoginRequest(String email, String password)
     {
+        System.out.println("Entrando a login");
         clsUsuario usuario = new clsUsuario();
         usuario.setEmail(email);
         usuario.setPassword(password);
@@ -41,6 +42,7 @@ public class ServletContainer
     @Path("/registro")
     public Response RegistroRequest(String email, String password)
     {
+        System.out.println("Entrando a registro");
         boolean retorno = userService.RegistrarUser(email, password);
         return Response.ok(retorno).build();
     }
@@ -55,18 +57,16 @@ public class ServletContainer
 
     @POST
     @Path("/modificarAlineacion")
-    public Response modificarAlineacion(clsUsuario usuario)
+    public void modificarAlineacion(clsUsuario usuario)
     {
-        boolean retorno = userService.modificarAlineacion(usuario);
-        return Response.ok(retorno).build();
+        userService.modificarAlineacion(usuario);
     }
 
     @POST
     @Path("/modificarFormacion")
-    public Response modificarFormacion(clsUsuario usuario)
+    public void modificarFormacion(clsUsuario usuario)
     {
-        boolean retorno = userService.modificarFormacion(usuario);
-        return Response.ok(retorno).build();
+        userService.modificarFormacion(usuario);
     }
 
     @GET
