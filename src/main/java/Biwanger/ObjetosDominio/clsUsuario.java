@@ -34,7 +34,7 @@ public class clsUsuario implements Serializable
         puntuacion = 0;
 	}
 
-	public clsUsuario(String email, String password, int puntuacion, double fondos, String formacion, List<clsJugador> plantilla) {
+	public clsUsuario(String email, String password, int puntuacion, double fondos, List<clsJugador> plantilla, String formacion) {
 		super();
 		this.email = email;
 		this.password = password;
