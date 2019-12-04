@@ -103,16 +103,23 @@
           <artifactId>jaxb-impl</artifactId>
           <version>2.3.0</version>
       </dependency>
-      <!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
     <dependency>
         <groupId>org.mockito</groupId>
         <artifactId>mockito-all</artifactId>
         <version>1.10.19</version>
         <scope>test</scope>
     </dependency>
+      <dependency>
+          <groupId>org.databene</groupId>
+          <artifactId>contiperf</artifactId>
+          <version>2.3.4</version>
+          <scope>test</scope>
+      </dependency>
   </dependencies>
 
-  <build>
+
+
+    <build>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
