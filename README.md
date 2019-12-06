@@ -12,11 +12,8 @@ _Intoducir los siguientes comandos, para conectarse con el cliente, (hacer antes
 mvn compiler:compile
 mvn jetty:run
 ```
-_Para crear tablas por primera vez:_
+_Para habilitar el acceso a la Base de datos:_
 ```
-mvn datanucleus:schema-create
-```
-_Para JDO:_
 mvn datanucleus:enhance
 ```
 _En este momento nos quedamos a la espera del cliente_
