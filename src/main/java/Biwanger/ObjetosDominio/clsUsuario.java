@@ -6,6 +6,7 @@ import javax.jdo.annotations.PrimaryKey;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @PersistenceCapable
 public class clsUsuario implements Serializable
@@ -115,31 +116,24 @@ public class clsUsuario implements Serializable
 	}
 
 
-	//HashCode e equals
-    @Override
-    public int hashCode()
-    {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((email == null) ? 0 : email.hashCode());
-        return result;
-    }
+	@Override
+	public boolean equals(Object o)
+	{
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		clsUsuario that = (clsUsuario) o;
+		return email.equals(that.email);
+	}
 
-    @Override
-    public boolean equals(Object obj)
-    {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        clsUsuario other = (clsUsuario) obj;
-        if (email == null) {
-            if (other.email != null)
-                return false;
-        } else if (!email.equals(other.email))
-            return false;
-        return true;
-    }
+	@Override
+	public int hashCode()
+	{
+		return Objects.hash(email);
+	}
+
+	@Override
+	public String toString() {
+		return "clsUsuario [email=" + email + ", password=" + password + ", puntuacion=" + puntuacion + ", fondos="
+				+ fondos + ", plantilla=" + plantilla + ", pujas=" + pujas + "]";
+	}
 }

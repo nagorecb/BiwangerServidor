@@ -30,18 +30,17 @@ public class ServletContainer
     @Path("/login")
     public Response LoginRequest(clsUsuario usuario)
     {
-        System.out.println("Entrando a login");
         clsUsuario retorno = userService.InicioSesion(usuario);
-
-        return Response.ok(usuario).build();
+        return Response.ok(retorno).build();
     }
 
     @POST
     @Path("/registro")
     public Response RegistroRequest(clsUsuario usuario)
     {
-        System.out.println("Entrando a registro");
-        boolean retorno = userService.RegistrarUser(usuario);
+
+        String retorno = userService.RegistrarUser(usuario);
+
         return Response.ok(retorno).build();
     }
 
@@ -52,7 +51,7 @@ public class ServletContainer
     	List <clsUsuario> listaUsuarios = adminService.PremiarTresMejores();
         return Response.ok(listaUsuarios).build();
     }
-
+    
     @POST
     @Path("/modificarAlineacion")
     public void modificarAlineacion(clsUsuario usuario)
@@ -79,8 +78,8 @@ public class ServletContainer
     @Path("/pujar")
     public Response Pujar(clsPuja puja)
     {
-        boolean retorno = userService.Pujar(puja);
-        return Response.ok(retorno).build();
+        userService.Pujar(puja);
+        return Response.ok().build();
     }
 
     @POST
@@ -106,7 +105,12 @@ public class ServletContainer
         adminService.guardarJugador(jugador);
         return Response.ok().build();
     }
-    
 
-
+    @GET
+    @Path("/obtenerTodosUsuarios")
+    public Response obtenerTodosUsuarios()
+    {
+        ArrayList<clsUsuario> lUsuarios = userService.obtenerTodosUsuarios();
+        return Response.ok(lUsuarios).build();
+    }
 }

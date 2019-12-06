@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.jdo.annotations.*;
 
@@ -36,7 +37,6 @@ public class clsJugador implements Serializable
 	
 	public clsJugador() {
 		super();
-		this.id = 0;
 		this.nombre = null;
 		this.puntos = 0;
 		this.posicion = null;
@@ -282,28 +282,16 @@ public class clsJugador implements Serializable
 	}
 
 
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		clsJugador that = (clsJugador) o;
+		return id == that.id;
+	}
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + id;
-		return result;
+		return Objects.hash(id);
 	}
-	
-	
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		clsJugador other = (clsJugador) obj;
-		if (id != other.id)
-			return false;
-		return true;
-	}
-	
 }
