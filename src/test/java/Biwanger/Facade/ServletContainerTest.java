@@ -54,14 +54,14 @@ public class ServletContainerTest
     @Test
     public void testRegistro()
     {
-        when(fachada.userService.RegistrarUser("Registrado", "Registrado")).thenReturn(true);
-        when(fachada.userService.RegistrarUser("NORegistrado", "NORegistrado")).thenReturn(false);
+        when(fachada.userService.RegistrarUser(usuarioRegistrado)).thenReturn("OK");
+        when(fachada.userService.RegistrarUser(usuarioNORegistrado)).thenReturn("No OK");
 
-        boolean correcta = fachada.userService.RegistrarUser(usuarioRegistrado.getEmail(), usuarioRegistrado.getPassword());
-        boolean incorrecta = fachada.userService.RegistrarUser(usuarioNORegistrado.getEmail(), usuarioNORegistrado.getPassword());
+        String correcta = fachada.userService.RegistrarUser(usuarioRegistrado);
+        String incorrecta = fachada.userService.RegistrarUser(usuarioNORegistrado);
 
-        assertTrue(correcta);
-        assertFalse(incorrecta);
+        assertEquals(correcta, "OK");
+        assertEquals(incorrecta, "No OK");
     }
 
     @Test
@@ -96,15 +96,5 @@ public class ServletContainerTest
         assertEquals(listPremiados.get(0).getFondos(), usuario1.getFondos()+3000);
         assertEquals(listPremiados.get(1).getFondos(), usuario2.getFondos()+2000);
         assertEquals(listPremiados.get(2).getFondos(), usuario3.getFondos()+1000);
-    }
-
-    @Test
-    public void testPujar()
-    {
-        clsPuja puja = new clsPuja();
-
-        when (fachada.userService.Pujar(puja)).thenReturn(true);
-
-        assertTrue(fachada.userService.Pujar(puja));
     }
 }

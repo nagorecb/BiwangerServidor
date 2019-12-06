@@ -1,8 +1,7 @@
 package Biwanger.DAO;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Iterator;
 
 import javax.jdo.Extent;
 import javax.jdo.JDOHelper;
@@ -15,24 +14,29 @@ import Biwanger.ObjetosDominio.clsJugador;
 import Biwanger.ObjetosDominio.clsPuja;
 import Biwanger.ObjetosDominio.clsUsuario;
 
-public class clsDAO implements itfDAO
+public class clsDAO
 {
 	static PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 	static PersistenceManager pm = pmf.getPersistenceManager();
-	
-	@Override
-	public Object guardarObjeto(Object objeto) 
+
+	public clsJugador guardarObjeto(Object objeto)
 	{
-		//he hecho que devuelva el objeto guardado en bd para poder tener el id también
-		Object objetoGuardado = null;
+		clsJugador jugador = null;
 		
 		Transaction tx = null;
 		try
 		{
 			tx = pm.currentTransaction();
 			tx.begin();
-			
-			objetoGuardado = pm.makePersistent(objeto);
+
+			if(objeto.getClass().equals(clsJugador.class))
+			{
+				jugador = (clsJugador) pm.makePersistent(objeto);
+			} else
+			{
+				pm.makePersistent(objeto);
+			}
+
 			tx.commit();
 		} 
 		catch (Exception ex)
@@ -46,19 +50,33 @@ public class clsDAO implements itfDAO
 			}
 		}
 		
-		return objetoGuardado;
+		return jugador;
 	}
-	
-	@Override
+
 	public clsJugador buscarJugador(int idJugador) {
-		
-		clsJugador jugadorBuscado = new clsJugador();
-		jugadorBuscado = pm.getObjectById(clsJugador.class, idJugador);
-		
+
+		clsJugador jugadorBuscado = pm.getObjectById(clsJugador.class, idJugador);
+
 		return jugadorBuscado;
 	}
-	
-	@Override
+
+	public clsUsuario buscarUsuario(String email)
+	{
+		clsUsuario retorno = null;
+
+		ArrayList<clsUsuario> lUsuarios = leerUsuarios();
+
+		for(clsUsuario aux: lUsuarios)
+		{
+			if(email.equals(aux.getEmail()))
+			{
+				retorno = aux;
+			}
+		}
+
+		return retorno;
+	}
+
 	public ArrayList<clsJugador> leerJugadores() 
 	{
 		ArrayList <clsJugador> listaJugadores = new ArrayList <clsJugador>();
@@ -89,8 +107,7 @@ public class clsDAO implements itfDAO
 		
 		return listaJugadores;
 	}
-	
-	@Override
+
 	public ArrayList<clsUsuario> leerUsuarios() 
 	{
 		ArrayList <clsUsuario> listaUsuarios = new ArrayList <clsUsuario>();
@@ -121,8 +138,7 @@ public class clsDAO implements itfDAO
 		
 		return listaUsuarios;
 	}
-	
-	@Override
+
 	public ArrayList<clsPuja> leerPujas() 
 	{
 		ArrayList <clsPuja> listaPujas = new ArrayList <clsPuja>();
@@ -153,80 +169,148 @@ public class clsDAO implements itfDAO
 		
 		return listaPujas;
 	}
-	
-	@Override
-	public void eliminarObjeto (Object objeto)
+
+	public void eliminarObjeto(Object objeto)
 	{
-		pm.deletePersistent(objeto);
+		Transaction tx = pm.currentTransaction();
+
+		try{
+			tx = pm.currentTransaction();
+			tx.begin();
+
+			pm.deletePersistent(objeto);
+
+			tx.commit();
+
+		}
+		catch (Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		finally
+		{
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+		}
 	}
 	
-//	@Override
-//	public void eliminarJugador (clsJugador jugador)
-//	{
-//		pm.deletePersistent(jugador);
-//	}
-//	@Override
-//	public void eliminarUsuario (clsUsuario usuario)
-//	{
-//		pm.deletePersistent(usuario);
-//	}
-//	@Override
-//	public void eliminarPuja (clsPuja puja)
-//	{
-//		pm.deletePersistent(puja);
-//	}
-	
-	@Override
+
 	public void eliminarJugadorDePlantilla (clsJugador jugador)
 	{
 		jugador.setUsuarioDueno(null);
 		modificarObjeto(jugador);
 	}
-	
-	@Override
+
 	public void modificarObjeto (Object objeto) 
 	{
-		pm.makePersistent(objeto);
-	}
-	
-//	@Override
-//	public void modificarJugador (clsJugador jugador) 
-//	{
-//		 Query<clsJugador> query = pm.newQuery(
-//				 "UPDATE " +clsJugador.class.getName()+
-//				 " SET NOMBRE= "+ jugador.getNombre()+
-//				 " AND ALINEADO="+jugador.isAlineado()+
-//				 " AND ENVENTA="+jugador.isEnVenta()+
-//				 " AND EQUIPO="+jugador.getEquipo()+
-//				 " AND ESTADO="+jugador.getEstado()+
-//				 " AND NUMASISTENCIAS="+jugador.getNumAsistencias()+
-//				 " AND NUMGOLES="+jugador.getNumGoles()+
-//				 " AND NUMPARTIDOSJUGADOS="+jugador.getNumPartidosJugados()+
-//				 " AND NUMTARJETASAMARILLAS="+jugador.getNumTarjetasAmarillas()+
-//				 " AND NUMTARJETASROJAS="+jugador.getNumTarjetasRojas()+
-//				 " AND POSICION="+jugador.getPosicion()+
-//				 " AND PRECIO="+jugador.getPrecio()+
-//				 " AND PUNTOS="+jugador.getPrecio()+
-//				 " AND EMAILUSUDUENO="+jugador.getUsuarioDueno()+
-//				 " AND PLANTILLA_INTEGER_IDX="+jugador.isAlineado()+
-//				 " WHERE ID = "+jugador.getId());
-//		query.execute();
-		
-//            pm.makePersistent(jugador);
-//	}
-//	@Override
-//	public void modificarUsuario (clsUsuario usuario) 
-//	{
-//		pm.makePersistent(usuario);
-//	}
-//	@Override
-//	public void modificarPuja (clsPuja puja) 
-//	{
-//		pm.makePersistent(puja);
-//
-//	}
+		Transaction tx = null;
 
-	@Override
+		try
+		{
+			tx = pm.currentTransaction();
+			tx.begin();
+			
+			pm.makePersistent(objeto);
+			tx.commit();
+		} 
+		catch (Exception ex)
+		{
+			ex.printStackTrace();
+		} 
+		finally 
+		{
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+		}
+	}
+
+	public void modificarJugador(clsJugador jugador)
+	{
+		Transaction tx = pm.currentTransaction();
+
+		try
+		{
+			tx.begin();
+
+			Extent e = pm.getExtent(clsJugador.class, true);
+			Iterator iter = e.iterator();
+			while(iter.hasNext())
+			{
+				clsJugador auxjugador = (clsJugador) iter.next();
+				if(auxjugador.getId() == jugador.getId())
+				{
+					auxjugador.setNombre(jugador.getNombre());
+					auxjugador.setPuntos(jugador.getPuntos());
+					auxjugador.setPosicion(jugador.getPosicion());
+					auxjugador.setPrecio(jugador.getPrecio());
+					auxjugador.setEquipo(jugador.getEquipo());
+					auxjugador.setAlineado(jugador.isAlineado());
+					auxjugador.setNumGoles(jugador.getNumGoles());
+					auxjugador.setNumAsistencias(jugador.getNumAsistencias());
+					auxjugador.setNumTarjetasAmarillas(jugador.getNumTarjetasAmarillas());
+					auxjugador.setNumTarjetasRojas(jugador.getNumTarjetasRojas());
+					auxjugador.setNumPartidosJugados(jugador.getNumPartidosJugados());
+					auxjugador.setEstado(jugador.getEstado());
+					auxjugador.setEnVenta(jugador.isEnVenta());
+					auxjugador.setUsuarioDueno(jugador.getUsuarioDueno());
+					auxjugador.setPujasRealizadas(jugador.getPujasRealizadas());
+					auxjugador.setFechaVenta(jugador.getFechaVenta());
+				}
+			}
+
+			tx.commit();
+		}
+		catch (Exception ex)
+		{
+			ex.printStackTrace();
+		} 
+		finally 
+		{
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+		}
+	}
+
+	public void modificarUsuario(clsUsuario usuario)
+	{
+		Transaction tx = pm.currentTransaction();
+
+		try
+		{
+			tx.begin();
+
+			Extent e = pm.getExtent(clsUsuario.class, true);
+			Iterator iter = e.iterator();
+			while(iter.hasNext())
+			{
+				clsUsuario auxUsuario = (clsUsuario) iter.next();
+				if(auxUsuario.getEmail().equals(usuario.getEmail()))
+				{
+					auxUsuario.setPassword(usuario.getPassword());
+					auxUsuario.setPuntuacion(usuario.getPuntuacion());
+					auxUsuario.setFondos(usuario.getFondos());
+					auxUsuario.setFormacion(usuario.getFormacion());
+					auxUsuario.setPlantilla(usuario.getPlantilla());
+				}
+			}
+
+			tx.commit();
+		}
+		catch (Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		finally
+		{
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+		}
+	}
+
 	public void cerrarConexion() 
 	{
 		if (pm != null && !pm.isClosed()) 

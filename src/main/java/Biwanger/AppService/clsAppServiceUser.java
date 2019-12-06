@@ -21,41 +21,46 @@ public class clsAppServiceUser
     public clsUsuario InicioSesion(clsUsuario usuario)
     {
         ArrayList<clsUsuario> lUsuarios;
-        clsUsuario u = new clsUsuario();
-
-        lUsuarios = dao.leerUsuarios();
+        clsUsuario u = null;
 
         //Primero, vemos si las credenciales son de administrador
         if(usuario.getEmail().equals("ADMIN"))
         {
             if (usuario.getPassword().equals("ADMIN"))
             {
-                u.setEmail("ADMIN");
+                u = usuario;
             }
         }//Si las credenciales no son de administrador, vemos si coinciden con un usuario normal
         else
         {
-            for (clsUsuario u1 : lUsuarios) {
-                if (u1.equals(usuario)) {
-                    if (u1.getPassword().equals(usuario.getPassword())) {
+            lUsuarios = dao.leerUsuarios();
+
+            for (clsUsuario u1 : lUsuarios)
+            {
+                if (u1.equals(usuario))
+                {
+                    if (u1.getPassword().equals(usuario.getPassword()))
+                    {
                         u = u1;
                     }
                 }
             }
         }
+
         return u;
     }
 
-    public boolean RegistrarUser(clsUsuario user)
+    public String RegistrarUser(clsUsuario user)
     {
-        user = (clsUsuario) dao.guardarObjeto(user);
+        clsUsuario aux = dao.buscarUsuario(user.getEmail());
 
-        if(user != null)
+        if(aux == null)
         {
-            return true;
+            dao.guardarObjeto(user);
+            return "OK";
         } else
         {
-            return false;
+            return "No OK";
         }
     }
 
@@ -99,18 +104,9 @@ public class clsAppServiceUser
         return lJugadoresEnVenta;
     }
 
-    public boolean Pujar(clsPuja puja)
+    public void Pujar(clsPuja puja)
     {
-
-        puja = (clsPuja) dao.guardarObjeto(puja);
-
-        if(puja != null)
-        {
-            return true;
-        } else
-        {
-            return false;
-        }
+        dao.guardarObjeto(puja);
     }
 
     public void venderJugador(clsJugador jugadorVenta)
@@ -121,6 +117,13 @@ public class clsAppServiceUser
         jugadorVenta.setFechaVenta(LocalDateTime.now());
 
         dao.modificarObjeto(jugadorVenta);
+    }
+
+    public ArrayList<clsUsuario> obtenerTodosUsuarios()
+    {
+        ArrayList<clsUsuario> lUsuarios = dao.leerUsuarios();
+
+        return lUsuarios;
     }
 
 }

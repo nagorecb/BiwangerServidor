@@ -24,7 +24,7 @@ public class clsAppServiceAdminTest
     private clsUsuario u1,u2;
 
     clsDAO dao = new clsDAO();
-    clsAppServiceAdmin appservice = new clsAppServiceAdmin();
+    clsAppServiceAdmin appservice = new clsAppServiceAdmin(dao);
 
     @Before
     public void init()
