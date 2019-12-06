@@ -5,13 +5,13 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.jdo.annotations.Column;
-import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.*;
 
 @PersistenceCapable
 public class clsJugador implements Serializable
 {
+	@PrimaryKey
+	@Persistent(valueStrategy= IdGeneratorStrategy.INCREMENT)
 	private int id;
 	private String nombre;
 	private int puntos;
