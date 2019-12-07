@@ -77,4 +77,20 @@ public class clsAppServiceAdmin
         return lJugadores;
     }
 
+    public ArrayList<clsJugador> obtenerPlantilla(String email)
+    {
+        ArrayList<clsJugador> lTodosJugadores = obtenerTodosJugadores();
+        ArrayList<clsJugador> Plantilla = new ArrayList<clsJugador>();
+
+        for(clsJugador aux: lTodosJugadores)
+        {
+            if(aux.getUsuarioDueno().equals(email))
+            {
+                Plantilla.add(aux);
+            }
+        }
+
+        return Plantilla;
+    }
+
 }

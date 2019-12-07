@@ -78,9 +78,9 @@ public class clsAppServiceUser
         }
     }
 
-    public void modificarAlineacion (clsUsuario usuario)
+    public void modificarAlineacion (ArrayList<clsJugador> plantilla)
     {
-        for (clsJugador jugador: usuario.getPlantilla())
+        for (clsJugador jugador: plantilla)
         {
             dao.modificarObjeto(jugador);
         }
@@ -88,7 +88,7 @@ public class clsAppServiceUser
 
     public ArrayList<clsJugador> MostrarMercado()
     {
-        ArrayList<clsJugador> lTodosJugadores = new ArrayList<clsJugador>();
+        ArrayList<clsJugador> lTodosJugadores;
         ArrayList<clsJugador> lJugadoresEnVenta = new ArrayList<clsJugador>();
 
         lTodosJugadores = dao.leerJugadores();
@@ -111,7 +111,6 @@ public class clsAppServiceUser
 
     public void venderJugador(clsJugador jugadorVenta)
     {
-        //Quitarle el jugador de la plantilla al usuario
         jugadorVenta.setAlineado(false);
         jugadorVenta.setEnVenta(true);
         jugadorVenta.setFechaVenta(LocalDateTime.now());
@@ -119,4 +118,35 @@ public class clsAppServiceUser
         dao.modificarObjeto(jugadorVenta);
     }
 
+    public ArrayList<clsPuja> obtenerPujas(clsJugador jugador)
+    {
+        ArrayList<clsPuja> lTodasPujas = dao.leerPujas();
+        ArrayList<clsPuja> lPujasDelJugador = new ArrayList<clsPuja>();
+
+        for(clsPuja aux: lTodasPujas)
+        {
+            if(aux.getEmailUsuarioPuja().equals(jugador.getEquipo()))
+            {
+                lPujasDelJugador.add(aux);
+            }
+        }
+
+        return lPujasDelJugador;
+    }
+
+    public clsUsuario obtenerUsuario(String email)
+    {
+        clsUsuario retorno = new clsUsuario();
+        ArrayList<clsUsuario> lUsuarios = dao.leerUsuarios();
+
+        for(clsUsuario aux: lUsuarios)
+        {
+            if(email.equals(aux.getEmail()))
+            {
+                retorno = aux;
+            }
+        }
+
+        return retorno;
+    }
 }

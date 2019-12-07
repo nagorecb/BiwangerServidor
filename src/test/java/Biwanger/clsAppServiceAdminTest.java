@@ -31,20 +31,20 @@ public class clsAppServiceAdminTest
     {
         j1 = new clsJugador(1, "Messi", 10, "DELANTERO", 500, "FCB",
                 true, 10, 8, 2, 0,
-                15, "buen estado", false, u1, null , null);
+                15, "buen estado", false, u1.getEmail(), null);
         dao.guardarObjeto(j1);
         listaJugadores.add(j1);
 
         j2 = new clsJugador(2, "Xavi", 8, "MEDIO", 500, "FCB",
                 true, 10, 8, 2, 0,
-                15, "buen estado", false, u1, null , null);
+                15, "buen estado", false, u1.getEmail(), null);
         dao.guardarObjeto(j2);
         listaJugadores.add(j2);
 
-        u1 = new clsUsuario("e1", "p1", 10, 100, listaJugadores,"4-3-3");
+        u1 = new clsUsuario("e1", "p1", 10, 100,"4-3-3");
         dao.guardarObjeto(u1);
 
-        u2 = new clsUsuario("e2", "p2", 8, 100, null,"4-3-3");
+        u2 = new clsUsuario("e2", "p2", 8, 100, "4-3-3");
         dao.guardarObjeto(u2);
     }
 

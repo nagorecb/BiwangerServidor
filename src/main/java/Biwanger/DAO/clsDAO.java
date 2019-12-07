@@ -19,6 +19,29 @@ public class clsDAO
 	static PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 	static PersistenceManager pm = pmf.getPersistenceManager();
 
+	public void establecerConexion()
+	{
+		Transaction tx = null;
+		try
+		{
+			tx = pm.currentTransaction();
+			tx.begin();
+
+			tx.commit();
+		}
+		catch (Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		finally
+		{
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+		}
+
+	}
+
 	public clsJugador guardarObjeto(Object objeto)
 	{
 		clsJugador jugador = null;
@@ -255,7 +278,6 @@ public class clsDAO
 					auxjugador.setEstado(jugador.getEstado());
 					auxjugador.setEnVenta(jugador.isEnVenta());
 					auxjugador.setUsuarioDueno(jugador.getUsuarioDueno());
-					auxjugador.setPujasRealizadas(jugador.getPujasRealizadas());
 					auxjugador.setFechaVenta(jugador.getFechaVenta());
 				}
 			}
@@ -293,7 +315,6 @@ public class clsDAO
 					auxUsuario.setPuntuacion(usuario.getPuntuacion());
 					auxUsuario.setFondos(usuario.getFondos());
 					auxUsuario.setFormacion(usuario.getFormacion());
-					auxUsuario.setPlantilla(usuario.getPlantilla());
 				}
 			}
 

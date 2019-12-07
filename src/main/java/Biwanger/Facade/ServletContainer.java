@@ -16,16 +16,17 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 public class ServletContainer
 {
+    clsDAO dao;
 	clsAppServiceAdmin adminService;
 	clsAppServiceUser userService;
 	 
     public ServletContainer()
     {
-        clsDAO dao = new clsDAO();
+        dao = new clsDAO();
+
         adminService = new clsAppServiceAdmin(dao);
         userService = new clsAppServiceUser(dao);
-
-        clsHiloPujas hilo = new clsHiloPujas(userService);
+        clsHiloPujas hilo = new clsHiloPujas(userService, dao);
         //hilo.run();
     }
 
@@ -70,9 +71,9 @@ public class ServletContainer
     
     @POST
     @Path("/modificarAlineacion")
-    public void modificarAlineacion(clsUsuario usuario)
+    public void modificarAlineacion(clsJugadorLista plantilla)
     {
-        userService.modificarAlineacion(usuario);
+        userService.modificarAlineacion(plantilla.getlJugadores());
     }
 
     @POST
@@ -145,5 +146,21 @@ public class ServletContainer
         clsJugadorLista retorno = new clsJugadorLista(lJugadores);
 
         return Response.ok(retorno).build();
+    }
+
+    @POST
+    @Path("/obtenerPlantilla")
+    public Response obtenerPlantilla(String email)
+    {
+        clsJugadorLista retorno = new clsJugadorLista(adminService.obtenerPlantilla(email));
+        return Response.ok(retorno).build();
+    }
+
+    @GET
+    @Path("/hardcode")
+    public void hardcode()
+    {
+        DatosHardcoded hardcode = new DatosHardcoded();
+        hardcode.metodo(dao);
     }
 }

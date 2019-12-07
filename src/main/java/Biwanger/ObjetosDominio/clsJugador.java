@@ -9,7 +9,7 @@ import java.util.Objects;
 import javax.jdo.annotations.*;
 
 @PersistenceCapable
-public class clsJugador implements Serializable
+public class clsJugador
 {
 	@PrimaryKey
 	@Persistent(valueStrategy= IdGeneratorStrategy.INCREMENT)
@@ -28,12 +28,7 @@ public class clsJugador implements Serializable
 	private String estado;	//para saber si está lesionado o no
 	private boolean enVenta;
 	private LocalDateTime fechaVenta;
-	
-	@Column (name="emailUsuDueno")
-	private clsUsuario usuarioDueno;
-	
-	@Persistent(mappedBy="jugadorPuja")
-	private List <clsPuja> pujasRealizadas;
+	private String usuarioDueno;
 	
 	public clsJugador() {
 		super();
@@ -51,14 +46,12 @@ public class clsJugador implements Serializable
 		this.estado = null;
 		this.enVenta = false;
 		this.usuarioDueno = null;
-		this.pujasRealizadas = null;
 		this.fechaVenta = null;
 	}
 	
 	public clsJugador(int id, String nombre, int puntos, String posicion, double precio, String equipo,
 			boolean alineado, int numGoles, int numAsistencias, int numTarjetasAmarillas, int numTarjetasRojas,
-			int numPartidosJugados, String estado, boolean enVenta, clsUsuario usuarioDueno,
-			List<clsPuja> pujasRealizadas, LocalDateTime fecha) {
+			int numPartidosJugados, String estado, boolean enVenta, String usuarioDueno, LocalDateTime fecha) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -75,212 +68,122 @@ public class clsJugador implements Serializable
 		this.estado = estado;
 		this.enVenta = enVenta;
 		this.usuarioDueno = usuarioDueno;
-		this.pujasRealizadas = pujasRealizadas;
 		this.fechaVenta = fecha;
 	}
-
-
 
 	public int getId() {
 		return id;
 	}
-
-
-
 	public void setId(int id) {
 		this.id = id;
 	}
 
-
-
 	public String getNombre() {
 		return nombre;
 	}
-
-
-
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
-
-
 	public int getPuntos() {
 		return puntos;
 	}
-
-
-
 	public void setPuntos(int puntos) {
 		this.puntos = puntos;
 	}
 
-
-
 	public String getPosicion() {
 		return posicion;
 	}
-
-
-
 	public void setPosicion(String posicion) {
 		this.posicion = posicion;
 	}
 
-
-
 	public double getPrecio() {
 		return precio;
 	}
-
-
-
 	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
 
-
-
 	public String getEquipo() {
 		return equipo;
 	}
-
-
-
 	public void setEquipo(String equipo) {
 		this.equipo = equipo;
 	}
 
-
-
 	public boolean isAlineado() {
 		return alineado;
 	}
-
-
-
 	public void setAlineado(boolean alineado) {
 		this.alineado = alineado;
 	}
 
-
-
 	public int getNumGoles() {
 		return numGoles;
 	}
-
-
-
 	public void setNumGoles(int numGoles) {
 		this.numGoles = numGoles;
 	}
 
-
-
 	public int getNumAsistencias() {
 		return numAsistencias;
 	}
-
-
-
 	public void setNumAsistencias(int numAsistencias) {
 		this.numAsistencias = numAsistencias;
 	}
 
-
-
 	public int getNumTarjetasAmarillas() {
 		return numTarjetasAmarillas;
 	}
-
-
-
 	public void setNumTarjetasAmarillas(int numTarjetasAmarillas) {
 		this.numTarjetasAmarillas = numTarjetasAmarillas;
 	}
 
-
-
 	public int getNumTarjetasRojas() {
 		return numTarjetasRojas;
 	}
-
-
-
 	public void setNumTarjetasRojas(int numTarjetasRojas) {
 		this.numTarjetasRojas = numTarjetasRojas;
 	}
 
-
-
 	public int getNumPartidosJugados() {
 		return numPartidosJugados;
 	}
-
-
-
 	public void setNumPartidosJugados(int numPartidosJugados) {
 		this.numPartidosJugados = numPartidosJugados;
 	}
 
-
-
 	public String getEstado() {
 		return estado;
 	}
-
-
-
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
 
-
-
 	public boolean isEnVenta() {
 		return enVenta;
 	}
-
-
-
 	public void setEnVenta(boolean enVenta) {
 		this.enVenta = enVenta;
 	}
 
-
-
-	public clsUsuario getUsuarioDueno() {
+	public String getUsuarioDueno() {
 		return usuarioDueno;
 	}
-
-
-
-	public void setUsuarioDueno(clsUsuario usuarioDueno) {
+	public void setUsuarioDueno(String usuarioDueno) {
 		this.usuarioDueno = usuarioDueno;
-	}
-
-
-
-	public List<clsPuja> getPujasRealizadas() {
-		return pujasRealizadas;
-	}
-
-
-
-	public void setPujasRealizadas(List<clsPuja> pujasRealizadas) {
-		this.pujasRealizadas = pujasRealizadas;
 	}
 
 	public void setFechaVenta(LocalDateTime fecha)
 	{
 		this.fechaVenta = fecha;
 	}
-
 	public LocalDateTime getFechaVenta()
 	{
 		return fechaVenta;
 	}
-
 
 	@Override
 	public boolean equals(Object o) {

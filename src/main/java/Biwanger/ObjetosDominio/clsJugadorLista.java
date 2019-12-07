@@ -5,7 +5,7 @@ import java.util.List;
 
 public class clsJugadorLista
 {
-    private List<clsJugador> lJugadores;
+    private ArrayList<clsJugador> lJugadores;
 
     public clsJugadorLista() {}
 
@@ -14,13 +14,8 @@ public class clsJugadorLista
         lJugadores = param;
     }
 
-    public List<clsJugador> getlJugadores()
+    public ArrayList<clsJugador> getlJugadores()
     {
         return lJugadores;
-    }
-
-    public void setlJugadores(List<clsJugador> lJugadores)
-    {
-        this.lJugadores = lJugadores;
     }
 }

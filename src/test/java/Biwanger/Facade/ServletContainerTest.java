@@ -3,8 +3,10 @@ package Biwanger.Facade;
 import Biwanger.ObjetosDominio.clsPuja;
 import Biwanger.ObjetosDominio.clsUsuario;
 import org.junit.*;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,9 +42,9 @@ public class ServletContainerTest
         usuarioNORegistrado.setPassword("NORegistrado");
 
         puntuacion = 100;
-        usuario1 = new clsUsuario("test1", "test1", puntuacion+3, 0, null, null);
-        usuario2 = new clsUsuario("test2", "test2", puntuacion+2, 0, null, null);
-        usuario3 = new clsUsuario("test3", "test3", puntuacion+1, 0, null, null);
+        usuario1 = new clsUsuario("test1", "test1", puntuacion+3, 0, null);
+        usuario2 = new clsUsuario("test2", "test2", puntuacion+2, 0, null);
+        usuario3 = new clsUsuario("test3", "test3", puntuacion+1, 0, null);
     }
 
     @After
