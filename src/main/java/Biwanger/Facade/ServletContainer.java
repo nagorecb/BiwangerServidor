@@ -3,9 +3,9 @@ package Biwanger.Facade;
 import Biwanger.AppService.clsAppServiceAdmin;
 import Biwanger.AppService.clsAppServiceUser;
 import Biwanger.DAO.clsDAO;
-import Biwanger.ObjetosDominio.clsJugador;
-import Biwanger.ObjetosDominio.clsPuja;
-import Biwanger.ObjetosDominio.clsUsuario;
+import Biwanger.ObjetosDominio.*;
+import Biwanger.comun.clsHiloPujas;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -24,6 +24,9 @@ public class ServletContainer
         clsDAO dao = new clsDAO();
         adminService = new clsAppServiceAdmin(dao);
         userService = new clsAppServiceUser(dao);
+
+        clsHiloPujas hilo = new clsHiloPujas(userService);
+        //hilo.run();
     }
 
     @POST
@@ -48,8 +51,21 @@ public class ServletContainer
     @Path("/premiarTresMejores")
     public Response PremiarTresMejores()
     {
-    	List <clsUsuario> listaUsuarios = adminService.PremiarTresMejores();
-        return Response.ok(listaUsuarios).build();
+    	List<clsUsuario> listaUsuarios = adminService.PremiarTresMejores();
+    	ArrayList<clsUsuario> arrayUsuarios = new ArrayList<clsUsuario>();
+
+        System.out.println("En ServletContainer tras adminService");
+
+    	for(clsUsuario aux: listaUsuarios)
+        {
+            arrayUsuarios.add(aux);
+            System.out.println(aux.getEmail());
+        }
+        System.out.println("Acabado el for de List a ArrayList");
+
+    	clsUsuarioLista retorno = new clsUsuarioLista(arrayUsuarios);
+
+        return Response.ok(retorno).build();
     }
     
     @POST
@@ -71,7 +87,10 @@ public class ServletContainer
     public Response MostrarMercado()
     {
         ArrayList<clsJugador> lJugadores = userService.MostrarMercado();
-        return Response.ok(lJugadores).build();
+
+        clsJugadorLista retorno = new clsJugadorLista(lJugadores);
+
+        return Response.ok(retorno).build();
     }
 
     @POST
@@ -110,7 +129,21 @@ public class ServletContainer
     @Path("/obtenerTodosUsuarios")
     public Response obtenerTodosUsuarios()
     {
-        ArrayList<clsUsuario> lUsuarios = userService.obtenerTodosUsuarios();
-        return Response.ok(lUsuarios).build();
+        ArrayList<clsUsuario> lUsuarios = adminService.obtenerTodosUsuarios();
+
+        clsUsuarioLista retorno = new clsUsuarioLista(lUsuarios);
+
+        return Response.ok(retorno).build();
+    }
+
+    @GET
+    @Path("/obtenerTodosJugadores")
+    public Response obtenerTodosJugadores()
+    {
+        ArrayList<clsJugador> lJugadores = adminService.obtenerTodosJugadores();
+
+        clsJugadorLista retorno = new clsJugadorLista(lJugadores);
+
+        return Response.ok(retorno).build();
     }
 }

@@ -119,11 +119,4 @@ public class clsAppServiceUser
         dao.modificarObjeto(jugadorVenta);
     }
 
-    public ArrayList<clsUsuario> obtenerTodosUsuarios()
-    {
-        ArrayList<clsUsuario> lUsuarios = dao.leerUsuarios();
-
-        return lUsuarios;
-    }
-
 }

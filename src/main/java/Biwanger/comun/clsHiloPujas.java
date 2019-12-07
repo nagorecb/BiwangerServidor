@@ -11,11 +11,16 @@ import java.util.ArrayList;
 
 public class clsHiloPujas extends Thread
 {
-    private clsAppServiceUser userService = new clsAppServiceUser();
+    private clsAppServiceUser userService;
     private ArrayList<clsJugador> lJugadores = new ArrayList<clsJugador>();
     private ArrayList<clsPuja> lPujas = new ArrayList<clsPuja>();
 
     private int contador = 1;
+
+    public clsHiloPujas(clsAppServiceUser param)
+    {
+        userService = param;
+    }
 
     public void run()
     {
@@ -41,10 +46,14 @@ public class clsHiloPujas extends Thread
                         clsUsuario vendedor = auxJugador.getUsuarioDueno();
                         clsUsuario comprador = pujaMaxima.getUsuarioPuja();
 
+                        if(vendedor != null)
                         vendedor.EliminarJugador(auxJugador);
+
                         comprador.AnadirJugador(auxJugador);
 
                         comprador.RestarFondos(pujaMaxima.getOferta());
+
+                        if(vendedor != null)
                         vendedor.SumarFondos(pujaMaxima.getOferta());
 
                         auxJugador.setPujasRealizadas(null);
