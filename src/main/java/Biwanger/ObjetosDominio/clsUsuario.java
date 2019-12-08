@@ -72,7 +72,7 @@ public class clsUsuario
         return formacion;
     }
 
-    public void setFormacion(String email) {
+    public void setFormacion(String formacion) {
         this.formacion = formacion;
     }
 

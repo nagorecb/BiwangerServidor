@@ -73,6 +73,7 @@ public class clsAppServiceUser
         for(clsUsuario u: listUsuarios) {
             if (u.equals(usuario))
             {
+                u.setFormacion(usuario.getFormacion());
                 dao.modificarObjeto(u);
             }
         }
