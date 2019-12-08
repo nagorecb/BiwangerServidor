@@ -1,9 +1,15 @@
 package Biwanger.Facade;
 
+import Biwanger.AppService.clsAppServiceAdmin;
+import Biwanger.AppService.clsAppServiceUser;
+import Biwanger.DAO.clsDAO;
 import Biwanger.ObjetosDominio.clsPuja;
 import Biwanger.ObjetosDominio.clsUsuario;
+import Biwanger.ObjetosDominio.clsUsuarioLista;
+
 import org.junit.*;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -11,92 +17,90 @@ import org.mockito.runners.MockitoJUnitRunner;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+import javax.ws.rs.core.Response;
+
 import static junit.framework.TestCase.*;
 import static org.mockito.Mockito.when;
 
+@RunWith(MockitoJUnitRunner.class)
 public class ServletContainerTest
 {
+    private static final String RESPUESTA_USUARIO_REGISTRADO = "usuarioRegistrado";
+    private static final String RESPUESTA_USUARIO_LOGUEADO = "usuarioLogueado";
+
+	@InjectMocks
+    private ServletContainer servletContainer;
+    
     @Mock
-    private ServletContainer fachada;
-
-    clsUsuario usuarioRegistrado;
-    clsUsuario usuarioNORegistrado;
-
-    private clsUsuario usuario1;
-    private clsUsuario usuario2;
-    private clsUsuario usuario3;
-    private int puntuacion;
-
-    @Before
-    public void setUp()
-    {
-        MockitoAnnotations.initMocks(this);
-        fachada = new ServletContainer();
-
-        usuarioRegistrado = new clsUsuario();
-        usuarioNORegistrado = new clsUsuario();
-
-        usuarioRegistrado.setEmail("Registrado");
-        usuarioRegistrado.setPassword("Registrado");
-        usuarioNORegistrado.setEmail("NORegistrado");
-        usuarioNORegistrado.setPassword("NORegistrado");
-
-        puntuacion = 100;
-        usuario1 = new clsUsuario("test1", "test1", puntuacion+3, 0, null);
-        usuario2 = new clsUsuario("test2", "test2", puntuacion+2, 0, null);
-        usuario3 = new clsUsuario("test3", "test3", puntuacion+1, 0, null);
-    }
-
-    @After
-    public void tearDown()
-    {
-        //Eliminar usuario1, 2 y 3 de la BBDD
-    }
+    private clsDAO dao;
+    @Mock
+	private clsAppServiceAdmin adminService;
+    @Mock
+	private clsAppServiceUser userService;
 
     @Test
     public void testRegistro()
     {
-        when(fachada.userService.RegistrarUser(usuarioRegistrado)).thenReturn("OK");
-        when(fachada.userService.RegistrarUser(usuarioNORegistrado)).thenReturn("No OK");
+        clsUsuario usuario = crearUsuario();
+        when(this.userService.RegistrarUser(usuario)).thenReturn(RESPUESTA_USUARIO_REGISTRADO);
+        
+		Response respuestaRegistroRequest = this.servletContainer.RegistroRequest(usuario);
 
-        String correcta = fachada.userService.RegistrarUser(usuarioRegistrado);
-        String incorrecta = fachada.userService.RegistrarUser(usuarioNORegistrado);
-
-        assertEquals(correcta, "OK");
-        assertEquals(incorrecta, "No OK");
+        assertEquals(respuestaRegistroRequest.getEntity(), RESPUESTA_USUARIO_REGISTRADO);
+        assertEquals(respuestaRegistroRequest.getStatusInfo().getReasonPhrase(), "OK");
     }
 
     @Test
     public void testLogin()
     {
-        clsUsuario usuarioRecibidoOK = new clsUsuario();
-        clsUsuario usuarioRecibidoNO = new clsUsuario();
+        clsUsuario usuarioEnviado = crearUsuario();
+        clsUsuario usuarioLogueado = crearUsuario();
+        usuarioLogueado.setFondos(300);
 
-        when(fachada.userService.InicioSesion(usuarioRegistrado)).thenReturn(usuarioRegistrado);
-        when(fachada.userService.InicioSesion(usuarioNORegistrado)).thenReturn(new clsUsuario());
-
-        usuarioRecibidoOK = fachada.userService.InicioSesion(usuarioRegistrado);
-        usuarioRecibidoNO = fachada.userService.InicioSesion(usuarioNORegistrado);
-
-        assertEquals(usuarioRecibidoOK.getEmail(), usuarioRegistrado.getEmail());
-        assertFalse(usuarioRecibidoNO.equals(usuarioNORegistrado));
+        when(this.userService.InicioSesion(usuarioEnviado)).thenReturn(usuarioLogueado);
+        
+        Response respuestaLoginRequest = this.servletContainer.LoginRequest(usuarioEnviado);
+        
+        assertEquals(respuestaLoginRequest.getEntity(), usuarioLogueado);
+        assertEquals(respuestaLoginRequest.getStatusInfo().getReasonPhrase(), "OK");
     }
 
     @Test
     public void testPremiar()
     {
-        //Crear lista con usuarios ya premiados para devolver
-        List<clsUsuario> listPremiados = new ArrayList<>();
+        ArrayList<clsUsuario> listPremiados = crearUsuarios();
+        clsUsuarioLista usuLista = new clsUsuarioLista(listPremiados);
 
-        //listPremiados.add(new clsUsuario().setFondos(usuario1.getFondos()+3000));
-        //listPremiados.add(new clsUsuario().setFondos(usuario2.getFondos()+2000));
-        //listPremiados.add(new clsUsuario().setFondos(usuario3.getFondos()+1000));
+        when(this.adminService.PremiarTresMejores()).thenReturn(listPremiados);
+        
 
-        when(fachada.adminService.PremiarTresMejores()).thenReturn(listPremiados);
+        Response respuestaTresPremiadosRequest = this.servletContainer.PremiarTresMejores();
+        
+        assertEquals(respuestaTresPremiadosRequest.getEntity(),usuLista);
+        assertEquals(respuestaTresPremiadosRequest.getStatusInfo().getReasonPhrase(), "OK");
+    }
+    
+    private clsUsuario crearUsuario() {
+		clsUsuario usuario = new clsUsuario();
+        usuario.setEmail("emailUsuario");
+        usuario.setPassword("passUsuario");
+		return usuario;
+	}
+    
+    private  ArrayList<clsUsuario> crearUsuarios()
+    {
+        int puntuacion = 100;
+        clsUsuario usuario1 = new clsUsuario("test1", "test1", puntuacion+3, 0, null);
+        clsUsuario usuario2 = new clsUsuario("test2", "test2", puntuacion+2, 0, null);
+        clsUsuario usuario3 = new clsUsuario("test3", "test3", puntuacion+1, 0, null);
+        
+        ArrayList<clsUsuario> listaUsuarios = new ArrayList<>();
+        listaUsuarios.add(usuario1);
+        listaUsuarios.add(usuario2);
+        listaUsuarios.add(usuario3);
+        
+        return listaUsuarios;
 
-        fachada.adminService.PremiarTresMejores();
-        assertEquals(listPremiados.get(0).getFondos(), usuario1.getFondos()+3000);
-        assertEquals(listPremiados.get(1).getFondos(), usuario2.getFondos()+2000);
-        assertEquals(listPremiados.get(2).getFondos(), usuario3.getFondos()+1000);
     }
 }
