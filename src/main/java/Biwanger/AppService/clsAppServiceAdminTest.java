@@ -1,15 +1,13 @@
-package Biwanger;
+package Biwanger.AppService;
 
-import Biwanger.AppService.clsAppServiceAdmin;
 import Biwanger.DAO.clsDAO;
 import Biwanger.ObjetosDominio.clsJugador;
 import Biwanger.ObjetosDominio.clsUsuario;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
-
-import static org.junit.Assert.assertTrue;
 
 /**
  * Unit test for simple App.
@@ -53,23 +51,23 @@ public class clsAppServiceAdminTest
     {
         listaUsuarios = dao.leerUsuarios();
         //consultar situación inicial
-        assertTrue(listaUsuarios.get(0).getFondos()==100);
-        assertTrue(listaUsuarios.get(1).getFondos()==100);
+        Assert.assertTrue(listaUsuarios.get(0).getFondos()==100);
+        Assert.assertTrue(listaUsuarios.get(1).getFondos()==100);
 
         //premiar
         listaUsuarios=appservice.PremiarTresMejores();
 
         //verificar que les suma los puntos
-        assertTrue( listaUsuarios.get(0).getFondos()==3100);
-        assertTrue( listaUsuarios.get(0).getFondos()==2100);
+        Assert.assertTrue( listaUsuarios.get(0).getFondos()==3100);
+        Assert.assertTrue( listaUsuarios.get(0).getFondos()==2100);
     }
 
     @Test
     public void anadirPuntos_test()
     {
-        assertTrue(j1.getPuntos()==10);
+        Assert.assertTrue(j1.getPuntos()==10);
         appservice.anadirPuntos(1,2);
-        assertTrue(dao.buscarJugador(1).getPuntos()==12);
+        Assert.assertTrue(dao.buscarJugador(1).getPuntos()==12);
     }
 
     @Test
@@ -79,6 +77,6 @@ public class clsAppServiceAdminTest
         appservice.guardarJugador(j1);
 
         listaJugadores = dao.leerJugadores();
-        assertTrue(dao.buscarJugador(1).getNumGoles()==15);
+        Assert.assertTrue(dao.buscarJugador(1).getNumGoles()==15);
     }
 }
