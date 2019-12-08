@@ -126,7 +126,7 @@ public class clsAppServiceUser
 
         for(clsPuja aux: lTodasPujas)
         {
-            if(aux.getEmailUsuarioPuja().equals(jugador.getEquipo()))
+            if(aux.getIdJugadorPuja() == jugador.getId())
             {
                 lPujasDelJugador.add(aux);
             }

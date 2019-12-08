@@ -78,7 +78,25 @@ public class clsDAO
 
 	public clsJugador buscarJugador(int idJugador) {
 
-		clsJugador jugadorBuscado = pm.getObjectById(clsJugador.class, idJugador);
+		clsJugador jugadorBuscado = null;
+
+		Transaction tx = null;
+		try{
+			tx = pm.currentTransaction();
+			tx.begin();
+
+			jugadorBuscado = pm.getObjectById(clsJugador.class, idJugador);
+		}
+		catch (Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		finally
+		{
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+		}
 
 		return jugadorBuscado;
 	}

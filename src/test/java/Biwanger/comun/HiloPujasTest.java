@@ -1,5 +1,7 @@
+
 package Biwanger.comun;
 
+import Biwanger.AppService.clsAppServiceUser;
 import Biwanger.DAO.clsDAO;
 import Biwanger.ObjetosDominio.clsJugador;
 import Biwanger.ObjetosDominio.clsPuja;
@@ -13,9 +15,12 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 public class HiloPujasTest
 {
+    private clsAppServiceUser userService;
+    private clsDAO dao;
     private clsHiloPujas hilo;
 
     private clsUsuario vendedor;
@@ -29,16 +34,19 @@ public class HiloPujasTest
     private clsPuja PujaActualAlta;
     private clsPuja PujaActualBaja;
 
-    clsDAO dao = new clsDAO();
-
     @Before
     public void setUp()
     {
+        dao = new clsDAO();
+        userService = new clsAppServiceUser(dao);
         vendedor = new clsUsuario("vendedor", "vendedor", 0, 0, null);
         comprador = new clsUsuario("comprador", "comprador", 0, 0, null);
 
         enVentaPasado = new clsJugador();
         enVentaActual = new clsJugador();
+
+        enVentaPasado.setNombre("EnventaPasado");
+        enVentaActual.setNombre("EnVentaActual");
 
         enVentaPasado.setId(0);
         enVentaActual.setId(1);
@@ -53,7 +61,8 @@ public class HiloPujasTest
         enVentaPasado.setFechaVenta(LocalDateTime.of(LocalDate.now().getYear(), LocalDate.now().getMonth(),
                 LocalDate.now().getDayOfMonth()-1, LocalTime.now().getHour(), LocalTime.now().getMinute()));
         enVentaActual.setFechaVenta(LocalDateTime.now());
-
+        System.out.println("\n\n\n\n\n\n\nFecha enventapasado " + enVentaPasado.getFechaVenta());
+        System.out.println("\n\n\n\n\n\n\nFecha enVentaActual " + enVentaActual.getFechaVenta());
         PujaPasadaAlta = new clsPuja(comprador.getEmail(), enVentaPasado.getId(), 1000);
         PujaPasadaBaja = new clsPuja(comprador.getEmail(), enVentaPasado.getId(), 500);
 
@@ -71,14 +80,14 @@ public class HiloPujasTest
 
         dao.guardarObjeto(vendedor);
         dao.guardarObjeto(comprador);
-        dao.guardarObjeto(enVentaPasado);
-        dao.guardarObjeto(enVentaActual);
+        enVentaPasado = dao.guardarObjeto(enVentaPasado);
+        enVentaActual = dao.guardarObjeto(enVentaActual);
         dao.guardarObjeto(PujaPasadaAlta);
         dao.guardarObjeto(PujaPasadaBaja);
         dao.guardarObjeto(PujaActualAlta);
         dao.guardarObjeto(PujaActualBaja);
 
-        hilo = new clsHiloPujas();
+        hilo = new clsHiloPujas(userService, dao);
     }
 
     @After
@@ -86,31 +95,32 @@ public class HiloPujasTest
     {
         dao.eliminarObjeto(vendedor);
         dao.eliminarObjeto(comprador);
-        dao.eliminarObjeto(enVentaPasado);
-        dao.eliminarObjeto(enVentaActual);
+        //dao.eliminarObjeto(enVentaPasado);
+        //dao.eliminarObjeto(enVentaActual);
         dao.eliminarObjeto(PujaPasadaAlta);
         dao.eliminarObjeto(PujaPasadaBaja);
         dao.eliminarObjeto(PujaActualAlta);
         dao.eliminarObjeto(PujaActualBaja);
-
-        hilo.interrupt();
     }
 
     @Test
-    public void test()
-    {
-        hilo.run();
-
+    public void test() throws InterruptedException {
+        hilo.start();
+        TimeUnit.SECONDS.sleep(5);
+        hilo.interrupt();
+        //Vemos que al jugador que estaba en venta cuya puja ha expirado tiene ahora como dueño al comprador
+        enVentaPasado = dao.buscarJugador(enVentaPasado.getId());
+        System.out.println("Email del vendido " + enVentaPasado.getUsuarioDueno());
+        enVentaActual = dao.buscarJugador(enVentaActual.getId());
         assertEquals(enVentaPasado.getUsuarioDueno(), comprador.getEmail());
+        //Vemos que la venta que aun está vigente tiene al vendedor como
         assertEquals(enVentaActual.getUsuarioDueno(), vendedor.getEmail());
 
+        //Vemos que se hayan incrementado y decrementado los fondos a raíz de la puja
         assertEquals(1000, vendedor.getFondos());
         assertEquals(-1000, comprador.getFondos());
 
-        //No compilan porque ya no existen. Quizás leemos dos listas de pujas asociadas a cada jugador y comprobamos con esas dos listas
-        //assertNull(enVentaPasado.getPujasRealizadas());
-        //assertNotNull(enVentaActual.getPujasRealizadas());
-
+        //Comprobamos que el vigente sigue en venta pero el otro no
         assertFalse(enVentaPasado.isEnVenta());
         assertTrue(enVentaActual.isEnVenta());
     }
