@@ -191,4 +191,76 @@ public class DatosHardcoded
         dao.guardarObjeto(usuario);
         System.out.println("Hardcodeo finalizado!");
     }
+
+    public static void metodo2 (clsDAO dao)
+    {
+        System.out.println("Empezando hardcodeo");
+        clsUsuario usuario = new clsUsuario("sara@opendeusto.es", "123", 0, 1000000, "4-3-2");
+
+        clsJugador jugador1 = new clsJugador(1, "Mariasun Quiñones", 10, "Portero", 1000, "Real Sociedad",
+        true, 0, 0, 0,0,10, "Buen estado", false, usuario.getEmail(), null);
+
+        clsJugador jugador2 = new clsJugador(2, "Sandra Paños", 14, "Portero", 1000, "FCB",
+                true, 0, 0, 0,0,10, "Buen estado", false, usuario.getEmail(), null);
+
+        clsJugador jugador3 = new clsJugador(3, "Laia Alexandri", 13, "Defensa", 1000, "Atletico",
+                true, 0, 0, 0,0,10, "Buen estado", false, usuario.getEmail(), null);
+
+        clsJugador jugador4 = new clsJugador(4, "Irene Paredes", 13, "Defensa", 1000, "PSG",
+                true, 0, 0, 0,0,10, "Buen estado", false, usuario.getEmail(), null);
+
+        clsJugador jugador5 = new clsJugador(5, "Nuria Mendoza", 13, "Defena", 1000, "Real Sociedad",
+                true, 0, 0, 0,0,10, "Buen estado", false, usuario.getEmail(), null);
+
+        clsJugador jugador6 = new clsJugador(6, "Mapi Leon", 13, "Defensa",1000, "FCB",
+                true, 0, 0, 0,0,10, "Buen estado", false, usuario.getEmail(), null);
+
+        clsJugador jugador7 = new clsJugador(7, "Ona Batle", 13, "Defensa", 1000, "Levante",
+                true, 0, 0, 0,0,10, "Buen estado", false, usuario.getEmail(), null);
+
+        clsJugador jugador8 = new clsJugador(8, "Alexia Putellas", 13, "Centrocampista", 1000, "FCB",
+                true, 0, 0, 0,0,10, "Buen estado", false, usuario.getEmail(), null);
+
+        clsJugador jugador9 = new clsJugador(9, "Kiana Palacios", 13, "Centrocampista", 1000, "Real Sociedad",
+                true, 0, 0, 0,0,10, "Buen estado", false, usuario.getEmail(), null);
+
+        clsJugador jugador10 = new clsJugador(10, "Aitana Bonmati", 13, "Centrocampista", 1000, "FCB",
+                true, 0, 0, 0,0,10, "Buen estado", false, usuario.getEmail(), null);
+
+        clsJugador jugador11 = new clsJugador(11, "Silvia Messeger", 13, "Centrocampista", 1000, "Atletico",
+                true, 0, 0, 0,0,10, "Buen estado", false, usuario.getEmail(), null);
+
+        clsJugador jugador12 = new clsJugador(12, "Jenni Hermoso", 13, "Delantero", 1000, "FCB",
+                true, 0, 0, 0,0,10, "Buen estado", false, usuario.getEmail(), null);
+
+        clsJugador jugador13 = new clsJugador(13, "Nahikari Garcia", 13, "Delantero", 1000, "Real Sociedad",
+                true, 0, 0, 0,0,10, "Buen estado", false, usuario.getEmail(), null);
+
+        clsJugador jugador14 = new clsJugador(14, "Lucia Garcia", 13, "Delantero", 1000, "Athletic",
+                true, 0, 0, 0,0,10, "Buen estado", false, usuario.getEmail(), null);
+
+        ArrayList<clsJugador> plantilla = new ArrayList<clsJugador>();
+        plantilla.add(jugador1);
+        plantilla.add(jugador2);
+        plantilla.add(jugador3);
+        plantilla.add(jugador4);
+        plantilla.add(jugador5);
+        plantilla.add(jugador6);
+        plantilla.add(jugador7);
+        plantilla.add(jugador8);
+        plantilla.add(jugador9);
+        plantilla.add(jugador10);
+        plantilla.add(jugador11);
+        plantilla.add(jugador12);
+        plantilla.add(jugador13);
+        plantilla.add(jugador14);
+
+        for(clsJugador aux: plantilla)
+        {
+            dao.guardarObjeto(aux);
+        }
+
+        dao.guardarObjeto(usuario);
+        System.out.println("Hardcodeo finalizado!");
+    }
 }

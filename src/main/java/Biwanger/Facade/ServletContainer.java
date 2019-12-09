@@ -162,5 +162,6 @@ public class ServletContainer
     {
         DatosHardcoded hardcode = new DatosHardcoded();
         hardcode.metodo(dao);
+        hardcode.metodo2(dao);
     }
 }
