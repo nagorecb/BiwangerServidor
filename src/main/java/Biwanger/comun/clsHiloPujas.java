@@ -12,8 +12,9 @@ import java.util.ArrayList;
 
 public class clsHiloPujas extends Thread
 {
-    private clsAppServiceUser userService;
-    private clsDAO dao;
+    private static final clsHiloPujas instance =new clsHiloPujas();
+    private clsAppServiceUser userService = clsAppServiceUser.getInstance();
+    private clsDAO dao = clsDAO.getInstance();
     private ArrayList<clsJugador> lJugadores = new ArrayList<clsJugador>();
     private ArrayList<clsPuja> lPujas = new ArrayList<clsPuja>();
 
@@ -28,6 +29,11 @@ public class clsHiloPujas extends Thread
     {
         userService = param1;
         dao = param2;
+    }
+
+    private static clsHiloPujas getInstance()
+    {
+        return instance;
     }
 
     public void run()
