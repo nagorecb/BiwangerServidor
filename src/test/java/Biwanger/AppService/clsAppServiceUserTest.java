@@ -8,6 +8,7 @@ import org.databene.contiperf.PerfTest;
 import org.databene.contiperf.Required;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -43,6 +44,8 @@ public class clsAppServiceUserTest
     clsPuja puja1;
     ArrayList <clsPuja> pujas;
     double precioVenta;
+    @Rule
+    public ContiPerfRule rule = new ContiPerfRule();
 
     @Before
     public void setUp()

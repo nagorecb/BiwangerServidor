@@ -6,7 +6,9 @@ import java.util.ArrayList;
 
 import org.databene.contiperf.PerfTest;
 import org.databene.contiperf.Required;
+import org.databene.contiperf.junit.ContiPerfRule;
 import org.hamcrest.core.IsEqual;
+import org.junit.Rule;
 import org.junit.Test;
 
 import Biwanger.ObjetosDominio.clsJugador;
