@@ -17,12 +17,19 @@ import Biwanger.ObjetosDominio.clsUsuario;
 public class clsDAO
 {
 
-	private static final clsDAO instancia= new clsDAO();
+	private static clsDAO instancia= new clsDAO();
 	static PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 	static PersistenceManager pm = pmf.getPersistenceManager();
 
 	public static clsDAO getInstance()
 	{
+		synchronized (clsDAO.class)
+		{
+			if(instancia == null)
+			{
+				instancia = new clsDAO();
+			}
+		}
 		return instancia;
 	}
 

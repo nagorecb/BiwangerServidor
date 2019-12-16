@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class clsAppServiceUser
 {
     private static clsDAO dao = clsDAO.getInstance();
-    private static final clsAppServiceUser instancia = new clsAppServiceUser();
+    private static clsAppServiceUser instancia = null;
     public clsAppServiceUser(){ }
 
     public clsUsuario InicioSesion(clsUsuario usuario)
@@ -52,6 +52,13 @@ public class clsAppServiceUser
 
     public static clsAppServiceUser getInstance()
     {
+        synchronized (clsAppServiceUser.class)
+        {
+            if(instancia == null)
+            {
+                instancia = new clsAppServiceUser();
+            }
+        }
         return instancia;
     }
 

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class clsHiloPujas extends Thread
 {
-    private static final clsHiloPujas instance =new clsHiloPujas();
+    private static clsHiloPujas instance =null;
     private clsAppServiceUser userService = clsAppServiceUser.getInstance();
     private clsDAO dao = clsDAO.getInstance();
     private ArrayList<clsJugador> lJugadores = new ArrayList<clsJugador>();
@@ -33,11 +33,25 @@ public class clsHiloPujas extends Thread
 
     public static final clsHiloPujas getInstance()
     {
-        instance.run();
+        synchronized (clsHiloPujas.class)
+        {
+            if(instance == null)
+            {
+                //instance.start();
+                System.out.println("Empiezo hilo");
+                Runnable r = new Runnable() {
+                    public void run() {
+                        instance.runPrueba();
+                    }
+                };
+                System.out.println("sigo");
+            }
+        }
+
         return instance;
     }
 
-    public void run()
+    public void runPrueba()
     {
         System.out.println("\n\n\n\n\n\nENTRO EN EL HILO");
         while(true)

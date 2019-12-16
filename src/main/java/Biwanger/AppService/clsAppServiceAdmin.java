@@ -18,7 +18,7 @@ public class clsAppServiceAdmin
     final double PREMIO2 = 2000;
     final double PREMIO3 = 1000;
 
-    public static final clsAppServiceAdmin instancia= new clsAppServiceAdmin();
+    public static clsAppServiceAdmin instancia = null;
     public clsAppServiceAdmin (){}
     public clsAppServiceAdmin(clsDAO dao)
     {
@@ -27,6 +27,13 @@ public class clsAppServiceAdmin
 
     public static clsAppServiceAdmin getInstance()
     {
+        synchronized (clsAppServiceAdmin.class)
+        {
+            if(instancia == null)
+            {
+                instancia = new clsAppServiceAdmin();
+            }
+        }
         return instancia;
     }
 
