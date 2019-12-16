@@ -10,13 +10,9 @@ import java.util.ArrayList;
 
 public class clsAppServiceUser
 {
-    private clsDAO dao;
-
-    public clsAppServiceUser(){}
-    public clsAppServiceUser(clsDAO dao)
-    {
-        this.dao = dao;
-    }
+    private static clsDAO dao = clsDAO.getInstance();
+    private static final clsAppServiceUser instancia = new clsAppServiceUser();
+    public clsAppServiceUser(){ }
 
     public clsUsuario InicioSesion(clsUsuario usuario)
     {
@@ -48,6 +44,15 @@ public class clsAppServiceUser
         }
 
         return u;
+    }
+    public static void setDao()
+    {
+        dao = clsDAO.getInstance();
+    }
+
+    public static clsAppServiceUser getInstance()
+    {
+        return instancia;
     }
 
     public String RegistrarUser(clsUsuario user)

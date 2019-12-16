@@ -12,15 +12,22 @@ import java.util.stream.Collectors;
 
 public class clsAppServiceAdmin
 {
-	clsDAO dao;
+	clsDAO dao = clsDAO.getInstance();
 
     final double PREMIO1 = 3000;
     final double PREMIO2 = 2000;
     final double PREMIO3 = 1000;
 
+    public static final clsAppServiceAdmin instancia= new clsAppServiceAdmin();
+    public clsAppServiceAdmin (){}
     public clsAppServiceAdmin(clsDAO dao)
     {
         this.dao = dao;
+    }
+
+    public static clsAppServiceAdmin getInstance()
+    {
+        return instancia;
     }
 
     public List<clsUsuario> PremiarTresMejores()

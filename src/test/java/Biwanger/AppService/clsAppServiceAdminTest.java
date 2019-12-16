@@ -17,16 +17,13 @@ public class clsAppServiceAdminTest
      private clsJugador j1,j2;
      private clsUsuario u1,u2;
 
-     clsDAO dao;
-     clsAppServiceAdmin appservice;
+     clsDAO dao = clsDAO.getInstance();
+     clsAppServiceAdmin appservice = clsAppServiceAdmin.getInstance();
 
 
      private void init()
     {
         System.out.println("empiezo");
-
-        clsDAO dao = new clsDAO();
-        appservice = new clsAppServiceAdmin(dao);
 
         j1 = new clsJugador(1, "Messi", 10, "DELANTERO", 500, "FCB",
                 true, 10, 8, 2, 0,

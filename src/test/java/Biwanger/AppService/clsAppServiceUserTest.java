@@ -50,8 +50,8 @@ public class clsAppServiceUserTest
     @Before
     public void setUp()
     {
-        DAO = new clsDAO();
-        appservice = new clsAppServiceUser(DAO);
+        DAO = clsDAO.getInstance();
+        appservice = clsAppServiceUser.getInstance();
         usuarioEnBD = new clsUsuario("emailBD",  "passwordBD",  0,  0, "4-4-2");
         usuarioNoBD = new clsUsuario("emailNoBD",  "passwordNoBD",  0,  0,"4-4-2");
         NoAdmin = new clsUsuario("ADMIN",  "NOADMIN",  0,  0, "4-4-2");

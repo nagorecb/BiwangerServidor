@@ -16,30 +16,14 @@ import Biwanger.ObjetosDominio.clsUsuario;
 
 public class clsDAO
 {
+
+	private static final clsDAO instancia= new clsDAO();
 	static PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 	static PersistenceManager pm = pmf.getPersistenceManager();
 
-	public void establecerConexion()
+	public static clsDAO getInstance()
 	{
-		Transaction tx = null;
-		try
-		{
-			tx = pm.currentTransaction();
-			tx.begin();
-
-			tx.commit();
-		}
-		catch (Exception ex)
-		{
-			ex.printStackTrace();
-		}
-		finally
-		{
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
-		}
-
+		return instancia;
 	}
 
 	public clsJugador guardarObjeto(Object objeto)

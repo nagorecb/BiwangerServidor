@@ -38,7 +38,7 @@ public class HiloPujasTest
     public void setUp()
     {
         dao = new clsDAO();
-        userService = new clsAppServiceUser(dao);
+        userService = new clsAppServiceUser();
         vendedor = new clsUsuario("vendedor", "vendedor", 0, 0, null);
         comprador = new clsUsuario("comprador", "comprador", 0, 0, null);
 

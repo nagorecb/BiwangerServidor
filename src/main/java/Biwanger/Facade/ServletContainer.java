@@ -16,18 +16,13 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 public class ServletContainer
 {
-    clsDAO dao;
-	clsAppServiceAdmin adminService;
-	clsAppServiceUser userService;
+    clsDAO dao = clsDAO.getInstance();
+	clsAppServiceAdmin adminService = clsAppServiceAdmin.getInstance();
+	clsAppServiceUser userService = clsAppServiceUser.getInstance();
 	 
     public ServletContainer()
     {
-        dao = new clsDAO();
 
-        adminService = new clsAppServiceAdmin(dao);
-        userService = new clsAppServiceUser(dao);
-        clsHiloPujas hilo = new clsHiloPujas(userService, dao);
-        //hilo.run();
     }
 
     @POST
