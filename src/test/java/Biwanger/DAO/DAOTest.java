@@ -13,11 +13,14 @@ import Biwanger.ObjetosDominio.clsJugador;
 import Biwanger.ObjetosDominio.clsPuja;
 import Biwanger.ObjetosDominio.clsUsuario;
 
-@PerfTest(invocations = 1000)
-@Required(max = 1200, average = 250)
+@PerfTest(invocations = 1)
+@Required(max = 20000, average = 20000)
 public class DAOTest {
 
 	clsDAO clsDao = new clsDAO();
+
+	@Rule
+   	public ContiPerfRule rule = new ContiPerfRule();
 	
 	@Test
 	public void testGuardarYLeerJugador()
