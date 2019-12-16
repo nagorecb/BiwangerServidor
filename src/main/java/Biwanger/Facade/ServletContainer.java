@@ -19,6 +19,7 @@ public class ServletContainer
     clsDAO dao = clsDAO.getInstance();
 	clsAppServiceAdmin adminService = clsAppServiceAdmin.getInstance();
 	clsAppServiceUser userService = clsAppServiceUser.getInstance();
+	clsHiloPujas hiloPujas = clsHiloPujas.getInstance();
 	 
     public ServletContainer()
     {

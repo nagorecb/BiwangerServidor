@@ -31,8 +31,9 @@ public class clsHiloPujas extends Thread
         dao = param2;
     }
 
-    private static clsHiloPujas getInstance()
+    public static final clsHiloPujas getInstance()
     {
+        instance.run();
         return instance;
     }
 
