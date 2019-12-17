@@ -1,0 +1,14 @@
+Biwanger\AppService\clsAppServiceUser.class
+Biwanger\ObjetosDominio\clsUsuarioLista.class
+Biwanger\ObjetosDominio\clsPujaLista.class
+Biwanger\comun\clsMain.class
+Biwanger\ObjetosDominio\clsJugadorLista.class
+Biwanger\ObjetosDominio\clsPuja.class
+Biwanger\ObjetosDominio\clsUsuario.class
+Biwanger\comun\clsHiloPujas.class
+Biwanger\Facade\ServletContainer.class
+Biwanger\Facade\DatosHardcoded.class
+Biwanger\DAO\clsDAO.class
+Biwanger\ObjetosDominio\clsJugador.class
+Biwanger\DAO\itfDAO.class
+Biwanger\AppService\clsAppServiceAdmin.class

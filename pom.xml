@@ -213,4 +213,23 @@
       </plugins>
     </pluginManagement>
   </build>
+
+    <profiles>
+        <profile>
+            <!-- run as 'mvn exec:java -PHilo' -->
+            <id>Hilo</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <version>1.2.1</version>
+                        <configuration>
+                            <mainClass>Biwanger.comun.clsMain</mainClass>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
