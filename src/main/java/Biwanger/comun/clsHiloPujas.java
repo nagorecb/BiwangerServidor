@@ -37,21 +37,14 @@ public class clsHiloPujas extends Thread
         {
             if(instance == null)
             {
-                //instance.start();
-                System.out.println("Empiezo hilo");
-                Runnable r = new Runnable() {
-                    public void run() {
-                        instance.runPrueba();
-                    }
-                };
-                System.out.println("sigo");
+               instance = new clsHiloPujas();
             }
         }
 
         return instance;
     }
 
-    public void runPrueba()
+    public void run()
     {
         System.out.println("\n\n\n\n\n\nENTRO EN EL HILO");
         while(true)

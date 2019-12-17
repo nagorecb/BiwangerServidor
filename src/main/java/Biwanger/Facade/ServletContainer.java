@@ -19,7 +19,8 @@ public class ServletContainer
     clsDAO dao = clsDAO.getInstance();
 	clsAppServiceAdmin adminService = clsAppServiceAdmin.getInstance();
 	clsAppServiceUser userService = clsAppServiceUser.getInstance();
-	clsHiloPujas hiloPujas = clsHiloPujas.getInstance();
+	clsHiloPujas hilo = clsHiloPujas.getInstance();
+
 	 
     public ServletContainer()
     {
@@ -141,6 +142,11 @@ public class ServletContainer
 
         clsJugadorLista retorno = new clsJugadorLista(lJugadores);
 
+        for(clsJugador aux: retorno.getlJugadores())
+        {
+            System.out.println("Jugador: " + aux.getNombre());
+        }
+
         return Response.ok(retorno).build();
     }
 
@@ -158,6 +164,6 @@ public class ServletContainer
     {
         DatosHardcoded hardcode = new DatosHardcoded();
         hardcode.metodo(dao);
-        hardcode.metodo2(dao);
+       // hardcode.metodo2(dao);
     }
 }
