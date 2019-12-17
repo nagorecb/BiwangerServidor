@@ -14,6 +14,7 @@ import static junit.framework.TestCase.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
@@ -58,9 +59,12 @@ public class HiloPujasTest
         enVentaActual.setUsuarioDueno(vendedor.getEmail());
 
         //Año, mes, hora y minutos igual que momento actual, pero día -1
-        enVentaPasado.setFechaVenta(LocalDateTime.of(LocalDate.now().getYear(), LocalDate.now().getMonth(),
-                LocalDate.now().getDayOfMonth()-1, LocalTime.now().getHour(), LocalTime.now().getMinute()));
-        enVentaActual.setFechaVenta(LocalDateTime.now());
+        LocalDateTime fecha = LocalDateTime.of(LocalDate.now().getYear(), LocalDate.now().getMonth(),
+                LocalDate.now().getDayOfMonth()-1, LocalTime.now().getHour(), LocalTime.now().getMinute());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        enVentaPasado.setFechaVenta(fecha.format(formatter));
+        fecha = LocalDateTime.now();
+        enVentaActual.setFechaVenta(fecha.format(formatter));
         System.out.println("\n\n\n\n\n\n\nFecha enventapasado " + enVentaPasado.getFechaVenta());
         System.out.println("\n\n\n\n\n\n\nFecha enVentaActual " + enVentaActual.getFechaVenta());
         PujaPasadaAlta = new clsPuja(comprador.getEmail(), enVentaPasado.getId(), 1000);

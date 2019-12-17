@@ -10,6 +10,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -128,7 +129,9 @@ public class ServletContainer
         jugador.setPrecio(Double.parseDouble(tokens.nextToken()));
         jugador.setEquipo(tokens.nextToken());
         jugador.setEnVenta(Boolean.parseBoolean(tokens.nextToken()));
-        jugador.setFechaVenta(LocalDateTime.now());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        LocalDateTime fecha = LocalDateTime.now();
+        jugador.setFechaVenta(fecha.format(formatter));
         jugador.setEstado(tokens.nextToken());
 
         System.out.println("El cliente dice: " + camposJugador);

@@ -1,6 +1,7 @@
 package Biwanger.ObjetosDominio;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 import javax.jdo.annotations.Column;
@@ -12,7 +13,7 @@ public class clsPuja
 	private String emailUsuarioPuja;
 	private int IdJugadorPuja;
 	private double oferta;
-	private LocalDateTime fecha;
+	private String fecha;
 
 	public clsPuja() {
 		super();
@@ -28,7 +29,9 @@ public class clsPuja
 		this.emailUsuarioPuja = usuarioPuja;
 		this.IdJugadorPuja = jugadorPuja;
 		this.oferta = oferta;
-		this.fecha = LocalDateTime.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+		LocalDateTime fecha = LocalDateTime.now();
+		this.fecha = fecha.format(formatter);
 	}
 
 
@@ -50,10 +53,10 @@ public class clsPuja
 	public void setOferta(double oferta) {
 		this.oferta = oferta;
 	}
-	public LocalDateTime getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
-	public void setFecha(LocalDateTime fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
 

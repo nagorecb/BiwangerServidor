@@ -6,6 +6,7 @@ import Biwanger.ObjetosDominio.clsPuja;
 import Biwanger.ObjetosDominio.clsUsuario;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class clsAppServiceUser
@@ -126,7 +127,9 @@ public class clsAppServiceUser
     {
         jugadorVenta.setAlineado(false);
         jugadorVenta.setEnVenta(true);
-        jugadorVenta.setFechaVenta(LocalDateTime.now());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        LocalDateTime fecha = LocalDateTime.now();
+        jugadorVenta.setFechaVenta(fecha.format(formatter));
 
         dao.modificarJugador(jugadorVenta);
     }

@@ -8,6 +8,7 @@ import Biwanger.ObjetosDominio.clsUsuario;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class clsHiloPujas extends Thread
@@ -57,13 +58,11 @@ public class clsHiloPujas extends Thread
 
                 for (clsJugador auxJugador : lJugadores)
                 {
-                    System.out.println("\n\n\n\n\n\n\nFor para el jugador " + auxJugador.getNombre());
-                    System.out.println("\n\n\n\n\n\n\nFecha " + auxJugador.getFechaVenta());
                     if(auxJugador.getFechaVenta()!=null)
                     {
-
-
-                        if(auxJugador.getFechaVenta().getDayOfMonth() < LocalDateTime.now().getDayOfMonth())
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+                        LocalDateTime fecha = LocalDateTime.parse(auxJugador.getFechaVenta(), formatter);
+                        if(fecha.getDayOfMonth() < LocalDateTime.now().getDayOfMonth())
                         {
                             System.out.println("\n\n\n\n\n\n\nEntro en el if por el que se supoen que la venta ha expirado");
                             lPujas = userService.obtenerPujas(auxJugador);
@@ -122,4 +121,5 @@ public class clsHiloPujas extends Thread
             }
         }
     }
+
 }
