@@ -63,7 +63,7 @@ public class clsDAO
 				tx.rollback();
 			}
 		}
-		
+		System.out.println("Empiezo a guardar en base de datos");
 		return jugador;
 	}
 

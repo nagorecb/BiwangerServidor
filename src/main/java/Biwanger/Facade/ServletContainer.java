@@ -9,8 +9,10 @@ import Biwanger.comun.clsHiloPujas;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 @Path("/resource")
 @Produces(MediaType.APPLICATION_JSON)
@@ -117,8 +119,19 @@ public class ServletContainer
     
     @POST
     @Path("/crearJugador")
-    public Response crearJugadorRequest(clsJugador jugador)
+    public Response crearJugadorRequest(String camposJugador)
     {
+        clsJugador jugador = new clsJugador();
+        StringTokenizer tokens=new StringTokenizer(camposJugador, ",");
+        jugador.setNombre(tokens.nextToken());
+        jugador.setPosicion(tokens.nextToken());
+        jugador.setPrecio(Double.parseDouble(tokens.nextToken()));
+        jugador.setEquipo(tokens.nextToken());
+        jugador.setEnVenta(Boolean.parseBoolean(tokens.nextToken()));
+        jugador.setFechaVenta(LocalDateTime.now());
+        jugador.setEstado(tokens.nextToken());
+
+        System.out.println("El cliente dice: " + camposJugador);
         adminService.guardarJugador(jugador);
         return Response.ok().build();
     }
