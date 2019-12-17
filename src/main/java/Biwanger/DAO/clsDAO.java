@@ -231,31 +231,7 @@ public class clsDAO
 	public void eliminarJugadorDePlantilla (clsJugador jugador)
 	{
 		jugador.setUsuarioDueno(null);
-		modificarObjeto(jugador);
-	}
-
-	public void modificarObjeto (Object objeto) 
-	{
-		Transaction tx = null;
-
-		try
-		{
-			tx = pm.currentTransaction();
-			tx.begin();
-			
-			pm.makePersistent(objeto);
-			tx.commit();
-		} 
-		catch (Exception ex)
-		{
-			ex.printStackTrace();
-		} 
-		finally 
-		{
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
-		}
+		modificarJugador(jugador);
 	}
 
 	public void modificarJugador(clsJugador jugador)

@@ -66,24 +66,6 @@ public class DAOTest {
 		
 		borrarPuja(pujaGuardar);
 	}
-
-	@Test
-	public void testModificarObjeto() 
-	{
-		
-		clsJugador jugador = crearJugador();
-		
-		this.clsDao.guardarObjeto(jugador);
-		jugador.setNombre("nuevoNombre");
-		this.clsDao.modificarObjeto(jugador);
-		ArrayList<clsJugador> listaJugadores = this.clsDao.leerJugadores();
-		clsJugador jugadorModificado =listaJugadores.get(listaJugadores.size()-1);
-		
-		assertEquals(jugadorModificado.getNombre(),"nuevoNombre");
-		assertEquals(jugador, jugadorModificado);
-		
-		borrarJugador(jugador);
-	}
 	
 	@Test
 	public void testModificarJugador() 

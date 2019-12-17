@@ -86,7 +86,7 @@ public class clsAppServiceUser
             if (u.equals(usuario))
             {
                 u.setFormacion(usuario.getFormacion());
-                dao.modificarObjeto(u);
+                dao.modificarUsuario(u);
             }
         }
     }
@@ -95,7 +95,7 @@ public class clsAppServiceUser
     {
         for (clsJugador jugador: plantilla)
         {
-            dao.modificarObjeto(jugador);
+            dao.modificarJugador(jugador);
         }
     }
 
@@ -128,7 +128,7 @@ public class clsAppServiceUser
         jugadorVenta.setEnVenta(true);
         jugadorVenta.setFechaVenta(LocalDateTime.now());
 
-        dao.modificarObjeto(jugadorVenta);
+        dao.modificarJugador(jugadorVenta);
     }
 
     public ArrayList<clsPuja> obtenerPujas(clsJugador jugador)

@@ -32,6 +32,7 @@ public class clsJugador
 	
 	public clsJugador() {
 		super();
+		this.id = 0;
 		this.nombre = null;
 		this.puntos = 0;
 		this.posicion = null;

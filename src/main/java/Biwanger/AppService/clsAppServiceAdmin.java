@@ -50,9 +50,9 @@ public class clsAppServiceAdmin
         listaUsuarios.get(1).setFondos(listaUsuarios.get(1).getFondos()+PREMIO2);
         listaUsuarios.get(2).setFondos(listaUsuarios.get(2).getFondos()+PREMIO3);
         System.out.println(999999);
-        dao.modificarObjeto(listaUsuarios.get(0));
-        dao.modificarObjeto(listaUsuarios.get(1));
-        dao.modificarObjeto(listaUsuarios.get(2));
+        dao.modificarUsuario(listaUsuarios.get(0));
+        dao.modificarUsuario(listaUsuarios.get(1));
+        dao.modificarUsuario(listaUsuarios.get(2));
         System.out.println(10000000);
         return listaUsuarios;
     }
@@ -65,7 +65,7 @@ public class clsAppServiceAdmin
     	
     	jugadorAnadirPuntos.setPuntos(puntosTot);
     	
-    	dao.modificarObjeto(jugadorAnadirPuntos);
+    	dao.modificarJugador(jugadorAnadirPuntos);
     }
     
     
