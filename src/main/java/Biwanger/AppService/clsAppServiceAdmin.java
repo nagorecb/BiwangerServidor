@@ -18,6 +18,10 @@ public class clsAppServiceAdmin
     final double PREMIO2 = 2000;
     final double PREMIO3 = 1000;
 
+    private int pnt1=0;
+    private int pnt2=0;
+    private int pnt3=0;
+
     public static clsAppServiceAdmin instancia = null;
     public clsAppServiceAdmin (){}
     public clsAppServiceAdmin(clsDAO dao)
@@ -40,19 +44,49 @@ public class clsAppServiceAdmin
     public List<clsUsuario> PremiarTresMejores()
     {
         List<clsUsuario> listaUsuarios;
-
         listaUsuarios = dao.leerUsuarios();
         listaUsuarios = listaUsuarios.stream().sorted(Comparator.comparingInt(clsUsuario ::getPuntuacion)).collect(Collectors.toList());
         Collections.reverse(listaUsuarios);
 
-        listaUsuarios.get(0).setFondos(listaUsuarios.get(0).getFondos()+PREMIO1);
-        listaUsuarios.get(1).setFondos(listaUsuarios.get(1).getFondos()+PREMIO2);
-        listaUsuarios.get(2).setFondos(listaUsuarios.get(2).getFondos()+PREMIO3);
+        if (!listaUsuarios.isEmpty())
+        {
+            pnt1=listaUsuarios.get(0).getPuntuacion();
 
-        dao.modificarUsuario(listaUsuarios.get(0));
-        dao.modificarUsuario(listaUsuarios.get(1));
-        dao.modificarUsuario(listaUsuarios.get(2));
-
+            for (clsUsuario usuario: listaUsuarios)
+            {
+                if(usuario.getPuntuacion()==pnt1)
+                {
+                    usuario.setFondos(usuario.getFondos()+PREMIO1);
+                }
+                else
+                {
+                    if (pnt2==0)
+                    {
+                        pnt2 = usuario.getPuntuacion();
+                        usuario.setFondos(usuario.getFondos()+PREMIO2);
+                    }
+                    else if (pnt2==usuario.getPuntuacion())
+                    {
+                        usuario.setFondos(usuario.getFondos()+PREMIO2);
+                    }
+                    else
+                    {
+                        if (pnt3==0)
+                        {
+                            pnt3 = usuario.getPuntuacion();
+                            usuario.setFondos(usuario.getFondos()+PREMIO3);
+                        }
+                        else if (pnt2==usuario.getPuntuacion())
+                        {
+                            usuario.setFondos(usuario.getFondos()+PREMIO3);
+                        }
+                        else {
+                            break;
+                        }
+                    }
+                }
+            }
+        }
         return listaUsuarios;
     }
     
