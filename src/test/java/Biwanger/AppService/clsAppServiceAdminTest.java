@@ -32,7 +32,6 @@ public class clsAppServiceAdminTest
         dao = clsDAO.getInstance();
         appservice = clsAppServiceAdmin.getInstance();
 
-        System.out.println("empiezo");
         listaJugadores = new ArrayList<clsJugador>();
         listaUsuarios = new ArrayList<clsUsuario>();
 
@@ -112,6 +111,30 @@ public class clsAppServiceAdminTest
         listaJugadores = dao.leerJugadores();
         assertTrue(dao.buscarJugador(idj1).getNumGoles()==15);
     }
+
+    @Test
+    public void obtenerTodosUsuarios_test()
+    {
+        ArrayList <clsUsuario> usuarios = appservice.obtenerTodosUsuarios();
+        assertTrue(usuarios.contains(u1)&&usuarios.contains(u2)&&usuarios.contains(u3));
+    }
+
+    @Test
+    public void obtenertodosJugadores_test()
+    {
+        ArrayList <clsJugador> jugadores = appservice.obtenerTodosJugadores();
+        assertTrue(jugadores.contains(j1)&&jugadores.contains(j2));
+    }
+
+    @Test
+    public void obtenerPlantilla_test()
+    {
+        ArrayList <clsJugador> jugadoresU1 = appservice.obtenerPlantilla(u1.getEmail());
+        assertTrue(jugadoresU1.contains(j1)&&jugadoresU1.contains(j2));
+        ArrayList <clsJugador> jugadoresU2 = appservice.obtenerPlantilla(u2.getEmail());
+        assertTrue(jugadoresU2.isEmpty());
+    }
+
 
     @After
     public void TearDown()

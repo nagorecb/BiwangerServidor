@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import static org.junit.Assert.*;
@@ -33,17 +34,29 @@ public class clsAppServiceUserTest
     clsUsuario Retorno;
     boolean retornoBool;
 
+    int puntos1 = 30;
+    int puntos2 = 20;
+    int puntos3 = 10;
+    int puntos4 = 0;
+
     //Modificar formacion y plantilla
 
     //Compra-Venta
     clsJugador jugadorEnVenta1;
     clsJugador jugadorEnVenta2;
     clsJugador jugadorNoEnVenta;
+    clsJugador jugadorPujar;
     ArrayList <clsJugador> EnVenta;
     ArrayList <clsJugador> ArrRetorno;
     clsPuja puja1;
     ArrayList <clsPuja> pujas;
     double precioVenta;
+
+    //Para ordenar usuarios
+    clsUsuario usuario1;
+    clsUsuario usuario2;
+    clsUsuario usuario3;
+    clsUsuario usuario4;
     @Rule
     public ContiPerfRule rule = new ContiPerfRule();
 
@@ -59,22 +72,38 @@ public class clsAppServiceUserTest
         //Meter en la BD
         DAO.guardarObjeto(usuarioEnBD);
 
-        jugadorEnVenta1 = new clsJugador(1, "juagdor 1", 0, "delantero", 1000, "equipo1", true, 0, 0, 0, 0,0, "estado",true, usuarioEnBD.getEmail(),
+        jugadorEnVenta1 = new clsJugador(1, "juagdor 1", puntos3, "delantero", 1000, "equipo1", true, 0, 0, 0, 0,0, "estado",true, usuarioEnBD.getEmail(),
                 null);
-        jugadorEnVenta2 = new clsJugador(2, "juagdor 2", 0, "delantero", 1000, "equipo1", true, 0, 0, 0, 0,0, "estado",true, usuarioEnBD.getEmail(),
+        jugadorEnVenta2 = new clsJugador(2, "juagdor 2", puntos1, "delantero", 1000, "equipo1", true, 0, 0, 0, 0,0, "estado",true, usuarioEnBD.getEmail(),
                 null);
-        jugadorNoEnVenta = new clsJugador(3, "juagdor 3", 0, "delantero", 1000, "equipo1", true, 0, 0, 0, 0,0, "estado",false, usuarioEnBD.getEmail(),
+        jugadorNoEnVenta = new clsJugador(3, "juagdor 3", puntos2, "delantero", 1000, "equipo1", true, 0, 0, 0, 0,0, "estado",false, usuarioEnBD.getEmail(),
+                null);
+        jugadorPujar = new clsJugador(4, "juagdor 3", puntos4, "delantero", 1000, "equipo1", true, 0, 0, 0, 0,0, "estado",false, usuarioEnBD.getEmail(),
                 null);
         EnVenta = new ArrayList<clsJugador>();
         EnVenta.add(jugadorEnVenta1);
         EnVenta.add(jugadorEnVenta2);
-        //Guardamos los tres jugadores
-        DAO.guardarObjeto(jugadorEnVenta1);
-        DAO.guardarObjeto(jugadorEnVenta2);
-        DAO.guardarObjeto(jugadorNoEnVenta);
 
+
+        //Guardamos los tres jugadores
+        jugadorEnVenta1 = DAO.guardarObjeto(jugadorEnVenta1);
+        jugadorEnVenta2 = DAO.guardarObjeto(jugadorEnVenta2);
+        jugadorNoEnVenta = DAO.guardarObjeto(jugadorNoEnVenta);
+        jugadorPujar = DAO.guardarObjeto(jugadorPujar);
         puja1 = new clsPuja(usuarioEnBD.getEmail(), jugadorEnVenta1.getId(), 300);
         precioVenta = 300;
+
+
+        usuario1 = new clsUsuario("email1",  "pass1",  puntos1,  0, "4-4-2");
+        usuario2 = new clsUsuario("email2",  "pass2",  puntos2,  0, "4-4-2");
+        usuario3 = new clsUsuario("email3",  "pass3",  puntos3,  0, "4-4-2");
+        usuario4 = new clsUsuario("email4",  "pass4",  puntos4,  0, "4-4-2");
+
+        DAO.guardarObjeto(usuario1);
+        DAO.guardarObjeto(usuario2);
+        DAO.guardarObjeto(usuario3);
+        DAO.guardarObjeto(usuario4);
+
     }
 
     //Test funcionalidad
@@ -114,9 +143,6 @@ public class clsAppServiceUserTest
         retorno = appservice.RegistrarUser(usuarioNoBD);
         assertTrue(retorno.equals("OK"));
     }
-
-
-
 
     @Test
     public void ModificarFormacionTest()
@@ -185,7 +211,7 @@ public class clsAppServiceUserTest
         pujas = DAO.leerPujas();
         assertTrue(pujas.contains(puja1));
     }
-/*
+
     @Test
     public void venderJugadorTest() {
         jugadorNoEnVenta.setPrecio(precioVenta);
@@ -203,15 +229,67 @@ public class clsAppServiceUserTest
         }
         assertTrue(retornoBool);
     }
-    */
+
+    @Test
+    public void obtenerPujasTest()
+    {
+        ArrayList<clsPuja> pujas = appservice.obtenerPujas(jugadorEnVenta1);
+        assertTrue(pujas.contains(puja1));
+    }
+
+    @Test
+    public void obtenerUsuarioTest()
+    {
+        clsUsuario u =appservice.obtenerUsuario(usuarioEnBD.getEmail());
+        assertEquals(u, usuarioEnBD);
+    }
+
+    @Test
+    public void ordenarEquipoTest()
+    {
+        ArrayList <clsJugador> jugadores = new ArrayList<clsJugador>();
+        jugadores.add(jugadorEnVenta1);
+        jugadores.add(jugadorEnVenta2);
+        jugadores.add(jugadorNoEnVenta);
+        jugadores.add(jugadorPujar);
+
+        //Tal y como los hemos metido, no están ordenados por puntos:
+        boolean b=jugadores.get(0).getPuntos() == puntos1 && jugadores.get(1).getPuntos() == puntos2 && jugadores.get(2).getPuntos() == puntos3 && jugadores.get(3).getPuntos() == puntos4;
+        assertFalse(b);
+        //Ahora que ordenamos los jugadores, la condición sí se deberñia cumplir
+        jugadores = appservice.ordenarEquipo(jugadores);
+        b=jugadores.get(0).getPuntos() == puntos1 && jugadores.get(1).getPuntos() == puntos2 && jugadores.get(2).getPuntos() == puntos3 && jugadores.get(3).getPuntos() == puntos4;
+        assertTrue(b);
+    }
+
+    @Test
+    public void ordenarUsusariosTest()
+    {
+        //Para que en la lista de usuarios de la BD solo esten los que creemos ahora
+        DAO.eliminarObjeto(usuarioEnBD);
+        DAO.eliminarObjeto(usuarioNoBD);
+
+        ArrayList<clsUsuario> usuarios = new ArrayList<clsUsuario>();
+        usuarios.add(usuario3);
+        usuarios.add(usuario2);
+        usuarios.add(usuario1);
+        usuarios.add(usuario4);
+
+        boolean b = usuarios.get(0).getPuntuacion()==puntos1 && usuarios.get(1).getPuntuacion()==puntos2 && usuarios.get(2).getPuntuacion()==puntos2 && usuarios.get(3).getPuntuacion()==puntos4;
+        assertFalse(b);
+
+        usuarios = appservice.ordenarUsuarios();
+        b = usuarios.get(0).getPuntuacion()==puntos1 && usuarios.get(1).getPuntuacion()==puntos2 && usuarios.get(2).getPuntuacion()==puntos2 && usuarios.get(3).getPuntuacion()==puntos4;
+        assertTrue(b);
+
+    }
 
     @After
     public void TearDown()
     {
-        DAO.eliminarObjeto(usuarioEnBD);
-        DAO.eliminarObjeto(usuarioNoBD);
         DAO.eliminarObjeto(jugadorEnVenta1);
         DAO.eliminarObjeto(jugadorEnVenta2);
         DAO.eliminarObjeto(jugadorNoEnVenta);
+        DAO.eliminarObjeto(puja1);
     }
 }
