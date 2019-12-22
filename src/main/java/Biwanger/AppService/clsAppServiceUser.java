@@ -20,6 +20,10 @@ public class clsAppServiceUser
 {
     private static clsDAO dao = clsDAO.getInstance();
     private static clsAppServiceUser instancia = null;
+
+    /**
+     * Constructor sin parámetros
+     */
     public clsAppServiceUser(){ }
 
     /**
