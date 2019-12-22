@@ -15,6 +15,7 @@ public class DatosHardcoded
         clsUsuario usuario2 = new clsUsuario("nagorecb@opendeusto.es", "123", 30, 1000000, "4-4-2");
         clsUsuario usuario3 = new clsUsuario("hodei.olaskoaga@opendeusto.es", "123", 20, 1000000, "4-4-2");
         clsUsuario usuario4 = new clsUsuario("sara.olaizola@opendeusto.es", "123", 25, 1000000, "4-4-2");
+        clsUsuario usuario5 = new clsUsuario("maider2@opendeusto.es", "123", 0, 1000000, "4-4-2");
 
         clsJugador jugador1 = new clsJugador();
         jugador1.setNombre("Lionel Messi");
@@ -193,8 +194,9 @@ public class DatosHardcoded
 
         dao.guardarObjeto(usuario);
         dao.guardarObjeto(usuario2);
-        dao.guardarObjeto(usuario3);
+        //dao.guardarObjeto(usuario3);
         dao.guardarObjeto(usuario4);
+        dao.guardarObjeto(usuario5);
         System.out.println("Hardcodeo finalizado!");
     }
 

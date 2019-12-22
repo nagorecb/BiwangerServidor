@@ -55,15 +55,6 @@ public class ServletContainer
     	List<clsUsuario> listaUsuarios = adminService.PremiarTresMejores();
     	ArrayList<clsUsuario> arrayUsuarios = new ArrayList<clsUsuario>();
 
-        System.out.println("En ServletContainer tras adminService");
-
-    	for(clsUsuario aux: listaUsuarios)
-        {
-            arrayUsuarios.add(aux);
-            System.out.println(aux.getEmail());
-        }
-        System.out.println("Acabado el for de List a ArrayList");
-
     	clsUsuarioLista retorno = new clsUsuarioLista(arrayUsuarios);
 
         return Response.ok(retorno).build();
@@ -134,7 +125,6 @@ public class ServletContainer
         jugador.setFechaVenta(fecha.format(formatter));
         jugador.setEstado(tokens.nextToken());
 
-        System.out.println("El cliente dice: " + camposJugador);
         adminService.guardarJugador(jugador);
         return Response.ok().build();
     }
@@ -157,11 +147,6 @@ public class ServletContainer
         ArrayList<clsJugador> lJugadores = adminService.obtenerTodosJugadores();
 
         clsJugadorLista retorno = new clsJugadorLista(lJugadores);
-
-        for(clsJugador aux: retorno.getlJugadores())
-        {
-            System.out.println("Jugador: " + aux.getNombre());
-        }
 
         return Response.ok(retorno).build();
     }
