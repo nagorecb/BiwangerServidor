@@ -41,19 +41,18 @@ public class clsAppServiceAdmin
     {
         List<clsUsuario> listaUsuarios;
 
-        System.out.println(7777777);
         listaUsuarios = dao.leerUsuarios();
         listaUsuarios = listaUsuarios.stream().sorted(Comparator.comparingInt(clsUsuario ::getPuntuacion)).collect(Collectors.toList());
         Collections.reverse(listaUsuarios);
-        System.out.println(88888888);
+
         listaUsuarios.get(0).setFondos(listaUsuarios.get(0).getFondos()+PREMIO1);
         listaUsuarios.get(1).setFondos(listaUsuarios.get(1).getFondos()+PREMIO2);
         listaUsuarios.get(2).setFondos(listaUsuarios.get(2).getFondos()+PREMIO3);
-        System.out.println(999999);
+
         dao.modificarUsuario(listaUsuarios.get(0));
         dao.modificarUsuario(listaUsuarios.get(1));
         dao.modificarUsuario(listaUsuarios.get(2));
-        System.out.println(10000000);
+
         return listaUsuarios;
     }
     

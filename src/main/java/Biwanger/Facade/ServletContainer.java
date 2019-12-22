@@ -174,6 +174,25 @@ public class ServletContainer
         return Response.ok(retorno).build();
     }
 
+    @POST
+    @Path("/clasificacionEquipo")
+    public Response clasificacionEquipo(String email)
+    {
+        ArrayList<clsJugador> plantilla = adminService.obtenerPlantilla(email);
+        clsJugadorLista retorno = new clsJugadorLista(userService.ordenarEquipo(plantilla));
+
+        return Response.ok(retorno).build();
+    }
+
+    @GET
+    @Path("/clasificacionUsuarios")
+    public Response clasificacionUsuarios()
+    {
+        clsUsuarioLista retorno = new clsUsuarioLista(userService.ordenarUsuarios());
+
+        return Response.ok(retorno).build();
+    }
+
     @GET
     @Path("/hardcode")
     public void hardcode()

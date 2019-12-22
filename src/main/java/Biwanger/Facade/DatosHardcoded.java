@@ -12,10 +12,13 @@ public class DatosHardcoded
     {
         System.out.println("Empezando hardcodeo");
         clsUsuario usuario = new clsUsuario("maiderc@opendeusto.es", "123", 0, 1000000, "4-4-2");
+        clsUsuario usuario2 = new clsUsuario("nagorecb@opendeusto.es", "123", 30, 1000000, "4-4-2");
+        clsUsuario usuario3 = new clsUsuario("hodei.olaskoaga@opendeusto.es", "123", 20, 1000000, "4-4-2");
+        clsUsuario usuario4 = new clsUsuario("sara.olaizola@opendeusto.es", "123", 25, 1000000, "4-4-2");
 
         clsJugador jugador1 = new clsJugador();
         jugador1.setNombre("Lionel Messi");
-        jugador1.setPuntos(0);
+        jugador1.setPuntos(20);
         jugador1.setPosicion("Delantero");
         jugador1.setPrecio(20000000);
         jugador1.setEquipo("FBC");
@@ -26,7 +29,7 @@ public class DatosHardcoded
 
         clsJugador jugador2 = new clsJugador();
         jugador2.setNombre("Morata");
-        jugador2.setPuntos(0);
+        jugador2.setPuntos(30);
         jugador2.setPosicion("Delantero");
         jugador2.setPrecio(20000000);
         jugador2.setEquipo("Atlético de Madrid");
@@ -37,7 +40,7 @@ public class DatosHardcoded
 
         clsJugador jugador3 = new clsJugador();
         jugador3.setNombre("Busquets");
-        jugador3.setPuntos(0);
+        jugador3.setPuntos(10);
         jugador3.setPosicion("Centrocampista");
         jugador3.setPrecio(20000000);
         jugador3.setEquipo("FBC");
@@ -81,7 +84,7 @@ public class DatosHardcoded
 
         clsJugador jugador7 = new clsJugador();
         jugador7.setNombre("Carvajal");
-        jugador7.setPuntos(0);
+        jugador7.setPuntos(4);
         jugador7.setPosicion("Defensa");
         jugador7.setPrecio(20000000);
         jugador7.setEquipo("Real Madrid");
@@ -114,7 +117,7 @@ public class DatosHardcoded
 
         clsJugador jugador10 = new clsJugador();
         jugador10.setNombre("Albiol");
-        jugador10.setPuntos(0);
+        jugador10.setPuntos(5);
         jugador10.setPosicion("Defensa");
         jugador10.setPrecio(20000000);
         jugador10.setEquipo("Villarreal");
@@ -125,7 +128,7 @@ public class DatosHardcoded
 
         clsJugador jugador11 = new clsJugador();
         jugador11.setNombre("De Gea");
-        jugador11.setPuntos(0);
+        jugador11.setPuntos(10);
         jugador11.setPosicion("Portero");
         jugador11.setPrecio(20000000);
         jugador11.setEquipo("Manchester United");
@@ -136,7 +139,7 @@ public class DatosHardcoded
 
         clsJugador jugador12 = new clsJugador();
         jugador12.setNombre("Luis Suárez");
-        jugador12.setPuntos(0);
+        jugador12.setPuntos(10);
         jugador12.setPosicion("Delantero");
         jugador12.setPrecio(20000000);
         jugador12.setEquipo("FCB");
@@ -158,7 +161,7 @@ public class DatosHardcoded
 
         clsJugador jugador14 = new clsJugador();
         jugador14.setNombre("Kepa Arrizabalaga");
-        jugador14.setPuntos(0);
+        jugador14.setPuntos(20);
         jugador14.setPosicion("Portero");
         jugador14.setPrecio(20000000);
         jugador14.setEquipo("Chelsea FC");
@@ -189,6 +192,9 @@ public class DatosHardcoded
         }
 
         dao.guardarObjeto(usuario);
+        dao.guardarObjeto(usuario2);
+        dao.guardarObjeto(usuario3);
+        dao.guardarObjeto(usuario4);
         System.out.println("Hardcodeo finalizado!");
     }
 

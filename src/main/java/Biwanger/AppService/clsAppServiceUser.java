@@ -8,6 +8,9 @@ import Biwanger.ObjetosDominio.clsUsuario;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.stream.Collectors;
 
 public class clsAppServiceUser
 {
@@ -165,4 +168,23 @@ public class clsAppServiceUser
 
         return retorno;
     }
+
+    public ArrayList<clsJugador> ordenarEquipo(ArrayList<clsJugador> equipo)
+    {
+        ArrayList<clsJugador> retorno = equipo;
+        retorno = (ArrayList<clsJugador>) retorno.stream().sorted(Comparator.comparingInt(clsJugador ::getPuntos)).collect(Collectors.toList());
+        Collections.reverse(retorno);
+
+        return retorno;
+    }
+
+    public ArrayList<clsUsuario> ordenarUsuarios()
+    {
+        ArrayList<clsUsuario> retorno = dao.leerUsuarios();
+        retorno = (ArrayList<clsUsuario>) retorno.stream().sorted(Comparator.comparingInt(clsUsuario ::getPuntuacion)).collect(Collectors.toList());
+        Collections.reverse(retorno);
+        return retorno;
+    }
+
 }
+
