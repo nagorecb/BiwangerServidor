@@ -5,12 +5,16 @@ import Biwanger.DAO.clsDAO;
 import Biwanger.ObjetosDominio.clsJugador;
 import Biwanger.ObjetosDominio.clsPuja;
 import Biwanger.ObjetosDominio.clsUsuario;
-
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
+/**
+ * Hilo que gestiona las pujas del sistema. Cuando se inicia y a las doce de la noche cada día
+ * el hilo recorre los jugadores en venta para identificar los del día anterior y, si tienen alguna puja,
+ * gestiona la venta de este.
+ */
 public class clsHiloPujas extends Thread
 {
     private static clsHiloPujas instance =null;
@@ -21,17 +25,29 @@ public class clsHiloPujas extends Thread
 
     private int contador = 1;
 
+    /**
+     * Constructor vacío del hilo
+     */
     public clsHiloPujas()
     {
 
     }
 
+    /**
+     * Constructor del hilo
+     * @param param1 Recibe el AppServiceUsuario para añadir funcionalidad
+     * @param param2 Recibe DAO para operar con la BBDD
+     */
     public clsHiloPujas(clsAppServiceUser param1, clsDAO param2)
     {
         userService = param1;
         dao = param2;
     }
 
+    /**
+     * Devuelve la única instancia del hilo
+     * @return Devuelve la única instancia del hilo
+     */
     public static final clsHiloPujas getInstance()
     {
         synchronized (clsHiloPujas.class)
@@ -45,6 +61,9 @@ public class clsHiloPujas extends Thread
         return instance;
     }
 
+    /**
+     * Método run del hilo que inicia su funcionamiento
+     */
     public void run()
     {
         System.out.println("\n\n\n\n\n\nENTRO EN EL HILO");
@@ -64,7 +83,7 @@ public class clsHiloPujas extends Thread
                         LocalDateTime fecha = LocalDateTime.parse(auxJugador.getFechaVenta(), formatter);
                         if(fecha.getDayOfMonth() < LocalDateTime.now().getDayOfMonth())
                         {
-                            System.out.println("\n\n\n\n\n\n\nEntro en el if por el que se supoen que la venta ha expirado");
+                            System.out.println("\n\n\n\n\n\n\nEntro en el if por el que se supone que la venta ha expirado");
                             lPujas = userService.obtenerPujas(auxJugador);
                             System.out.println("\n\n\n\n\n\n\nObtengo todas las pujas");
                             clsPuja pujaMaxima = null;
