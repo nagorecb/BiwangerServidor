@@ -1,0 +1,18 @@
+digraph "Biwanger.Facade.ServletContainer.clasificacionEquipo"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="Biwanger.Facade.ServletContainer.clasificacion\lEquipo",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="Biwanger.AppService.clsApp\lServiceAdmin.obtenerPlantilla",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_biwanger_1_1_app_service_1_1cls_app_service_admin.html#a7afcdff078b56c311f5f87faf3c085ff",tooltip=" "];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="Biwanger.AppService.clsApp\lServiceAdmin.obtenerTodosJugadores",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_biwanger_1_1_app_service_1_1cls_app_service_admin.html#a27e6abd6e208ab631d047968791b6a12",tooltip=" "];
+  Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="Biwanger.DAO.clsDAO.leer\lJugadores",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_biwanger_1_1_d_a_o_1_1cls_d_a_o.html#aee6320d3de60ff15133ac7d8e4b787a0",tooltip=" "];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="Biwanger.AppService.clsApp\lServiceUser.ordenarEquipo",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_biwanger_1_1_app_service_1_1cls_app_service_user.html#a75bbf1f0e5288e0a5cdf4a6d87fcc8af",tooltip=" "];
+  Node5 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="Biwanger.ObjetosDominio.cls\lJugador.getPuntos",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_biwanger_1_1_objetos_dominio_1_1cls_jugador.html#a0f2c552a9f98e3459c444bce82440b19",tooltip=" "];
+}

@@ -15,6 +15,7 @@
   <url>http://www.example.com</url>
 
   <properties>
+      <doxygen.config.file>${basedir}/src/main/resources/Doxyfile</doxygen.config.file>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <server.hostname>127.0.0.1</server.hostname>
     <server.port>8080</server.port>
@@ -50,12 +51,6 @@
         <groupId>mysql</groupId>
         <artifactId>mysql-connector-java</artifactId>
         <version>8.0.18</version>
-    </dependency>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.11</version>
-      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.glassfish.jersey.core</groupId>
@@ -124,7 +119,7 @@
           <groupId>junit</groupId>
           <artifactId>junit</artifactId>
           <version>4.12</version>
-          <scope>compile</scope>
+          <scope>test</scope>
       </dependency>
   </dependencies>
 
@@ -133,16 +128,41 @@
     <build>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
-        <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
+          <plugin>
+              <groupId>com.soebes.maven.plugins</groupId>
+              <artifactId>doxygen-maven-plugin</artifactId>
+              <version>1.1.0</version>
+              <configuration>
+                  <configurationFile>${doxygen.config.file}</configurationFile>
+              </configuration>
+          </plugin>
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
           <version>3.1.0</version>
         </plugin>
-        <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
-        <plugin>
-          <artifactId>maven-resources-plugin</artifactId>
-          <version>3.0.2</version>
-        </plugin>
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-resources-plugin</artifactId>
+              <version>3.1.0</version>
+              <executions>
+                  <execution>
+                      <id>copy-resources</id>
+                      <phase>site</phase>
+                      <goals>
+                          <goal>copy-resources</goal>
+                      </goals>
+                      <configuration>
+                          <outputDirectory>${basedir}/docs</outputDirectory>
+                          <resources>
+                              <resource>
+                                  <directory>${basedir}/target/doxygen/html</directory>
+                                  <filtering>true</filtering>
+                              </resource>
+                          </resources>
+                      </configuration>
+                  </execution>
+              </executions>
+          </plugin>
         <plugin>
           <artifactId>maven-compiler-plugin</artifactId>
           <version>3.8.0</version>
@@ -167,7 +187,6 @@
           <artifactId>maven-deploy-plugin</artifactId>
           <version>2.8.2</version>
         </plugin>
-        <!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
         <plugin>
           <artifactId>maven-site-plugin</artifactId>
           <version>3.7.1</version>
@@ -186,33 +205,76 @@
             <artifactId>datanucleus-maven-plugin</artifactId>
             <version>5.0.2</version>
             <configuration>
+                <verbose>true</verbose>
                 <props>${basedir}/src/main/resources/datanucleus.properties</props>
                 <log4jConfiguration>${basedir}/src/main/resources/log4j.properties</log4jConfiguration>
-                <verbose>true</verbose>
             </configuration>
             <executions>
                 <execution>
-                    <id>process-classes</id>
-                    <phase>process-classes</phase>
+                    <phase>compile</phase>
                     <goals>
                         <goal>enhance</goal>
                     </goals>
                 </execution>
-                <execution>
-                    <id>process-test-classes</id>
-                    <phase>process-test-classes</phase>
-                    <goals>
-                        <goal>enhance</goal>
-                    </goals>
-                    <configuration>
-                        <metadataDirectory>${project.build.testOutputDirectory}</metadataDirectory>
-                    </configuration>
-                </execution>
-        </executions>
+            </executions>
         </plugin>
+          <plugin>
+              <groupId>org.jacoco</groupId>
+              <artifactId>jacoco-maven-plugin</artifactId>
+              <version>0.8.3</version>
+              <executions>
+                  <execution>
+                      <goals>
+                          <goal>prepare-agent</goal>
+                      </goals>
+                  </execution>
+                  <execution>
+                      <id>report</id>
+                      <phase>test</phase>
+                      <goals>
+                          <goal>report</goal>
+                      </goals>
+                  </execution>
+              </executions>
+              <configuration>
+                  <rules>
+                      <rule>
+                          <element>BUNDLE</element>
+                          <limits>
+                              <limit>
+                                  <counter>INSTRUCTION</counter>
+                                  <value>COVEREDRATIO</value>
+                                  <minimum>0.90</minimum>
+                              </limit>
+                              <limit>
+                                  <counter>BRANCH</counter>
+                                  <value>COVEREDRATIO</value>
+                                  <minimum>0.90</minimum>
+                              </limit>
+                          </limits>
+                      </rule>
+                  </rules>
+              </configuration>
+          </plugin>
       </plugins>
     </pluginManagement>
   </build>
+
+    <reporting>
+        <outputDirectory>${project.build.directory}/site</outputDirectory>
+        <plugins>
+            <plugin>
+                <groupId>com.soebes.maven.plugins</groupId>
+                <artifactId>doxygen-maven-plugin</artifactId>
+                <version>1.1.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.3</version>
+            </plugin>
+        </plugins>
+    </reporting>
 
     <profiles>
         <profile>

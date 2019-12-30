@@ -1,0 +1,18 @@
+digraph "Biwanger.ObjetosDominio.clsUsuario.setFondos"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="Biwanger.ObjetosDominio.cls\lUsuario.setFondos",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="Biwanger.DAO.clsDAO.modificar\lUsuario",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_biwanger_1_1_d_a_o_1_1cls_d_a_o.html#a9023a1387d6ec5f85cdc4344bf54a557",tooltip=" "];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="Biwanger.AppService.clsApp\lServiceUser.modificarFormacion",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_biwanger_1_1_app_service_1_1cls_app_service_user.html#a45ddc53a6dd70ce80584469e19be2399",tooltip=" "];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="Biwanger.Facade.ServletContainer.modificar\lFormacion",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_biwanger_1_1_facade_1_1_servlet_container.html#a0bbfb12d162bb8805b0aa53179782cdb",tooltip=" "];
+  Node2 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="Biwanger.comun.clsHiloPujas.run",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_biwanger_1_1comun_1_1cls_hilo_pujas.html#a1081eef132d091c12bb08bf1eb2db1c1",tooltip=" "];
+  Node5 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="Biwanger.comun.clsMain.main",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_biwanger_1_1comun_1_1cls_main.html#a09e0032f856ff2123925717cef2db994",tooltip=" "];
+}

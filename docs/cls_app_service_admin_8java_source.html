@@ -1,0 +1,271 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.16"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>BiwangerFantasy Servidor: Fichero Fuente src/main/java/Biwanger/AppService/clsAppServiceAdmin.java</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="Success.jpg"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">BiwangerFantasy Servidor
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Biwanger Fantasy es un videojuego en el que cada jugador se convierte en el gestor de un equipo virtual.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.16 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('cls_app_service_admin_8java_source.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">clsAppServiceAdmin.java</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="cls_app_service_admin_8java.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="namespace_biwanger_1_1_app_service.html">    1</a></span>&#160;<span class="keyword">package </span>Biwanger.AppService;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">import</span> <a class="code" href="namespace_biwanger.html">Biwanger</a>.<a class="code" href="namespace_biwanger_1_1_d_a_o.html">DAO</a>.<a class="code" href="class_biwanger_1_1_d_a_o_1_1cls_d_a_o.html">clsDAO</a>;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">import</span> <a class="code" href="namespace_biwanger.html">Biwanger</a>.<a class="code" href="namespace_biwanger_1_1_objetos_dominio.html">ObjetosDominio</a>.<a class="code" href="class_biwanger_1_1_objetos_dominio_1_1cls_jugador.html">clsJugador</a>;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">import</span> <a class="code" href="namespace_biwanger.html">Biwanger</a>.<a class="code" href="namespace_biwanger_1_1_objetos_dominio.html">ObjetosDominio</a>.<a class="code" href="class_biwanger_1_1_objetos_dominio_1_1cls_usuario.html">clsUsuario</a>;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">import</span> java.util.ArrayList;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">import</span> java.util.Collections;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">import</span> java.util.Comparator;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">import</span> java.util.List;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">import</span> java.util.stream.Collectors;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html">   17</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html">clsAppServiceAdmin</a></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;{</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="class_biwanger_1_1_d_a_o_1_1cls_d_a_o.html">clsDAO</a> dao = <a class="code" href="class_biwanger_1_1_d_a_o_1_1cls_d_a_o.html">clsDAO</a>.<a class="code" href="class_biwanger_1_1_d_a_o_1_1cls_d_a_o.html#a36cbb59e78ae27147cceafec4617d04b">getInstance</a>();</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">final</span> <span class="keywordtype">double</span> PREMIO1 = 3000;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">final</span> <span class="keywordtype">double</span> PREMIO2 = 2000;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">final</span> <span class="keywordtype">double</span> PREMIO3 = 1000;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">private</span> <span class="keywordtype">int</span> pnt1=0;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">private</span> <span class="keywordtype">int</span> pnt2=0;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">private</span> <span class="keywordtype">int</span> pnt3=0;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html#a8cb10895a1534fa0e3e05f947c933a5f">   29</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html">clsAppServiceAdmin</a> <a class="code" href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html#a8cb10895a1534fa0e3e05f947c933a5f">instancia</a> = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html#a0737e02f68225f27d91758a1b57860b7">   34</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html#a0737e02f68225f27d91758a1b57860b7">clsAppServiceAdmin</a> (){}</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html#a868f96796d94344e5a4b03e97086b7a1">   40</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html">clsAppServiceAdmin</a> <a class="code" href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html#a868f96796d94344e5a4b03e97086b7a1">getInstance</a>()</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keyword">synchronized</span> (<a class="code" href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html">clsAppServiceAdmin</a>.class)</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="keywordflow">if</span>(<a class="code" href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html#a8cb10895a1534fa0e3e05f947c933a5f">instancia</a> == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                <a class="code" href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html#a8cb10895a1534fa0e3e05f947c933a5f">instancia</a> = <span class="keyword">new</span> <a class="code" href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html#a0737e02f68225f27d91758a1b57860b7">clsAppServiceAdmin</a>();</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            }</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html#a8cb10895a1534fa0e3e05f947c933a5f">instancia</a>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html#a745d1a0c5ea706ffd97616cb4d2e0672">   56</a></span>&#160;    <span class="keyword">public</span> List&lt;clsUsuario&gt; <a class="code" href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html#a745d1a0c5ea706ffd97616cb4d2e0672">PremiarTresMejores</a>()</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        List&lt;clsUsuario&gt; listaUsuarios;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        listaUsuarios = dao.<a class="code" href="class_biwanger_1_1_d_a_o_1_1cls_d_a_o.html#ac5b5d7f6081c59086f4f9572bf639783">leerUsuarios</a>();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        listaUsuarios = listaUsuarios.stream().sorted(Comparator.comparingInt(<a class="code" href="class_biwanger_1_1_objetos_dominio_1_1cls_usuario.html#a8043716fb0488b460818ea29e73410e6">clsUsuario ::getPuntuacion</a>)).collect(Collectors.toList());</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        Collections.reverse(listaUsuarios);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">if</span> (!listaUsuarios.isEmpty())</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            pnt1=listaUsuarios.get(0).getPuntuacion();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keywordflow">for</span> (<a class="code" href="class_biwanger_1_1_objetos_dominio_1_1cls_usuario.html">clsUsuario</a> usuario: listaUsuarios)</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                <span class="keywordflow">if</span>(usuario.getPuntuacion()==pnt1)</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                    usuario.setFondos(usuario.getFondos()+PREMIO1);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                    <span class="keywordflow">if</span> (pnt2==0)</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                    {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                        pnt2 = usuario.getPuntuacion();</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                        usuario.setFondos(usuario.getFondos()+PREMIO2);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                    }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (pnt2==usuario.getPuntuacion())</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                    {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                        usuario.setFondos(usuario.getFondos()+PREMIO2);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                    }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                    {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                        <span class="keywordflow">if</span> (pnt3==0)</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                        {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                            pnt3 = usuario.getPuntuacion();</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                            usuario.setFondos(usuario.getFondos()+PREMIO3);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                        }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (pnt2==usuario.getPuntuacion())</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                        {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                            usuario.setFondos(usuario.getFondos()+PREMIO3);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                        }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                        <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                        }</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                    }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                }</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        }</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordflow">return</span> listaUsuarios;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    }</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html#a2c801a4ec68d39ed93d44b260272d49d">  110</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html#a2c801a4ec68d39ed93d44b260272d49d">anadirPuntos</a> (<span class="keywordtype">int</span> idJugador, <span class="keywordtype">int</span> puntosAnadir) </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    {</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <a class="code" href="class_biwanger_1_1_objetos_dominio_1_1cls_jugador.html">clsJugador</a> jugadorAnadirPuntos = dao.<a class="code" href="class_biwanger_1_1_d_a_o_1_1cls_d_a_o.html#a328f0382cc72d1481ba892d46f797cd1">buscarJugador</a>(idJugador);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keywordtype">int</span> puntosTot = jugadorAnadirPuntos.<a class="code" href="class_biwanger_1_1_objetos_dominio_1_1cls_jugador.html#a0f2c552a9f98e3459c444bce82440b19">getPuntos</a>() + puntosAnadir;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        jugadorAnadirPuntos.<a class="code" href="class_biwanger_1_1_objetos_dominio_1_1cls_jugador.html#a28cf9c9f2fb7dc608cb0524ac2afd77e">setPuntos</a>(puntosTot);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        dao.<a class="code" href="class_biwanger_1_1_d_a_o_1_1cls_d_a_o.html#a0b0abb6047254b917a1527955f1668e7">modificarJugador</a>(jugadorAnadirPuntos);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    }</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno"><a class="line" href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html#a1af9f1988b71d0be52449a1ce053f25e">  125</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html#a1af9f1988b71d0be52449a1ce053f25e">guardarJugador</a> (<a class="code" href="class_biwanger_1_1_objetos_dominio_1_1cls_jugador.html">clsJugador</a> jugador) </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    {</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        dao.<a class="code" href="class_biwanger_1_1_d_a_o_1_1cls_d_a_o.html#ad5b516889068247c5e4f9ff890c295cc">guardarObjeto</a>(jugador);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    }</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno"><a class="line" href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html#a67f15e33d0977f242cfa973f4b7eed5f">  134</a></span>&#160;    <span class="keyword">public</span> ArrayList&lt;clsUsuario&gt; <a class="code" href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html#a67f15e33d0977f242cfa973f4b7eed5f">obtenerTodosUsuarios</a>()</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    {</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        ArrayList&lt;clsUsuario&gt; lUsuarios = dao.<a class="code" href="class_biwanger_1_1_d_a_o_1_1cls_d_a_o.html#ac5b5d7f6081c59086f4f9572bf639783">leerUsuarios</a>();</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        lUsuarios = (ArrayList&lt;clsUsuario&gt;) lUsuarios.stream().sorted(Comparator.comparingInt(<a class="code" href="class_biwanger_1_1_objetos_dominio_1_1cls_usuario.html#a8043716fb0488b460818ea29e73410e6">clsUsuario ::getPuntuacion</a>)).collect(Collectors.toList());</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        Collections.reverse(lUsuarios);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        <span class="keywordflow">return</span> lUsuarios;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    }</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html#a27e6abd6e208ab631d047968791b6a12">  148</a></span>&#160;    <span class="keyword">public</span> ArrayList&lt;clsJugador&gt; <a class="code" href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html#a27e6abd6e208ab631d047968791b6a12">obtenerTodosJugadores</a>()</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    {</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        ArrayList&lt;clsJugador&gt; lJugadores = dao.<a class="code" href="class_biwanger_1_1_d_a_o_1_1cls_d_a_o.html#aee6320d3de60ff15133ac7d8e4b787a0">leerJugadores</a>();</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        <span class="keywordflow">return</span> lJugadores;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    }</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno"><a class="line" href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html#a7afcdff078b56c311f5f87faf3c085ff">  160</a></span>&#160;    <span class="keyword">public</span> ArrayList&lt;clsJugador&gt; <a class="code" href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html#a7afcdff078b56c311f5f87faf3c085ff">obtenerPlantilla</a>(String email)</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    {</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        ArrayList&lt;clsJugador&gt; lTodosJugadores = <a class="code" href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html#a27e6abd6e208ab631d047968791b6a12">obtenerTodosJugadores</a>();</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        ArrayList&lt;clsJugador&gt; Plantilla = <span class="keyword">new</span> ArrayList&lt;clsJugador&gt;();</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <span class="keywordflow">for</span>(<a class="code" href="class_biwanger_1_1_objetos_dominio_1_1cls_jugador.html">clsJugador</a> aux: lTodosJugadores)</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        {</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            <span class="keywordflow">if</span>(aux.getUsuarioDueno().equals(email))</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            {</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                Plantilla.add(aux);</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            }</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        }</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        <span class="keywordflow">return</span> Plantilla;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    }</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_biwanger_1_1_app_service_1_1cls_app_service_admin_html_a2c801a4ec68d39ed93d44b260272d49d"><div class="ttname"><a href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html#a2c801a4ec68d39ed93d44b260272d49d">Biwanger.AppService.clsAppServiceAdmin.anadirPuntos</a></div><div class="ttdeci">void anadirPuntos(int idJugador, int puntosAnadir)</div><div class="ttdef"><b>Definition:</b> <a href="cls_app_service_admin_8java_source.html#l00110">clsAppServiceAdmin.java:110</a></div></div>
+<div class="ttc" id="anamespace_biwanger_html"><div class="ttname"><a href="namespace_biwanger.html">Biwanger</a></div></div>
+<div class="ttc" id="anamespace_biwanger_1_1_d_a_o_html"><div class="ttname"><a href="namespace_biwanger_1_1_d_a_o.html">Biwanger.DAO</a></div><div class="ttdef"><b>Definition:</b> <a href="cls_d_a_o_8java_source.html#l00001">clsDAO.java:1</a></div></div>
+<div class="ttc" id="aclass_biwanger_1_1_d_a_o_1_1cls_d_a_o_html_ac5b5d7f6081c59086f4f9572bf639783"><div class="ttname"><a href="class_biwanger_1_1_d_a_o_1_1cls_d_a_o.html#ac5b5d7f6081c59086f4f9572bf639783">Biwanger.DAO.clsDAO.leerUsuarios</a></div><div class="ttdeci">ArrayList&lt; clsUsuario &gt; leerUsuarios()</div><div class="ttdef"><b>Definition:</b> <a href="cls_d_a_o_8java_source.html#l00143">clsDAO.java:143</a></div></div>
+<div class="ttc" id="aclass_biwanger_1_1_app_service_1_1cls_app_service_admin_html_a8cb10895a1534fa0e3e05f947c933a5f"><div class="ttname"><a href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html#a8cb10895a1534fa0e3e05f947c933a5f">Biwanger.AppService.clsAppServiceAdmin.instancia</a></div><div class="ttdeci">static clsAppServiceAdmin instancia</div><div class="ttdef"><b>Definition:</b> <a href="cls_app_service_admin_8java_source.html#l00029">clsAppServiceAdmin.java:29</a></div></div>
+<div class="ttc" id="aclass_biwanger_1_1_objetos_dominio_1_1cls_jugador_html_a0f2c552a9f98e3459c444bce82440b19"><div class="ttname"><a href="class_biwanger_1_1_objetos_dominio_1_1cls_jugador.html#a0f2c552a9f98e3459c444bce82440b19">Biwanger.ObjetosDominio.clsJugador.getPuntos</a></div><div class="ttdeci">int getPuntos()</div><div class="ttdef"><b>Definition:</b> <a href="cls_jugador_8java_source.html#l00089">clsJugador.java:89</a></div></div>
+<div class="ttc" id="aclass_biwanger_1_1_objetos_dominio_1_1cls_jugador_html_a28cf9c9f2fb7dc608cb0524ac2afd77e"><div class="ttname"><a href="class_biwanger_1_1_objetos_dominio_1_1cls_jugador.html#a28cf9c9f2fb7dc608cb0524ac2afd77e">Biwanger.ObjetosDominio.clsJugador.setPuntos</a></div><div class="ttdeci">void setPuntos(int puntos)</div><div class="ttdef"><b>Definition:</b> <a href="cls_jugador_8java_source.html#l00092">clsJugador.java:92</a></div></div>
+<div class="ttc" id="aclass_biwanger_1_1_d_a_o_1_1cls_d_a_o_html_a328f0382cc72d1481ba892d46f797cd1"><div class="ttname"><a href="class_biwanger_1_1_d_a_o_1_1cls_d_a_o.html#a328f0382cc72d1481ba892d46f797cd1">Biwanger.DAO.clsDAO.buscarJugador</a></div><div class="ttdeci">clsJugador buscarJugador(int idJugador)</div><div class="ttdef"><b>Definition:</b> <a href="cls_d_a_o_8java_source.html#l00070">clsDAO.java:70</a></div></div>
+<div class="ttc" id="aclass_biwanger_1_1_objetos_dominio_1_1cls_usuario_html"><div class="ttname"><a href="class_biwanger_1_1_objetos_dominio_1_1cls_usuario.html">Biwanger.ObjetosDominio.clsUsuario</a></div><div class="ttdef"><b>Definition:</b> <a href="cls_usuario_8java_source.html#l00011">clsUsuario.java:11</a></div></div>
+<div class="ttc" id="aclass_biwanger_1_1_d_a_o_1_1cls_d_a_o_html"><div class="ttname"><a href="class_biwanger_1_1_d_a_o_1_1cls_d_a_o.html">Biwanger.DAO.clsDAO</a></div><div class="ttdef"><b>Definition:</b> <a href="cls_d_a_o_8java_source.html#l00017">clsDAO.java:17</a></div></div>
+<div class="ttc" id="anamespace_biwanger_1_1_objetos_dominio_html"><div class="ttname"><a href="namespace_biwanger_1_1_objetos_dominio.html">Biwanger.ObjetosDominio</a></div><div class="ttdef"><b>Definition:</b> <a href="cls_jugador_8java_source.html#l00001">clsJugador.java:1</a></div></div>
+<div class="ttc" id="aclass_biwanger_1_1_d_a_o_1_1cls_d_a_o_html_ad5b516889068247c5e4f9ff890c295cc"><div class="ttname"><a href="class_biwanger_1_1_d_a_o_1_1cls_d_a_o.html#ad5b516889068247c5e4f9ff890c295cc">Biwanger.DAO.clsDAO.guardarObjeto</a></div><div class="ttdeci">clsJugador guardarObjeto(Object objeto)</div><div class="ttdef"><b>Definition:</b> <a href="cls_d_a_o_8java_source.html#l00036">clsDAO.java:36</a></div></div>
+<div class="ttc" id="aclass_biwanger_1_1_objetos_dominio_1_1cls_usuario_html_a8043716fb0488b460818ea29e73410e6"><div class="ttname"><a href="class_biwanger_1_1_objetos_dominio_1_1cls_usuario.html#a8043716fb0488b460818ea29e73410e6">Biwanger.ObjetosDominio.clsUsuario.getPuntuacion</a></div><div class="ttdeci">int getPuntuacion()</div><div class="ttdef"><b>Definition:</b> <a href="cls_usuario_8java_source.html#l00055">clsUsuario.java:55</a></div></div>
+<div class="ttc" id="aclass_biwanger_1_1_d_a_o_1_1cls_d_a_o_html_a36cbb59e78ae27147cceafec4617d04b"><div class="ttname"><a href="class_biwanger_1_1_d_a_o_1_1cls_d_a_o.html#a36cbb59e78ae27147cceafec4617d04b">Biwanger.DAO.clsDAO.getInstance</a></div><div class="ttdeci">static clsDAO getInstance()</div><div class="ttdef"><b>Definition:</b> <a href="cls_d_a_o_8java_source.html#l00024">clsDAO.java:24</a></div></div>
+<div class="ttc" id="aclass_biwanger_1_1_d_a_o_1_1cls_d_a_o_html_a0b0abb6047254b917a1527955f1668e7"><div class="ttname"><a href="class_biwanger_1_1_d_a_o_1_1cls_d_a_o.html#a0b0abb6047254b917a1527955f1668e7">Biwanger.DAO.clsDAO.modificarJugador</a></div><div class="ttdeci">void modificarJugador(clsJugador jugador)</div><div class="ttdef"><b>Definition:</b> <a href="cls_d_a_o_8java_source.html#l00237">clsDAO.java:237</a></div></div>
+<div class="ttc" id="aclass_biwanger_1_1_app_service_1_1cls_app_service_admin_html"><div class="ttname"><a href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html">Biwanger.AppService.clsAppServiceAdmin</a></div><div class="ttdoc">clase de lógica de negocio de administrador</div><div class="ttdef"><b>Definition:</b> <a href="cls_app_service_admin_8java_source.html#l00017">clsAppServiceAdmin.java:17</a></div></div>
+<div class="ttc" id="aclass_biwanger_1_1_app_service_1_1cls_app_service_admin_html_a67f15e33d0977f242cfa973f4b7eed5f"><div class="ttname"><a href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html#a67f15e33d0977f242cfa973f4b7eed5f">Biwanger.AppService.clsAppServiceAdmin.obtenerTodosUsuarios</a></div><div class="ttdeci">ArrayList&lt; clsUsuario &gt; obtenerTodosUsuarios()</div><div class="ttdef"><b>Definition:</b> <a href="cls_app_service_admin_8java_source.html#l00134">clsAppServiceAdmin.java:134</a></div></div>
+<div class="ttc" id="aclass_biwanger_1_1_d_a_o_1_1cls_d_a_o_html_aee6320d3de60ff15133ac7d8e4b787a0"><div class="ttname"><a href="class_biwanger_1_1_d_a_o_1_1cls_d_a_o.html#aee6320d3de60ff15133ac7d8e4b787a0">Biwanger.DAO.clsDAO.leerJugadores</a></div><div class="ttdeci">ArrayList&lt; clsJugador &gt; leerJugadores()</div><div class="ttdef"><b>Definition:</b> <a href="cls_d_a_o_8java_source.html#l00112">clsDAO.java:112</a></div></div>
+<div class="ttc" id="aclass_biwanger_1_1_app_service_1_1cls_app_service_admin_html_a745d1a0c5ea706ffd97616cb4d2e0672"><div class="ttname"><a href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html#a745d1a0c5ea706ffd97616cb4d2e0672">Biwanger.AppService.clsAppServiceAdmin.PremiarTresMejores</a></div><div class="ttdeci">List&lt; clsUsuario &gt; PremiarTresMejores()</div><div class="ttdef"><b>Definition:</b> <a href="cls_app_service_admin_8java_source.html#l00056">clsAppServiceAdmin.java:56</a></div></div>
+<div class="ttc" id="aclass_biwanger_1_1_app_service_1_1cls_app_service_admin_html_a868f96796d94344e5a4b03e97086b7a1"><div class="ttname"><a href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html#a868f96796d94344e5a4b03e97086b7a1">Biwanger.AppService.clsAppServiceAdmin.getInstance</a></div><div class="ttdeci">static clsAppServiceAdmin getInstance()</div><div class="ttdef"><b>Definition:</b> <a href="cls_app_service_admin_8java_source.html#l00040">clsAppServiceAdmin.java:40</a></div></div>
+<div class="ttc" id="aclass_biwanger_1_1_app_service_1_1cls_app_service_admin_html_a7afcdff078b56c311f5f87faf3c085ff"><div class="ttname"><a href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html#a7afcdff078b56c311f5f87faf3c085ff">Biwanger.AppService.clsAppServiceAdmin.obtenerPlantilla</a></div><div class="ttdeci">ArrayList&lt; clsJugador &gt; obtenerPlantilla(String email)</div><div class="ttdef"><b>Definition:</b> <a href="cls_app_service_admin_8java_source.html#l00160">clsAppServiceAdmin.java:160</a></div></div>
+<div class="ttc" id="aclass_biwanger_1_1_app_service_1_1cls_app_service_admin_html_a1af9f1988b71d0be52449a1ce053f25e"><div class="ttname"><a href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html#a1af9f1988b71d0be52449a1ce053f25e">Biwanger.AppService.clsAppServiceAdmin.guardarJugador</a></div><div class="ttdeci">void guardarJugador(clsJugador jugador)</div><div class="ttdef"><b>Definition:</b> <a href="cls_app_service_admin_8java_source.html#l00125">clsAppServiceAdmin.java:125</a></div></div>
+<div class="ttc" id="aclass_biwanger_1_1_app_service_1_1cls_app_service_admin_html_a27e6abd6e208ab631d047968791b6a12"><div class="ttname"><a href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html#a27e6abd6e208ab631d047968791b6a12">Biwanger.AppService.clsAppServiceAdmin.obtenerTodosJugadores</a></div><div class="ttdeci">ArrayList&lt; clsJugador &gt; obtenerTodosJugadores()</div><div class="ttdef"><b>Definition:</b> <a href="cls_app_service_admin_8java_source.html#l00148">clsAppServiceAdmin.java:148</a></div></div>
+<div class="ttc" id="aclass_biwanger_1_1_objetos_dominio_1_1cls_jugador_html"><div class="ttname"><a href="class_biwanger_1_1_objetos_dominio_1_1cls_jugador.html">Biwanger.ObjetosDominio.clsJugador</a></div><div class="ttdef"><b>Definition:</b> <a href="cls_jugador_8java_source.html#l00012">clsJugador.java:12</a></div></div>
+<div class="ttc" id="aclass_biwanger_1_1_app_service_1_1cls_app_service_admin_html_a0737e02f68225f27d91758a1b57860b7"><div class="ttname"><a href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html#a0737e02f68225f27d91758a1b57860b7">Biwanger.AppService.clsAppServiceAdmin.clsAppServiceAdmin</a></div><div class="ttdeci">clsAppServiceAdmin()</div><div class="ttdef"><b>Definition:</b> <a href="cls_app_service_admin_8java_source.html#l00034">clsAppServiceAdmin.java:34</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5eb159725f84c66aafd839904a4acdd0.html">main</a></li><li class="navelem"><a class="el" href="dir_fd3f6763802dee1ad875f6c80eac0bda.html">java</a></li><li class="navelem"><a class="el" href="dir_04b3c744f5e4338ec0148f0ea5c41e8c.html">Biwanger</a></li><li class="navelem"><a class="el" href="dir_ee9817763a600f6127bdff4f87b87abd.html">AppService</a></li><li class="navelem"><a class="el" href="cls_app_service_admin_8java.html">clsAppServiceAdmin.java</a></li>
+    <li class="footer">Generado el Lunes, 30 de Diciembre de 2019 10:54:06 para BiwangerFantasy Servidor por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>
+  </ul>
+</div>
+</body>
+</html>
