@@ -74,7 +74,7 @@ Este comando hará lo siguiente:
         - Doxygen
         - Contiperf
 
-* Genera la documentación completa en la carpeta doc, de manera que pueda ser accedida desde el repositorio de GitHb, y desde la página http://nagorecb.github.io/BiwangerCliente.
+* Genera la documentación completa en la carpeta doc, de manera que pueda ser accedida desde el repositorio de GitHb, y desde la página http://nagorecb.github.io/BiwangerServidor.
 
 ### Equipo 💻
 
