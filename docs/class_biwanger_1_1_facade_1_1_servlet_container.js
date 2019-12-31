@@ -5,7 +5,6 @@ var class_biwanger_1_1_facade_1_1_servlet_container =
     [ "clasificacionEquipo", "class_biwanger_1_1_facade_1_1_servlet_container.html#a3470c81aaf9329061104a66bf80bf779", null ],
     [ "clasificacionUsuarios", "class_biwanger_1_1_facade_1_1_servlet_container.html#a98a9d2c39fdc3f202df959454115d410", null ],
     [ "crearJugadorRequest", "class_biwanger_1_1_facade_1_1_servlet_container.html#a60ad3c267ac6524d219d60fafbd36b67", null ],
-    [ "hardcode", "class_biwanger_1_1_facade_1_1_servlet_container.html#adda5f1e6f6fc484c30ae7fe9fbdc6318", null ],
     [ "LoginRequest", "class_biwanger_1_1_facade_1_1_servlet_container.html#a0aa38414f4607abfff9c7e7aade82681", null ],
     [ "modificarAlineacion", "class_biwanger_1_1_facade_1_1_servlet_container.html#aa4b67ad890668577487de568096f63de", null ],
     [ "modificarFormacion", "class_biwanger_1_1_facade_1_1_servlet_container.html#a0bbfb12d162bb8805b0aa53179782cdb", null ],

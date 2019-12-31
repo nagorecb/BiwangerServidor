@@ -8,7 +8,7 @@ public class clsMain
 {
     /**
      * El método main desde el que se inicia el artefacto.
-     * @param args No se hace uso del este parámetro
+     * @param args No se hace uso de este parámetro
      */
     public static void main(String args[])
     {

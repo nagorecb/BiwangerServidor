@@ -4,7 +4,7 @@ import Biwanger.AppService.clsAppServiceAdmin;
 import Biwanger.AppService.clsAppServiceUser;
 import Biwanger.DAO.clsDAO;
 import Biwanger.ObjetosDominio.*;
-import Biwanger.comun.clsHiloPujas;
+import Biwanger.comun.DatosHardcoded;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -251,17 +251,5 @@ public class ServletContainer
         clsUsuarioLista retorno = new clsUsuarioLista(userService.ordenarUsuarios());
 
         return Response.ok(retorno).build();
-    }
-
-    /**
-     * Método para introducir ciertos datos en la base de datos para tener datos de prueba al iniciar el programa
-     */
-    @GET
-    @Path("/hardcode")
-    public void hardcode()
-    {
-        DatosHardcoded hardcode = new DatosHardcoded();
-        hardcode.metodo(dao);
-       // hardcode.metodo2(dao);
     }
 }

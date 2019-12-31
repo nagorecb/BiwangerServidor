@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['cerrarconexion_10',['cerrarConexion',['../class_biwanger_1_1_d_a_o_1_1cls_d_a_o.html#a73adabed5ac2702556adba5ebc59b620',1,'Biwanger.DAO.clsDAO.cerrarConexion()'],['../interface_biwanger_1_1_d_a_o_1_1itf_d_a_o.html#a4585499f05ad587244cd03f800a08bb4',1,'Biwanger.DAO.itfDAO.cerrarConexion()']]],
+  ['cerrarconexion_10',['cerrarConexion',['../class_biwanger_1_1_d_a_o_1_1cls_d_a_o.html#a73adabed5ac2702556adba5ebc59b620',1,'Biwanger::DAO::clsDAO']]],
   ['clasificacionequipo_11',['clasificacionEquipo',['../class_biwanger_1_1_facade_1_1_servlet_container.html#a3470c81aaf9329061104a66bf80bf779',1,'Biwanger::Facade::ServletContainer']]],
   ['clasificacionusuarios_12',['clasificacionUsuarios',['../class_biwanger_1_1_facade_1_1_servlet_container.html#a98a9d2c39fdc3f202df959454115d410',1,'Biwanger::Facade::ServletContainer']]],
   ['clsappserviceadmin_13',['clsAppServiceAdmin',['../class_biwanger_1_1_app_service_1_1cls_app_service_admin.html',1,'Biwanger.AppService.clsAppServiceAdmin'],['../class_biwanger_1_1_app_service_1_1cls_app_service_admin.html#a0737e02f68225f27d91758a1b57860b7',1,'Biwanger.AppService.clsAppServiceAdmin.clsAppServiceAdmin()']]],

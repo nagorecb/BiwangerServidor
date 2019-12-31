@@ -28,5 +28,5 @@ var searchData=
   ['getpuntuacion_66',['getPuntuacion',['../class_biwanger_1_1_objetos_dominio_1_1cls_usuario.html#a8043716fb0488b460818ea29e73410e6',1,'Biwanger::ObjetosDominio::clsUsuario']]],
   ['getusuariodueno_67',['getUsuarioDueno',['../class_biwanger_1_1_objetos_dominio_1_1cls_jugador.html#a6d4447ffd25a948efb4ab8fb0bde0f5b',1,'Biwanger::ObjetosDominio::clsJugador']]],
   ['guardarjugador_68',['guardarJugador',['../class_biwanger_1_1_app_service_1_1cls_app_service_admin.html#a1af9f1988b71d0be52449a1ce053f25e',1,'Biwanger::AppService::clsAppServiceAdmin']]],
-  ['guardarobjeto_69',['guardarObjeto',['../class_biwanger_1_1_d_a_o_1_1cls_d_a_o.html#ad5b516889068247c5e4f9ff890c295cc',1,'Biwanger.DAO.clsDAO.guardarObjeto()'],['../interface_biwanger_1_1_d_a_o_1_1itf_d_a_o.html#a587840f113541f0b0aec9db0deae4e71',1,'Biwanger.DAO.itfDAO.guardarObjeto()']]]
+  ['guardarobjeto_69',['guardarObjeto',['../class_biwanger_1_1_d_a_o_1_1cls_d_a_o.html#ad5b516889068247c5e4f9ff890c295cc',1,'Biwanger::DAO::clsDAO']]]
 ];

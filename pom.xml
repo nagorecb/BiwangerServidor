@@ -105,9 +105,9 @@
         <scope>test</scope>
     </dependency>
       <dependency>
-          <groupId>org.databene</groupId>
+          <groupId>com.github.javatlacati</groupId>
           <artifactId>contiperf</artifactId>
-          <version>2.3.4</version>
+          <version>2.4.3</version>
           <scope>test</scope>
       </dependency>
       <dependency>
@@ -273,11 +273,6 @@
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.3</version>
             </plugin>
-            <plugin>
-          		<groupId>org.databene</groupId>
-          		<artifactId>contiperf</artifactId>
-          		<version>2.3.4</version>
-      		</plugin>
         </plugins>
     </reporting>
 
@@ -293,6 +288,22 @@
                         <version>1.2.1</version>
                         <configuration>
                             <mainClass>Biwanger.comun.clsMain</mainClass>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <!-- run as 'mvn exec:java -PDatos' -->
+            <id>Datos</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <version>1.2.1</version>
+                        <configuration>
+                            <mainClass>Biwanger.comun.DatosHardcoded</mainClass>
                         </configuration>
                     </plugin>
                 </plugins>
