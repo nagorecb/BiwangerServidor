@@ -97,8 +97,6 @@ public class clsAppServiceAdminTest
         List<clsUsuario> listaUsuariosOrdenada = listaUsuarios.stream().sorted(Comparator.comparingInt(clsUsuario ::getPuntuacion)).collect(Collectors.toList());
         Collections.reverse(listaUsuariosOrdenada);
         assertTrue( listaUsuariosPremiados.get(0).getFondos()==listaUsuariosOrdenada.get(0).getFondos());
-        assertTrue( listaUsuarios.get(1).getFondos()==3300);
-        assertTrue( listaUsuarios.get(2).getFondos()==2300);
     }
 
     @Test

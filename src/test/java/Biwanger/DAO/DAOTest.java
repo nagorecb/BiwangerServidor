@@ -115,6 +115,8 @@ public class DAOTest {
 		
 		assertEquals(listaJugadoresAntes.size()-1, listaJugadores.size());
 		assertEquals(listaJugadores.contains(jugadorGuardado), false);
+
+		borrarJugador(jugador);
 	}
 	
 	@Test
@@ -146,7 +148,7 @@ public class DAOTest {
 		assertEquals(usuarioGuardado, usuario);
 		
 		borrarUsuario(usuario);
-		
+		borrarUsuario(usuarioGuardado);
 	}
 	
 	@Test
