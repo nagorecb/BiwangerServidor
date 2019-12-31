@@ -1,11 +1,9 @@
 package Biwanger.ObjetosDominio;
 
-import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import Biwanger.AppService.clsAppServiceAdmin;
 
+import java.util.ArrayList;
+import java.util.Objects;
 import javax.jdo.annotations.*;
 
 /**
@@ -132,9 +130,15 @@ public class clsJugador
 	 * Método que devuelve los puntos del jugador
 	 * @return puntos del jugador
 	 */
-	public int getPuntos() {
+	public int getPuntos()
+	{
 		return puntos;
 	}
+
+	/**
+	 * Método que establece los puntos del jugador
+	 * @param puntos del jugador
+	 */
 	public void setPuntos(int puntos) {
 		this.puntos = puntos;
 	}
