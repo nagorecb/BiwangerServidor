@@ -53,7 +53,7 @@ public class clsUsuarioLista
 
 	/**
 	 * Método que compara dos objetos
-	 * @param obj: objeto que se pretende comparar con el actual
+	 * @param obj objeto que se pretende comparar con el actual
 	 * @return true si son el mismo objeto, false si no lo son
 	 */
 	@Override

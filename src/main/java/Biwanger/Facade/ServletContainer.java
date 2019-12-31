@@ -69,9 +69,8 @@ public class ServletContainer
     public Response PremiarTresMejores()
     {
     	List<clsUsuario> listaUsuarios = adminService.PremiarTresMejores();
-    	ArrayList<clsUsuario> arrayUsuarios = new ArrayList<clsUsuario>();
 
-    	clsUsuarioLista retorno = new clsUsuarioLista(arrayUsuarios);
+    	clsUsuarioLista retorno = new clsUsuarioLista((ArrayList<clsUsuario>)listaUsuarios);
 
         return Response.ok(retorno).build();
     }
