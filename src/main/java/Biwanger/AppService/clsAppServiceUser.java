@@ -233,7 +233,6 @@ public class clsAppServiceUser
         ArrayList<clsJugador> retorno = equipo;
         retorno = (ArrayList<clsJugador>) retorno.stream().sorted(Comparator.comparingInt(clsJugador ::getPuntos)).collect(Collectors.toList());
         Collections.reverse(retorno);
-
         return retorno;
     }
 
