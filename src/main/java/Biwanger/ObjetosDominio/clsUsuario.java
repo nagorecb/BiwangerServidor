@@ -1,5 +1,7 @@
 package Biwanger.ObjetosDominio;
 
+import Biwanger.AppService.clsAppServiceAdmin;
+
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
@@ -85,8 +87,19 @@ public class clsUsuario
 	 * Método que devuelve la puntuación del usuario
 	 * @return puntuación del usuario
 	 */
-	public int getPuntuacion() {
-		return puntuacion;
+	public int getPuntuacion()
+	{
+		ArrayList<clsJugador> lJugadores = clsAppServiceAdmin.getInstance().obtenerPlantilla(this.email);
+		int puntos = 0;
+
+		for(clsJugador aux: lJugadores)
+		{
+			puntos += aux.getPuntos();
+		}
+
+		setPuntuacion(puntos);
+
+		return puntos;
 	}
 
 	/**

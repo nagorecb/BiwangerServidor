@@ -88,7 +88,7 @@ public class clsAppServiceAdmin
                             pnt3 = usuario.getPuntuacion();
                             usuario.setFondos(usuario.getFondos()+PREMIO3);
                         }
-                        else if (pnt2==usuario.getPuntuacion())
+                        else if (pnt3==usuario.getPuntuacion())
                         {
                             usuario.setFondos(usuario.getFondos()+PREMIO3);
                         }
@@ -172,5 +172,4 @@ public class clsAppServiceAdmin
 
         return Plantilla;
     }
-
 }
