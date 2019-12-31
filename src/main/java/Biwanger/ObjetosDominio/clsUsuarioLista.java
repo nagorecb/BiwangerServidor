@@ -1,21 +1,32 @@
 package Biwanger.ObjetosDominio;
 
 import java.util.ArrayList;
-
+/**
+ * @brief Clase del objeto lista de usuarios
+ */
 public class clsUsuarioLista
 {
     private ArrayList<clsUsuario> lUsuarios;
-
+	/**
+	 * Constructor de la lista de usuarios con parametro
+	 * @param param: lista de usuarios
+	 */
     public clsUsuarioLista(ArrayList param)
     {
         lUsuarios = param;
     }
 
+	/**
+	 * Constructor de lista sin parametros
+	 */
     public clsUsuarioLista()
     {
-
     }
 
+	/**
+	 * Método que devuelve una lista de usuarios
+	 * @return lista de usuarios
+	 */
     public ArrayList<clsUsuario> getlUsuarios()
     {
         ArrayList<clsUsuario> lista = new ArrayList<clsUsuario>();
@@ -28,6 +39,10 @@ public class clsUsuarioLista
         return lista;
     }
 
+	/**
+	 * Método que genera un número único para identificar al objeto
+	 * @return el hash del identificador de la lista de usuarios
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -36,6 +51,11 @@ public class clsUsuarioLista
 		return result;
 	}
 
+	/**
+	 * Método que compara dos objetos
+	 * @param obj: objeto que se pretende comparar con el actual
+	 * @return true si son el mismo objeto, false si no lo son
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -52,6 +72,4 @@ public class clsUsuarioLista
 			return false;
 		return true;
 	}
-    
-    
 }

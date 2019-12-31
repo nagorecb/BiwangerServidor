@@ -11,7 +11,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 /**
- * Hilo que gestiona las pujas del sistema. Cuando se inicia y a las doce de la noche cada día
+ * @brief Hilo que gestiona las pujas del sistema.
+ * @details Cuando se inicia y a las doce de la noche cada día
  * el hilo recorre los jugadores en venta para identificar los del día anterior y, si tienen alguna puja,
  * gestiona la venta de este.
  */

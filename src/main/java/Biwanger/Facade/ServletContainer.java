@@ -17,7 +17,7 @@ import java.util.StringTokenizer;
 
 /**
  * @brief Clase que conecta al cliente con el servidor
- * @details Clase que ofrece los microservicios del servidor al cliente, funcionando como fachada que recoge las petidiones del cliente y redirige a los distintos appService
+ * @details Clase que ofrece los microservicios del servidor al cliente, funcionando como fachada que recoge las peticiones del cliente y redirige a los distintos appService
  */
 @Path("/resource")
 @Produces(MediaType.APPLICATION_JSON)

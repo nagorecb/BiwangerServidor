@@ -1,7 +1,8 @@
 package Biwanger.comun;
 
 /**
- * La clase main desde el que se inicia el profile server. Lanza el hilo del servidor.
+ * @brief Clase desde la que se inicia el hilo.
+ * @details La clase main desde el que se inicia el profile server. Lanza el hilo del servidor.
  */
 public class clsMain
 {
