@@ -21,7 +21,7 @@ import com.github.javatlacati.contiperf.junit.ContiPerfRule;
 import javax.validation.constraints.AssertFalse;
 import javax.validation.constraints.AssertTrue;
 
-@Required(max = 70000, average = 40000)
+@Required(max = 700000, average = 400000)
 public class clsAppServiceUserTest
 {
     clsDAO DAO;
