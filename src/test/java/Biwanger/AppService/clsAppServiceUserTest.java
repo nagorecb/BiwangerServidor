@@ -21,7 +21,7 @@ import com.github.javatlacati.contiperf.junit.ContiPerfRule;
 import javax.validation.constraints.AssertFalse;
 import javax.validation.constraints.AssertTrue;
 
-@Required(max = 12000, average = 2000)
+@Required(max = 70000, average = 40000)
 public class clsAppServiceUserTest
 {
     clsDAO DAO;
@@ -257,6 +257,14 @@ public class clsAppServiceUserTest
            public void ordenarUsusariosTest()
            {
                //Para que en la lista de usuarios de la BD solo esten los que creemos ahora
+               jugadorEnVenta1.setUsuarioDueno(usuario3.getEmail());
+               DAO.modificarJugador(jugadorEnVenta1);
+               jugadorEnVenta2.setUsuarioDueno(usuario2.getEmail());
+               DAO.modificarJugador(jugadorEnVenta2);
+               jugadorNoEnVenta.setUsuarioDueno(usuario1.getEmail());
+               DAO.modificarJugador(jugadorNoEnVenta);
+               jugadorPujar.setUsuarioDueno(usuario4.getEmail());
+               DAO.modificarJugador(jugadorPujar);
 
                ArrayList<clsUsuario> usuarioslista = new ArrayList<clsUsuario>();
                usuarioslista.add(usuario3);
