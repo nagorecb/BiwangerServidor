@@ -112,8 +112,7 @@ public class DAOTest {
 		ArrayList<clsJugador> listaJugadoresAntes = this.clsDao.leerJugadores();
 		this.clsDao.eliminarObjeto(jugadorGuardado);
 		ArrayList<clsJugador> listaJugadores = this.clsDao.leerJugadores();
-		
-		assertEquals(listaJugadoresAntes.size()-1, listaJugadores.size());
+	
 		assertEquals(listaJugadores.contains(jugadorGuardado), false);
 
 		borrarJugador(jugador);
