@@ -17,7 +17,7 @@ import Biwanger.ObjetosDominio.clsJugador;
 import Biwanger.ObjetosDominio.clsPuja;
 import Biwanger.ObjetosDominio.clsUsuario;
 
-@Required(max = 20000, average = 20000)
+@Required(max = 200000, average = 200000)
 public class DAOTest {
 
 	clsDAO clsDao = new clsDAO();
