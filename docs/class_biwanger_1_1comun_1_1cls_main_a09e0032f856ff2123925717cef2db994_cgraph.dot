@@ -93,16 +93,16 @@ digraph "Biwanger.comun.clsMain.main"
   Node41 -> Node44 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node44 [label="Biwanger.ObjetosDominio.cls\lUsuario.getPassword",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_biwanger_1_1_objetos_dominio_1_1cls_usuario.html#a1d5740ae36f5ed37a79a30185e3c4f9e",tooltip=" "];
   Node41 -> Node45 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node45 [label="Biwanger.ObjetosDominio.cls\lUsuario.getPuntuacion",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_biwanger_1_1_objetos_dominio_1_1cls_usuario.html#a8043716fb0488b460818ea29e73410e6",tooltip=" "];
-  Node4 -> Node50 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node50 [label="Biwanger.AppService.clsApp\lServiceUser.MostrarMercado",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$class_biwanger_1_1_app_service_1_1cls_app_service_user.html#a2f8e6594071307570038f6a09d2834a0",tooltip=" "];
-  Node4 -> Node52 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node52 [label="Biwanger.AppService.clsApp\lServiceUser.obtenerPujas",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$class_biwanger_1_1_app_service_1_1cls_app_service_user.html#ae30f84463e709efcb69ac4e0bc3f6fed",tooltip=" "];
-  Node52 -> Node13 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node4 -> Node54 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node54 [label="Biwanger.AppService.clsApp\lServiceUser.obtenerUsuario",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$class_biwanger_1_1_app_service_1_1cls_app_service_user.html#a43aba16e3b9da7155e9a8edcc4eed724",tooltip=" "];
+  Node45 [label="Biwanger.ObjetosDominio.cls\lUsuario.getPuntuacion",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$class_biwanger_1_1_objetos_dominio_1_1cls_usuario.html#a8043716fb0488b460818ea29e73410e6",tooltip=" "];
+  Node4 -> Node55 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node55 [label="Biwanger.AppService.clsApp\lServiceUser.MostrarMercado",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$class_biwanger_1_1_app_service_1_1cls_app_service_user.html#a2f8e6594071307570038f6a09d2834a0",tooltip=" "];
   Node4 -> Node56 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node56 [label="Biwanger.ObjetosDominio.cls\lUsuario.RestarFondos",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_biwanger_1_1_objetos_dominio_1_1cls_usuario.html#a16ba18b6acfd6ab5c7b60890837a89fc",tooltip=" "];
-  Node4 -> Node57 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node57 [label="Biwanger.ObjetosDominio.cls\lUsuario.SumarFondos",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_biwanger_1_1_objetos_dominio_1_1cls_usuario.html#a26bb6cf19dbcb2ccdcb09cd2e23fd6df",tooltip=" "];
+  Node56 [label="Biwanger.AppService.clsApp\lServiceUser.obtenerPujas",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$class_biwanger_1_1_app_service_1_1cls_app_service_user.html#ae30f84463e709efcb69ac4e0bc3f6fed",tooltip=" "];
+  Node56 -> Node13 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 -> Node58 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node58 [label="Biwanger.AppService.clsApp\lServiceUser.obtenerUsuario",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$class_biwanger_1_1_app_service_1_1cls_app_service_user.html#a43aba16e3b9da7155e9a8edcc4eed724",tooltip=" "];
+  Node4 -> Node60 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node60 [label="Biwanger.ObjetosDominio.cls\lUsuario.RestarFondos",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_biwanger_1_1_objetos_dominio_1_1cls_usuario.html#a16ba18b6acfd6ab5c7b60890837a89fc",tooltip=" "];
+  Node4 -> Node61 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node61 [label="Biwanger.ObjetosDominio.cls\lUsuario.SumarFondos",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_biwanger_1_1_objetos_dominio_1_1cls_usuario.html#a26bb6cf19dbcb2ccdcb09cd2e23fd6df",tooltip=" "];
 }
