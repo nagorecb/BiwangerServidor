@@ -12,8 +12,7 @@ $ mvn clean
 $ mvn compile
 ```
 
-_Para la creación, uso y borrado de la Base de datos:_
-_ -->create para crear tablas, delete para borrarlas_
+_Para la creación, uso y borrado de la Base de datos:
 ```sh
 mvn datanucleus:enhance
 mvn datanucleus:schema-create             
@@ -31,6 +30,16 @@ mvn jetty:run
 mvn exec:java -PHilo
 ```
 _En este momento, el servidor queda a la espera del cliente_
+
+### ⚠️IMPORTANTE:⚠️
+
+Se ha añadido otro profile además del anteriormente mencionado para poblar la Base de datos para tener datos iniciales con los que poder ir probando la aplicación sin tener que ir probando el programa desde cero. Por tanto, antes de empezar a probar, se recomienda utilizar la siguiente línea en caso de querer utilizar dichos datos:
+
+```sh
+mvn clean compile datanucleus:enhance datanucleus:schema-deletecreate exec:java -PDatos
+```
+
+Una vez hecho esto, se podrá probar la parte administradora con las credenciales email: "ADMIN" y contraseña: "ADMIN" (esto es así siempre, independientemente de cómo se pueble la base de datos) y la parte usuario con las credenciales email: "usuario@usuario.es" y contraseña: "123". Este usuario tendrá ya asignados suficientes jugadores como para poder realizar con él todas las operaciones.
 
  ### Test 🔎
 
@@ -72,7 +81,6 @@ Este comando hará lo siguiente:
 
         - JaCoCo
         - Doxygen
-        - Contiperf
 
 * Genera la documentación completa en la carpeta doc, de manera que pueda ser accedida desde el repositorio de GitHb, y desde la página http://nagorecb.github.io/BiwangerServidor.
 
