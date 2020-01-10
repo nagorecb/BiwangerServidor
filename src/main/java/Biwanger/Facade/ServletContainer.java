@@ -173,7 +173,7 @@ public class ServletContainer
         jugador.setPrecio(Double.parseDouble(tokens.nextToken()));
         jugador.setEquipo(tokens.nextToken());
         jugador.setEnVenta(Boolean.parseBoolean(tokens.nextToken()));
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
         LocalDateTime fecha = LocalDateTime.now();
         jugador.setFechaVenta(fecha.format(formatter));
         jugador.setEstado(tokens.nextToken());

@@ -174,7 +174,7 @@ public class clsAppServiceUser
     {
         jugadorVenta.setAlineado(false);
         jugadorVenta.setEnVenta(true);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
         LocalDateTime fecha = LocalDateTime.now();
         jugadorVenta.setFechaVenta(fecha.format(formatter));
 

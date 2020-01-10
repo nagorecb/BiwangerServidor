@@ -80,7 +80,7 @@ public class clsHiloPujas extends Thread
                 {
                     if(auxJugador.getFechaVenta()!=null)
                     {
-                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+                        DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
                         LocalDateTime fecha = LocalDateTime.parse(auxJugador.getFechaVenta(), formatter);
                         if(fecha.getDayOfMonth() < LocalDateTime.now().getDayOfMonth())
                         {
