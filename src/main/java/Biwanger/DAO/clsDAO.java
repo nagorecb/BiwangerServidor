@@ -19,8 +19,6 @@ import Biwanger.ObjetosDominio.clsUsuario;
 public class clsDAO
 {
 	private static clsDAO instancia= new clsDAO();
-	static PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-	static PersistenceManager pm = pmf.getPersistenceManager();
 
 	/**
 	 * Método para conseguir una única instancia de la clase DAO
@@ -45,6 +43,9 @@ public class clsDAO
 	 */
 	public clsJugador guardarObjeto(Object objeto)
 	{
+		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+		PersistenceManager pm = pmf.getPersistenceManager();
+
 		clsJugador jugador = null;
 		
 		Transaction tx = null;
@@ -72,6 +73,8 @@ public class clsDAO
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
+
+			pm.close();
 		}
 		System.out.println("Empiezo a guardar en base de datos");
 		return jugador;
@@ -82,7 +85,10 @@ public class clsDAO
 	 * @param idJugador el ID del jugador a buscar
 	 * @return jugador buscado en la base de datos
 	 */
-	public clsJugador buscarJugador(int idJugador) {
+	public clsJugador buscarJugador(int idJugador)
+	{
+		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+		PersistenceManager pm = pmf.getPersistenceManager();
 
 		clsJugador jugadorBuscado = null;
 
@@ -102,6 +108,8 @@ public class clsDAO
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
+
+			pm.close();
 		}
 
 		return jugadorBuscado;
@@ -135,6 +143,9 @@ public class clsDAO
 	 */
 	public ArrayList<clsJugador> leerJugadores() 
 	{
+		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+		PersistenceManager pm = pmf.getPersistenceManager();
+
 		ArrayList <clsJugador> listaJugadores = new ArrayList <clsJugador>();
 		Transaction tx = null;
 		try{
@@ -159,6 +170,8 @@ public class clsDAO
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
+
+			pm.close();
 		}
 		
 		return listaJugadores;
@@ -169,6 +182,9 @@ public class clsDAO
 	 */
 	public ArrayList<clsUsuario> leerUsuarios() 
 	{
+		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+		PersistenceManager pm = pmf.getPersistenceManager();
+
 		ArrayList <clsUsuario> listaUsuarios = new ArrayList <clsUsuario>();
 		Transaction tx = null;
 		try{
@@ -193,6 +209,8 @@ public class clsDAO
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
+
+			pm.close();
 		}
 		
 		return listaUsuarios;
@@ -204,6 +222,9 @@ public class clsDAO
 	 */
 	public ArrayList<clsPuja> leerPujas() 
 	{
+		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+		PersistenceManager pm = pmf.getPersistenceManager();
+
 		ArrayList <clsPuja> listaPujas = new ArrayList <clsPuja>();
 		Transaction tx = null;
 		try{
@@ -228,6 +249,8 @@ public class clsDAO
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
+
+			pm.close();
 		}
 		
 		return listaPujas;
@@ -239,6 +262,9 @@ public class clsDAO
 	 */
 	public void eliminarObjeto(Object objeto)
 	{
+		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+		PersistenceManager pm = pmf.getPersistenceManager();
+
 		Transaction tx = pm.currentTransaction();
 
 		try{
@@ -259,6 +285,8 @@ public class clsDAO
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
+
+			pm.close();
 		}
 	}
 
@@ -278,6 +306,9 @@ public class clsDAO
 	 */
 	public void modificarJugador(clsJugador jugador)
 	{
+		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+		PersistenceManager pm = pmf.getPersistenceManager();
+
 		Transaction tx = pm.currentTransaction();
 
 		try
@@ -320,6 +351,8 @@ public class clsDAO
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
+
+			pm.close();
 		}
 	}
 
@@ -329,6 +362,9 @@ public class clsDAO
 	 */
 	public void modificarUsuario(clsUsuario usuario)
 	{
+		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+		PersistenceManager pm = pmf.getPersistenceManager();
+
 		Transaction tx = pm.currentTransaction();
 
 		try
@@ -360,18 +396,8 @@ public class clsDAO
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
-		}
-	}
-	/**
-	 * Metodo para cerrar la conexión con la base de datos
-	 */
-	public void cerrarConexion() 
-	{
-		if (pm != null && !pm.isClosed()) 
-		{
+
 			pm.close();
 		}
-		
 	}
-	
 }
