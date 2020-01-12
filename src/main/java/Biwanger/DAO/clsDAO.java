@@ -1,5 +1,6 @@
 package Biwanger.DAO;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -19,6 +20,8 @@ import Biwanger.ObjetosDominio.clsUsuario;
 public class clsDAO
 {
 	private static clsDAO instancia= new clsDAO();
+	static PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+	static PersistenceManager pm = pmf.getPersistenceManager();
 
 	/**
 	 * Método para conseguir una única instancia de la clase DAO
@@ -43,11 +46,8 @@ public class clsDAO
 	 */
 	public clsJugador guardarObjeto(Object objeto)
 	{
-		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-		PersistenceManager pm = pmf.getPersistenceManager();
-
 		clsJugador jugador = null;
-		
+
 		Transaction tx = null;
 		try
 		{
@@ -63,18 +63,16 @@ public class clsDAO
 			}
 
 			tx.commit();
-		} 
+		}
 		catch (Exception ex)
 		{
 			ex.printStackTrace();
-		} 
-		finally 
+		}
+		finally
 		{
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
-
-			pm.close();
 		}
 		System.out.println("Empiezo a guardar en base de datos");
 		return jugador;
@@ -85,10 +83,7 @@ public class clsDAO
 	 * @param idJugador el ID del jugador a buscar
 	 * @return jugador buscado en la base de datos
 	 */
-	public clsJugador buscarJugador(int idJugador)
-	{
-		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-		PersistenceManager pm = pmf.getPersistenceManager();
+	public clsJugador buscarJugador(int idJugador) {
 
 		clsJugador jugadorBuscado = null;
 
@@ -108,11 +103,71 @@ public class clsDAO
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
-
-			pm.close();
 		}
 
 		return jugadorBuscado;
+	}
+
+	public clsUsuario BuscarUsuario (String email)
+	{
+		clsUsuario usuarioBuscado = null;
+		ArrayList <clsUsuario> usuarios = new ArrayList <clsUsuario> ();
+
+		Transaction tx = null;
+		try{
+			tx = pm.currentTransaction();
+			tx.begin();
+
+			usuarios = instancia.leerUsuarios();
+
+			for (clsUsuario u: usuarios)
+			{
+				if (email.equals(u.getEmail()))
+					usuarioBuscado = u;
+			}
+		}
+		catch (Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		finally
+		{
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+		}
+		return usuarioBuscado;
+	}
+
+	public clsPuja BuscarPuja (String fecha, int idJugador)
+	{
+		clsPuja pujaBuscada = null;
+		ArrayList <clsPuja> pujas = new ArrayList <clsPuja> ();
+
+		Transaction tx = null;
+		try{
+			tx = pm.currentTransaction();
+			tx.begin();
+
+			pujas = instancia.leerPujas();
+
+			for (clsPuja p: pujas)
+			{
+				if (p.getIdJugadorPuja() == idJugador && p.getFecha().equals(fecha))
+					pujaBuscada = p;
+			}
+		}
+		catch (Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		finally
+		{
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+		}
+		return pujaBuscada;
 	}
 
 	/**
@@ -141,11 +196,8 @@ public class clsDAO
 	 * Método para la obtención de los jugadores de la base de datos
 	 * @return Lista de jugadores almacenados en la base de datos
 	 */
-	public ArrayList<clsJugador> leerJugadores() 
+	public ArrayList<clsJugador> leerJugadores()
 	{
-		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-		PersistenceManager pm = pmf.getPersistenceManager();
-
 		ArrayList <clsJugador> listaJugadores = new ArrayList <clsJugador>();
 		Transaction tx = null;
 		try{
@@ -153,38 +205,33 @@ public class clsDAO
 			tx.begin();
 			//Para hacer la select, usamos extent
 			Extent<clsJugador> extent = pm.getExtent(clsJugador.class, true);
-			
+
 			for(clsJugador jugador: extent)
 			{
 				listaJugadores.add(jugador);
 			}
 			tx.commit();
-			
-		} 
+
+		}
 		catch (Exception ex)
 		{
 			ex.printStackTrace();
-		} 
-		finally 
+		}
+		finally
 		{
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
-
-			pm.close();
 		}
-		
+
 		return listaJugadores;
 	}
 	/**
 	 * Método para la obtención de los usuarios de la base de datos
 	 * @return Lista de usuarios almacenados en la base de datos
 	 */
-	public ArrayList<clsUsuario> leerUsuarios() 
+	public ArrayList<clsUsuario> leerUsuarios()
 	{
-		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-		PersistenceManager pm = pmf.getPersistenceManager();
-
 		ArrayList <clsUsuario> listaUsuarios = new ArrayList <clsUsuario>();
 		Transaction tx = null;
 		try{
@@ -192,27 +239,25 @@ public class clsDAO
 			tx.begin();
 			//Para hacer la select, usamos extent
 			Extent<clsUsuario> extent = pm.getExtent(clsUsuario.class, true);
-			
+
 			for(clsUsuario usuario: extent)
 			{
 				listaUsuarios.add(usuario);
 			}
 			tx.commit();
-			
-		} 
+
+		}
 		catch (Exception ex)
 		{
 			ex.printStackTrace();
-		} 
-		finally 
+		}
+		finally
 		{
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
-
-			pm.close();
 		}
-		
+
 		return listaUsuarios;
 	}
 
@@ -220,11 +265,8 @@ public class clsDAO
 	 * Método para la obtención de las pujas de la base de datos
 	 * @return Lista de pujas almacenadas en la base de datos
 	 */
-	public ArrayList<clsPuja> leerPujas() 
+	public ArrayList<clsPuja> leerPujas()
 	{
-		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-		PersistenceManager pm = pmf.getPersistenceManager();
-
 		ArrayList <clsPuja> listaPujas = new ArrayList <clsPuja>();
 		Transaction tx = null;
 		try{
@@ -232,27 +274,25 @@ public class clsDAO
 			tx.begin();
 			//Para hacer la select, usamos extent
 			Extent<clsPuja> extent = pm.getExtent(clsPuja.class, true);
-			
+
 			for(clsPuja puja: extent)
 			{
 				listaPujas.add(puja);
 			}
 			tx.commit();
-			
-		} 
+
+		}
 		catch (Exception ex)
 		{
 			ex.printStackTrace();
-		} 
-		finally 
+		}
+		finally
 		{
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
-
-			pm.close();
 		}
-		
+
 		return listaPujas;
 	}
 
@@ -262,9 +302,6 @@ public class clsDAO
 	 */
 	public void eliminarObjeto(Object objeto)
 	{
-		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-		PersistenceManager pm = pmf.getPersistenceManager();
-
 		Transaction tx = pm.currentTransaction();
 
 		try{
@@ -285,8 +322,6 @@ public class clsDAO
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
-
-			pm.close();
 		}
 	}
 
@@ -306,9 +341,6 @@ public class clsDAO
 	 */
 	public void modificarJugador(clsJugador jugador)
 	{
-		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-		PersistenceManager pm = pmf.getPersistenceManager();
-
 		Transaction tx = pm.currentTransaction();
 
 		try
@@ -345,14 +377,12 @@ public class clsDAO
 		catch (Exception ex)
 		{
 			ex.printStackTrace();
-		} 
-		finally 
+		}
+		finally
 		{
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
-
-			pm.close();
 		}
 	}
 
@@ -362,9 +392,6 @@ public class clsDAO
 	 */
 	public void modificarUsuario(clsUsuario usuario)
 	{
-		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-		PersistenceManager pm = pmf.getPersistenceManager();
-
 		Transaction tx = pm.currentTransaction();
 
 		try
@@ -396,8 +423,18 @@ public class clsDAO
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
-
-			pm.close();
 		}
 	}
+	/**
+	 * Metodo para cerrar la conexión con la base de datos
+	 */
+	public void cerrarConexion()
+	{
+		if (pm != null && !pm.isClosed())
+		{
+			pm.close();
+		}
+
+	}
+
 }
