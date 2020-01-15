@@ -106,6 +106,11 @@ public class clsAppServiceAdmin
      * Método para añadir puntos al jugador seleccionado. el administrador elige en la parte cliente cuántos puntos añadir a qué jugador
      * @param idJugador identificativo del jugador al que le vamos a añadir los puntos
      * @param puntosAnadir puntos que se le van a añadir
+     * @param asistencias asistencias que se le van a añadir
+     * @param goles goles que se le van a añadir
+     * @param partidos partidos que se le van a añadir
+     * @param TA tarjetas amarillas que se le van a añadir
+     * @param TR tarjetas rojas que se le van a añadir
      */
     public void anadirPuntos (int idJugador, int puntosAnadir, int asistencias, int goles, int partidos, int TA, int TR)
     {

@@ -1,7 +1,7 @@
 var class_biwanger_1_1_facade_1_1_servlet_container =
 [
     [ "ServletContainer", "class_biwanger_1_1_facade_1_1_servlet_container.html#a59c2db992e9e0059ed6f955fdc7f06b9", null ],
-    [ "anadirPuntosRequest", "class_biwanger_1_1_facade_1_1_servlet_container.html#ac6cc756415f934e374bdd146d6901266", null ],
+    [ "anadirPuntosRequest", "class_biwanger_1_1_facade_1_1_servlet_container.html#a5524b2f75c0e38fe5258c2875b793354", null ],
     [ "clasificacionEquipo", "class_biwanger_1_1_facade_1_1_servlet_container.html#a3470c81aaf9329061104a66bf80bf779", null ],
     [ "clasificacionUsuarios", "class_biwanger_1_1_facade_1_1_servlet_container.html#a98a9d2c39fdc3f202df959454115d410", null ],
     [ "crearJugadorRequest", "class_biwanger_1_1_facade_1_1_servlet_container.html#a60ad3c267ac6524d219d60fafbd36b67", null ],

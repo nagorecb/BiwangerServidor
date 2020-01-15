@@ -125,8 +125,8 @@ Métodos públicos</h2></td></tr>
 <tr class="separator:aeb8ab319e129afbfd760a7ba56f48f06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a43fee37e057cb8e69b20b0dd4d7c12c4"><td class="memItemLeft" align="right" valign="top">Response&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_biwanger_1_1_facade_1_1_servlet_container.html#a43fee37e057cb8e69b20b0dd4d7c12c4">venderJugador</a> (<a class="el" href="class_biwanger_1_1_objetos_dominio_1_1cls_jugador.html">clsJugador</a> jugadorVenta)</td></tr>
 <tr class="separator:a43fee37e057cb8e69b20b0dd4d7c12c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac6cc756415f934e374bdd146d6901266"><td class="memItemLeft" align="right" valign="top">Response&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_biwanger_1_1_facade_1_1_servlet_container.html#ac6cc756415f934e374bdd146d6901266">anadirPuntosRequest</a> (@FormParam(&quot;idJugador&quot;) int idJugador, @FormParam(&quot;puntos&quot;) int puntosAnadir)</td></tr>
-<tr class="separator:ac6cc756415f934e374bdd146d6901266"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5524b2f75c0e38fe5258c2875b793354"><td class="memItemLeft" align="right" valign="top">Response&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_biwanger_1_1_facade_1_1_servlet_container.html#a5524b2f75c0e38fe5258c2875b793354">anadirPuntosRequest</a> (@FormParam(&quot;idJugador&quot;) int idJugador, @FormParam(&quot;puntos&quot;) int puntosAnadir, @FormParam(&quot;asistencias&quot;) int asistencias, @FormParam(&quot;goles&quot;) int goles, @FormParam(&quot;partidos&quot;) int partidos, @FormParam(&quot;TA&quot;) int TA, @FormParam(&quot;TR&quot;) int TR)</td></tr>
+<tr class="separator:a5524b2f75c0e38fe5258c2875b793354"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60ad3c267ac6524d219d60fafbd36b67"><td class="memItemLeft" align="right" valign="top">Response&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_biwanger_1_1_facade_1_1_servlet_container.html#a60ad3c267ac6524d219d60fafbd36b67">crearJugadorRequest</a> (String camposJugador)</td></tr>
 <tr class="separator:a60ad3c267ac6524d219d60fafbd36b67"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6bda5929d72cf4e2012d67b20190ef02"><td class="memItemLeft" align="right" valign="top">Response&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_biwanger_1_1_facade_1_1_servlet_container.html#a6bda5929d72cf4e2012d67b20190ef02">obtenerTodosUsuarios</a> ()</td></tr>
@@ -167,8 +167,8 @@ Métodos públicos</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Documentación de las funciones miembro</h2>
-<a id="ac6cc756415f934e374bdd146d6901266"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac6cc756415f934e374bdd146d6901266">&#9670;&nbsp;</a></span>anadirPuntosRequest()</h2>
+<a id="a5524b2f75c0e38fe5258c2875b793354"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5524b2f75c0e38fe5258c2875b793354">&#9670;&nbsp;</a></span>anadirPuntosRequest()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -183,7 +183,37 @@ Métodos públicos</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">@FormParam(&quot;puntos&quot;) int&#160;</td>
-          <td class="paramname"><em>puntosAnadir</em>&#160;</td>
+          <td class="paramname"><em>puntosAnadir</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">@FormParam(&quot;asistencias&quot;) int&#160;</td>
+          <td class="paramname"><em>asistencias</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">@FormParam(&quot;goles&quot;) int&#160;</td>
+          <td class="paramname"><em>goles</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">@FormParam(&quot;partidos&quot;) int&#160;</td>
+          <td class="paramname"><em>partidos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">@FormParam(&quot;TA&quot;) int&#160;</td>
+          <td class="paramname"><em>TA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">@FormParam(&quot;TR&quot;) int&#160;</td>
+          <td class="paramname"><em>TR</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -196,16 +226,21 @@ Métodos públicos</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">idJugador</td><td>identificativo del jugador al que se le quieren añadir los puntos </td></tr>
     <tr><td class="paramname">puntosAnadir</td><td>puntos que se le quieren añadir al jugador </td></tr>
+    <tr><td class="paramname">asistencias</td><td>asistencias que se le quieren añadir al jugador </td></tr>
+    <tr><td class="paramname">goles</td><td>goles que se le quieren añadir al jugador </td></tr>
+    <tr><td class="paramname">partidos</td><td>partidos que se le quieren añadir al jugador </td></tr>
+    <tr><td class="paramname">TA</td><td>tarjetas amarillas que se le quieren añadir al jugador </td></tr>
+    <tr><td class="paramname">TR</td><td>tarjetas rojas que se le quieren añadir al jugador </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>devuelve un Response indicando que la operación se ha podido realizar </dd></dl>
 
-<p class="definition">Definición en la línea <a class="el" href="_servlet_container_8java_source.html#l00154">154</a> del archivo <a class="el" href="_servlet_container_8java_source.html">ServletContainer.java</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="_servlet_container_8java_source.html#l00159">159</a> del archivo <a class="el" href="_servlet_container_8java_source.html">ServletContainer.java</a>.</p>
 <div class="dynheader">
 Gráfico de llamadas para esta función:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_biwanger_1_1_facade_1_1_servlet_container_ac6cc756415f934e374bdd146d6901266_cgraph.png" border="0" usemap="#class_biwanger_1_1_facade_1_1_servlet_container_ac6cc756415f934e374bdd146d6901266_cgraph" alt=""/></div>
+<div class="center"><img src="class_biwanger_1_1_facade_1_1_servlet_container_a5524b2f75c0e38fe5258c2875b793354_cgraph.png" border="0" usemap="#class_biwanger_1_1_facade_1_1_servlet_container_a5524b2f75c0e38fe5258c2875b793354_cgraph" alt=""/></div>
 <!-- MAP 1 -->
 </div>
 
@@ -234,7 +269,7 @@ Gráfico de llamadas para esta función:</div>
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>devuelve un Response con la lista de jugadores del usuario ordenada </dd></dl>
 
-<p class="definition">Definición en la línea <a class="el" href="_servlet_container_8java_source.html#l00235">235</a> del archivo <a class="el" href="_servlet_container_8java_source.html">ServletContainer.java</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="_servlet_container_8java_source.html#l00240">240</a> del archivo <a class="el" href="_servlet_container_8java_source.html">ServletContainer.java</a>.</p>
 <div class="dynheader">
 Gráfico de llamadas para esta función:</div>
 <div class="dyncontent">
@@ -260,7 +295,7 @@ Gráfico de llamadas para esta función:</div>
 </div><div class="memdoc">
 <p>Método que responde a la petición de obtener la lista de todos los usuarios ordenados por puntuación </p><dl class="section return"><dt>Devuelve</dt><dd>devuelve un Response con la lista de usuarios ordenada </dd></dl>
 
-<p class="definition">Definición en la línea <a class="el" href="_servlet_container_8java_source.html#l00249">249</a> del archivo <a class="el" href="_servlet_container_8java_source.html">ServletContainer.java</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="_servlet_container_8java_source.html#l00254">254</a> del archivo <a class="el" href="_servlet_container_8java_source.html">ServletContainer.java</a>.</p>
 <div class="dynheader">
 Gráfico de llamadas para esta función:</div>
 <div class="dyncontent">
@@ -293,7 +328,7 @@ Gráfico de llamadas para esta función:</div>
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>devuelve un Response indicando que la operación se ha realizado con éxito </dd></dl>
 
-<p class="definition">Definición en la línea <a class="el" href="_servlet_container_8java_source.html#l00167">167</a> del archivo <a class="el" href="_servlet_container_8java_source.html">ServletContainer.java</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="_servlet_container_8java_source.html#l00172">172</a> del archivo <a class="el" href="_servlet_container_8java_source.html">ServletContainer.java</a>.</p>
 <div class="dynheader">
 Gráfico de llamadas para esta función:</div>
 <div class="dyncontent">
@@ -451,7 +486,7 @@ Gráfico de llamadas para esta función:</div>
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>devuelve un Response con la plantilla del usuario </dd></dl>
 
-<p class="definition">Definición en la línea <a class="el" href="_servlet_container_8java_source.html#l00222">222</a> del archivo <a class="el" href="_servlet_container_8java_source.html">ServletContainer.java</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="_servlet_container_8java_source.html#l00227">227</a> del archivo <a class="el" href="_servlet_container_8java_source.html">ServletContainer.java</a>.</p>
 <div class="dynheader">
 Gráfico de llamadas para esta función:</div>
 <div class="dyncontent">
@@ -477,7 +512,7 @@ Gráfico de llamadas para esta función:</div>
 </div><div class="memdoc">
 <p>Método que responde a las peticiones para obtener los jugadores </p><dl class="section return"><dt>Devuelve</dt><dd>Devuelve un response con la lista de todos los jugadores </dd></dl>
 
-<p class="definition">Definición en la línea <a class="el" href="_servlet_container_8java_source.html#l00206">206</a> del archivo <a class="el" href="_servlet_container_8java_source.html">ServletContainer.java</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="_servlet_container_8java_source.html#l00211">211</a> del archivo <a class="el" href="_servlet_container_8java_source.html">ServletContainer.java</a>.</p>
 <div class="dynheader">
 Gráfico de llamadas para esta función:</div>
 <div class="dyncontent">
@@ -503,7 +538,7 @@ Gráfico de llamadas para esta función:</div>
 </div><div class="memdoc">
 <p>Método que responde a las peticiones para obtener los usuarios </p><dl class="section return"><dt>Devuelve</dt><dd>Devuelve un response con la lista de todos los usuarios </dd></dl>
 
-<p class="definition">Definición en la línea <a class="el" href="_servlet_container_8java_source.html#l00191">191</a> del archivo <a class="el" href="_servlet_container_8java_source.html">ServletContainer.java</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="_servlet_container_8java_source.html#l00196">196</a> del archivo <a class="el" href="_servlet_container_8java_source.html">ServletContainer.java</a>.</p>
 <div class="dynheader">
 Gráfico de llamadas para esta función:</div>
 <div class="dyncontent">
@@ -647,7 +682,7 @@ Gráfico de llamadas para esta función:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_biwanger.html">Biwanger</a></li><li class="navelem"><a class="el" href="namespace_biwanger_1_1_facade.html">Facade</a></li><li class="navelem"><a class="el" href="class_biwanger_1_1_facade_1_1_servlet_container.html">ServletContainer</a></li>
-    <li class="footer">Generado el Lunes, 6 de Enero de 2020 12:46:49 para BiwangerFantasy Servidor por
+    <li class="footer">Generado el Miércoles, 15 de Enero de 2020 17:12:13 para BiwangerFantasy Servidor por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>
   </ul>

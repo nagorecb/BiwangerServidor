@@ -112,8 +112,8 @@ Métodos públicos</h2></td></tr>
 <tr class="separator:a0737e02f68225f27d91758a1b57860b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a745d1a0c5ea706ffd97616cb4d2e0672"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_biwanger_1_1_objetos_dominio_1_1cls_usuario.html">clsUsuario</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html#a745d1a0c5ea706ffd97616cb4d2e0672">PremiarTresMejores</a> ()</td></tr>
 <tr class="separator:a745d1a0c5ea706ffd97616cb4d2e0672"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c801a4ec68d39ed93d44b260272d49d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html#a2c801a4ec68d39ed93d44b260272d49d">anadirPuntos</a> (int idJugador, int puntosAnadir)</td></tr>
-<tr class="separator:a2c801a4ec68d39ed93d44b260272d49d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f074ca356e0169627710fa87030cac7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html#a0f074ca356e0169627710fa87030cac7">anadirPuntos</a> (int idJugador, int puntosAnadir, int asistencias, int goles, int partidos, int TA, int TR)</td></tr>
+<tr class="separator:a0f074ca356e0169627710fa87030cac7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1af9f1988b71d0be52449a1ce053f25e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html#a1af9f1988b71d0be52449a1ce053f25e">guardarJugador</a> (<a class="el" href="class_biwanger_1_1_objetos_dominio_1_1cls_jugador.html">clsJugador</a> jugador)</td></tr>
 <tr class="separator:a1af9f1988b71d0be52449a1ce053f25e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a67f15e33d0977f242cfa973f4b7eed5f"><td class="memItemLeft" align="right" valign="top">ArrayList&lt; <a class="el" href="class_biwanger_1_1_objetos_dominio_1_1cls_usuario.html">clsUsuario</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html#a67f15e33d0977f242cfa973f4b7eed5f">obtenerTodosUsuarios</a> ()</td></tr>
@@ -165,8 +165,8 @@ Gráfico de llamadas a esta función:</div>
 </div>
 </div>
 <h2 class="groupheader">Documentación de las funciones miembro</h2>
-<a id="a2c801a4ec68d39ed93d44b260272d49d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2c801a4ec68d39ed93d44b260272d49d">&#9670;&nbsp;</a></span>anadirPuntos()</h2>
+<a id="a0f074ca356e0169627710fa87030cac7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f074ca356e0169627710fa87030cac7">&#9670;&nbsp;</a></span>anadirPuntos()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -181,7 +181,37 @@ Gráfico de llamadas a esta función:</div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>puntosAnadir</em>&#160;</td>
+          <td class="paramname"><em>puntosAnadir</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>asistencias</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>goles</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>partidos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>TA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>TR</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -194,20 +224,25 @@ Gráfico de llamadas a esta función:</div>
   <table class="params">
     <tr><td class="paramname">idJugador</td><td>identificativo del jugador al que le vamos a añadir los puntos </td></tr>
     <tr><td class="paramname">puntosAnadir</td><td>puntos que se le van a añadir </td></tr>
+    <tr><td class="paramname">asistencias</td><td>asistencias que se le van a añadir </td></tr>
+    <tr><td class="paramname">goles</td><td>goles que se le van a añadir </td></tr>
+    <tr><td class="paramname">partidos</td><td>partidos que se le van a añadir </td></tr>
+    <tr><td class="paramname">TA</td><td>tarjetas amarillas que se le van a añadir </td></tr>
+    <tr><td class="paramname">TR</td><td>tarjetas rojas que se le van a añadir </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definición en la línea <a class="el" href="cls_app_service_admin_8java_source.html#l00110">110</a> del archivo <a class="el" href="cls_app_service_admin_8java_source.html">clsAppServiceAdmin.java</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="cls_app_service_admin_8java_source.html#l00115">115</a> del archivo <a class="el" href="cls_app_service_admin_8java_source.html">clsAppServiceAdmin.java</a>.</p>
 <div class="dynheader">
 Gráfico de llamadas para esta función:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_biwanger_1_1_app_service_1_1cls_app_service_admin_a2c801a4ec68d39ed93d44b260272d49d_cgraph.png" border="0" usemap="#class_biwanger_1_1_app_service_1_1cls_app_service_admin_a2c801a4ec68d39ed93d44b260272d49d_cgraph" alt=""/></div>
+<div class="center"><img src="class_biwanger_1_1_app_service_1_1cls_app_service_admin_a0f074ca356e0169627710fa87030cac7_cgraph.png" border="0" usemap="#class_biwanger_1_1_app_service_1_1cls_app_service_admin_a0f074ca356e0169627710fa87030cac7_cgraph" alt=""/></div>
 </div>
 <div class="dynheader">
 Gráfico de llamadas a esta función:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_biwanger_1_1_app_service_1_1cls_app_service_admin_a2c801a4ec68d39ed93d44b260272d49d_icgraph.png" border="0" usemap="#class_biwanger_1_1_app_service_1_1cls_app_service_admin_a2c801a4ec68d39ed93d44b260272d49d_icgraph" alt=""/></div>
+<div class="center"><img src="class_biwanger_1_1_app_service_1_1cls_app_service_admin_a0f074ca356e0169627710fa87030cac7_icgraph.png" border="0" usemap="#class_biwanger_1_1_app_service_1_1cls_app_service_admin_a0f074ca356e0169627710fa87030cac7_icgraph" alt=""/></div>
 </div>
 
 </div>
@@ -272,7 +307,7 @@ Gráfico de llamadas a esta función:</div>
   </dd>
 </dl>
 
-<p class="definition">Definición en la línea <a class="el" href="cls_app_service_admin_8java_source.html#l00125">125</a> del archivo <a class="el" href="cls_app_service_admin_8java_source.html">clsAppServiceAdmin.java</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="cls_app_service_admin_8java_source.html#l00144">144</a> del archivo <a class="el" href="cls_app_service_admin_8java_source.html">clsAppServiceAdmin.java</a>.</p>
 <div class="dynheader">
 Gráfico de llamadas para esta función:</div>
 <div class="dyncontent">
@@ -309,7 +344,7 @@ Gráfico de llamadas a esta función:</div>
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>devuelve la lista de jugadores correspondientes al usuario en cuestión </dd></dl>
 
-<p class="definition">Definición en la línea <a class="el" href="cls_app_service_admin_8java_source.html#l00160">160</a> del archivo <a class="el" href="cls_app_service_admin_8java_source.html">clsAppServiceAdmin.java</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="cls_app_service_admin_8java_source.html#l00179">179</a> del archivo <a class="el" href="cls_app_service_admin_8java_source.html">clsAppServiceAdmin.java</a>.</p>
 <div class="dynheader">
 Gráfico de llamadas para esta función:</div>
 <div class="dyncontent">
@@ -339,7 +374,7 @@ Gráfico de llamadas a esta función:</div>
 </div><div class="memdoc">
 <p>Métdodo para devolver la lista de todos los jugadores de la BD </p><dl class="section return"><dt>Devuelve</dt><dd>devuelve la lista de jugadores </dd></dl>
 
-<p class="definition">Definición en la línea <a class="el" href="cls_app_service_admin_8java_source.html#l00148">148</a> del archivo <a class="el" href="cls_app_service_admin_8java_source.html">clsAppServiceAdmin.java</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="cls_app_service_admin_8java_source.html#l00167">167</a> del archivo <a class="el" href="cls_app_service_admin_8java_source.html">clsAppServiceAdmin.java</a>.</p>
 <div class="dynheader">
 Gráfico de llamadas para esta función:</div>
 <div class="dyncontent">
@@ -369,7 +404,7 @@ Gráfico de llamadas a esta función:</div>
 </div><div class="memdoc">
 <p>Método para obtener una lista de tosdos los usuarios de la BD, ordenados de manera descendente por su puntuación </p><dl class="section return"><dt>Devuelve</dt><dd>devuelve la lista de usuarios ordenada </dd></dl>
 
-<p class="definition">Definición en la línea <a class="el" href="cls_app_service_admin_8java_source.html#l00134">134</a> del archivo <a class="el" href="cls_app_service_admin_8java_source.html">clsAppServiceAdmin.java</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="cls_app_service_admin_8java_source.html#l00153">153</a> del archivo <a class="el" href="cls_app_service_admin_8java_source.html">clsAppServiceAdmin.java</a>.</p>
 <div class="dynheader">
 Gráfico de llamadas para esta función:</div>
 <div class="dyncontent">
@@ -447,7 +482,7 @@ Gráfico de llamadas a esta función:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_biwanger.html">Biwanger</a></li><li class="navelem"><a class="el" href="namespace_biwanger_1_1_app_service.html">AppService</a></li><li class="navelem"><a class="el" href="class_biwanger_1_1_app_service_1_1cls_app_service_admin.html">clsAppServiceAdmin</a></li>
-    <li class="footer">Generado el Lunes, 6 de Enero de 2020 12:46:45 para BiwangerFantasy Servidor por
+    <li class="footer">Generado el Miércoles, 15 de Enero de 2020 17:12:08 para BiwangerFantasy Servidor por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>
   </ul>

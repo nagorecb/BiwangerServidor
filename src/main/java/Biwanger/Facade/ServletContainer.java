@@ -147,6 +147,11 @@ public class ServletContainer
      * Método que responde a la petición de añadir puntos a los jugadores
      * @param idJugador identificativo del jugador al que se le quieren añadir los puntos
      * @param puntosAnadir puntos que se le quieren añadir al jugador
+     * @param asistencias asistencias que se le quieren añadir al jugador
+     * @param goles goles que se le quieren añadir al jugador
+     * @param partidos partidos que se le quieren añadir al jugador
+     * @param TA tarjetas amarillas que se le quieren añadir al jugador
+     * @param TR tarjetas rojas que se le quieren añadir al jugador
      * @return devuelve un Response indicando que la operación se ha podido realizar
      */
     @POST
