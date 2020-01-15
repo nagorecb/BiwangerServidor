@@ -103,8 +103,13 @@ public class clsAppServiceAdminTest
     public void anadirPuntos_test()
     {
         assertTrue(j1.getPuntos()==10);
-        appservice.anadirPuntos(j1.getId(),2);
+       appservice.anadirPuntos(j1.getId(),2, 3, 4, 5, 6, 7);
         assertTrue(dao.buscarJugador(j1.getId()).getPuntos()==12);
+        assertTrue(dao.buscarJugador(j1.getId()).getNumAsistencias() == 3);
+        assertTrue(dao.buscarJugador(j1.getId()).getNumGoles() == 4);
+        assertTrue(dao.buscarJugador(j1.getId()).getNumPartidosJugados() == 5);
+        assertTrue(dao.buscarJugador(j1.getId()).getNumTarjetasAmarillas() == 6);
+        assertTrue(dao.buscarJugador(j1.getId()).getNumTarjetasRojas() == 7);
     }
 
     @Test

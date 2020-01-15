@@ -302,6 +302,6 @@ public class clsAppServiceUserTest
         DAO.eliminarObjeto(usuario1);
         DAO.eliminarObjeto(usuario2);
         DAO.eliminarObjeto(usuario3);
-        DAO.eliminarObjeto(usuario4);;
+        DAO.eliminarObjeto(usuario4);
     }
 }

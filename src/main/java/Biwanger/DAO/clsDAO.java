@@ -108,68 +108,6 @@ public class clsDAO
 		return jugadorBuscado;
 	}
 
-	public clsUsuario BuscarUsuario (String email)
-	{
-		clsUsuario usuarioBuscado = null;
-		ArrayList <clsUsuario> usuarios = new ArrayList <clsUsuario> ();
-
-		Transaction tx = null;
-		try{
-			tx = pm.currentTransaction();
-			tx.begin();
-
-			usuarios = instancia.leerUsuarios();
-
-			for (clsUsuario u: usuarios)
-			{
-				if (email.equals(u.getEmail()))
-					usuarioBuscado = u;
-			}
-		}
-		catch (Exception ex)
-		{
-			ex.printStackTrace();
-		}
-		finally
-		{
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
-		}
-		return usuarioBuscado;
-	}
-
-	public clsPuja BuscarPuja (String fecha, int idJugador)
-	{
-		clsPuja pujaBuscada = null;
-		ArrayList <clsPuja> pujas = new ArrayList <clsPuja> ();
-
-		Transaction tx = null;
-		try{
-			tx = pm.currentTransaction();
-			tx.begin();
-
-			pujas = instancia.leerPujas();
-
-			for (clsPuja p: pujas)
-			{
-				if (p.getIdJugadorPuja() == idJugador && p.getFecha().equals(fecha))
-					pujaBuscada = p;
-			}
-		}
-		catch (Exception ex)
-		{
-			ex.printStackTrace();
-		}
-		finally
-		{
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
-		}
-		return pujaBuscada;
-	}
-
 	/**
 	 * Método para buscar usuario en la base de datos
 	 * @param email el email único identificativo del usuario a buscar

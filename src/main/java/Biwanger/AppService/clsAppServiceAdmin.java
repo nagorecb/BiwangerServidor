@@ -107,14 +107,28 @@ public class clsAppServiceAdmin
      * @param idJugador identificativo del jugador al que le vamos a añadir los puntos
      * @param puntosAnadir puntos que se le van a añadir
      */
-    public void anadirPuntos (int idJugador, int puntosAnadir) 
+    public void anadirPuntos (int idJugador, int puntosAnadir, int asistencias, int goles, int partidos, int TA, int TR)
     {
     	clsJugador jugadorAnadirPuntos = dao.buscarJugador(idJugador);
     	
     	int puntosTot = jugadorAnadirPuntos.getPuntos() + puntosAnadir;
-    	
     	jugadorAnadirPuntos.setPuntos(puntosTot);
-    	
+
+    	int asistenciasTot = jugadorAnadirPuntos.getNumAsistencias() + asistencias;
+        jugadorAnadirPuntos.setNumAsistencias(asistenciasTot);
+
+        int golesTot = jugadorAnadirPuntos.getNumGoles() + goles;
+        jugadorAnadirPuntos.setNumGoles(golesTot);
+
+        int partidosTot = jugadorAnadirPuntos.getNumPartidosJugados()+ partidos;
+        jugadorAnadirPuntos.setNumPartidosJugados(partidosTot);
+
+        int TAtot = jugadorAnadirPuntos.getNumTarjetasAmarillas() + TA;
+        jugadorAnadirPuntos.setNumTarjetasAmarillas(TAtot);
+
+        int TRtot = jugadorAnadirPuntos.getNumTarjetasRojas() + TR;
+        jugadorAnadirPuntos.setNumTarjetasRojas(TRtot);
+
     	dao.modificarJugador(jugadorAnadirPuntos);
     }
 
